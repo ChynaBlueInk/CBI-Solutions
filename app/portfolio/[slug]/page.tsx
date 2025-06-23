@@ -4,76 +4,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, Calendar, Tag, ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { projects } from "../projects-data"
 
-// This would typically come from a database or CMS
-const projects = {
-  "memoir-wizard": {
-    title: "Memoir Wizard",
-    description:
-      "AI-powered memoir writing assistant that helps users craft their life stories with guided prompts and intelligent suggestions.",
-    longDescription:
-      "Memoir Wizard is a revolutionary AI-powered platform designed to help individuals write their life stories. The application uses advanced natural language processing to provide personalized writing prompts, suggest narrative structures, and offer editing assistance. Users can organize their memories chronologically, add photos and documents, and receive AI-generated insights to enhance their storytelling.",
-    category: "AI Tools",
-    color: "from-blue-500 to-cyan-500",
-    year: "2024",
-    tags: ["AI", "Writing", "Storytelling", "NLP"],
-    heroImage: "/placeholder.svg?height=400&width=800",
-    images: [
-      "/placeholder.svg?height=300&width=500",
-      "/placeholder.svg?height=300&width=500",
-      "/placeholder.svg?height=300&width=500",
-    ],
-    features: [
-      "AI-powered writing prompts",
-      "Intelligent story structure suggestions",
-      "Memory organization tools",
-      "Photo and document integration",
-      "Export to multiple formats",
-      "Privacy-focused design",
-    ],
-    technologies: ["Next.js", "OpenAI GPT-4", "TypeScript", "Tailwind CSS", "Supabase"],
-    challenges:
-      "Creating an AI system that could understand personal narratives and provide meaningful suggestions while maintaining user privacy.",
-    solution:
-      "We developed a custom AI model trained on memoir structures and implemented local processing for sensitive content.",
-    results: "95% user satisfaction rate with over 1,000 completed memoirs in the first six months.",
-  },
-  "childrens-library-app": {
-    title: "Children's Library App",
-    description:
-      "Interactive digital library platform designed specifically for young readers with gamification elements.",
-    longDescription:
-      "The Children's Library App transforms reading into an adventure for young learners. Featuring an extensive collection of age-appropriate books, interactive reading tools, and gamification elements that encourage consistent reading habits. The app includes read-aloud functionality, comprehension quizzes, and a reward system that motivates children to explore new genres and authors.",
-    category: "Education",
-    color: "from-purple-500 to-pink-500",
-    year: "2023",
-    tags: ["Education", "Mobile App", "Children", "Gamification"],
-    heroImage: "/placeholder.svg?height=400&width=800",
-    images: [
-      "/placeholder.svg?height=300&width=500",
-      "/placeholder.svg?height=300&width=500",
-      "/placeholder.svg?height=300&width=500",
-    ],
-    features: [
-      "Age-appropriate book recommendations",
-      "Interactive reading tools",
-      "Read-aloud functionality",
-      "Progress tracking for parents",
-      "Gamified reading challenges",
-      "Offline reading capability",
-    ],
-    technologies: ["React Native", "Node.js", "MongoDB", "AWS", "Text-to-Speech API"],
-    challenges:
-      "Creating an engaging experience that balances entertainment with educational value while ensuring child safety.",
-    solution:
-      "We implemented a comprehensive content curation system and robust parental controls with engaging but educational game mechanics.",
-    results: "40% increase in reading time among users and positive feedback from 500+ families.",
-  },
-  // Add more projects as needed
-}
-
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects[params.slug as keyof typeof projects]
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+  const slug = params.slug
+  const project = projects.find(p => p.slug === slug)
 
   if (!project) {
     return (
@@ -199,14 +134,23 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="space-y-4">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-2xl">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Live Project
-                </Button>
-                <Button variant="outline" className="w-full border-gray-300 rounded-2xl">
-                  <Github className="w-4 h-4 mr-2" />
-                  View Source Code
-                </Button>
+                {project.liveUrl && (
+                  <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-2xl">
+                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View Live Project
+                    </Link>
+                  </Button>
+                )}
+
+                {project.githubUrl && (
+                  <Button asChild variant="outline" className="w-full border-gray-300 rounded-2xl">
+                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2" />
+                      View Source Code
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
           </div>

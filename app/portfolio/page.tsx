@@ -7,66 +7,75 @@ import { ExternalLink, ArrowRight, Calendar, Tag } from "lucide-react"
 export default function PortfolioPage() {
   const projects = [
     {
+      title: "AI Wiki Toolbox",
+      description: "Comprehensive resource hub for AI tools and their creative applications.",
+      category: "Documentation",
+      slug: "ai-wiki-toolbox",
+      year: "2024",
+      tags: ["Documentation", "AI", "Resources"],
+      image: "/placeholder.svg?height=200&width=400",
+    },
+    {
+      title: "L&D Portfolio Hub",
+      description: "Showcase of learning design portfolio and capabilities.",
+      category: "Portfolio",
+      slug: "ld-portfolio-hub",
+      year: "2024",
+      tags: ["Portfolio", "L&D", "Showcase"],
+      image: "/placeholder.svg?height=200&width=400",
+    },
+    {
+      title: "Lafaek Children's Book Library",
+      description: "Interactive digital library platform for Timor-Leste children.",
+      category: "Education",
+      slug: "lafaek-childrens-book-library",
+      year: "2024",
+      tags: ["Education", "Children", "Library"],
+      image: "/placeholder.svg?height=200&width=400",
+    },
+    {
       title: "Memoir Wizard",
-      description:
-        "AI-powered memoir writing assistant that helps users craft their life stories with guided prompts and intelligent suggestions.",
+      description: "AI-powered memoir writing assistant that helps users craft their life stories.",
       category: "AI Tools",
-      color: "from-blue-500 to-cyan-500",
       slug: "memoir-wizard",
       year: "2024",
       tags: ["AI", "Writing", "Storytelling"],
       image: "/placeholder.svg?height=200&width=400",
     },
     {
-      title: "Children's Library App",
-      description:
-        "Interactive digital library platform designed specifically for young readers with gamification elements.",
-      category: "Education",
-      color: "from-purple-500 to-pink-500",
-      slug: "childrens-library-app",
-      year: "2023",
-      tags: ["Education", "Mobile App", "Children"],
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      title: "AI Tools Wiki",
-      description:
-        "Comprehensive resource hub for AI tools and their creative applications, featuring reviews and tutorials.",
-      category: "Documentation",
-      color: "from-green-500 to-teal-500",
-      slug: "ai-tools-wiki",
-      year: "2024",
-      tags: ["Documentation", "AI", "Resources"],
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
       title: "Oracle Card Generator",
-      description: "Digital platform for creating and sharing custom oracle card decks with AI-generated artwork.",
+      description: "Digital platform for creating and sharing custom oracle card decks.",
       category: "Creative Tools",
-      color: "from-orange-500 to-red-500",
       slug: "oracle-card-generator",
-      year: "2023",
+      year: "2024",
       tags: ["Creative", "AI Art", "Spirituality"],
       image: "/placeholder.svg?height=200&width=400",
     },
     {
-      title: "Remote Learning Hub",
-      description: "Comprehensive platform for distributed teams to access training materials and track progress.",
-      category: "Education",
-      color: "from-indigo-500 to-purple-500",
-      slug: "remote-learning-hub",
-      year: "2023",
-      tags: ["Remote Work", "Training", "Analytics"],
+      title: "Sharespace NZ",
+      description: "Community platform for house sharing, flatmates, and tiny home land listings.",
+      category: "Community",
+      slug: "sharespace-nz",
+      year: "2024",
+      tags: ["Community", "Housing", "NZ"],
       image: "/placeholder.svg?height=200&width=400",
     },
     {
-      title: "Creative Writing Assistant",
-      description: "AI-powered tool that helps writers overcome blocks and develop their storytelling skills.",
-      category: "AI Tools",
-      color: "from-pink-500 to-rose-500",
-      slug: "creative-writing-assistant",
+      title: "Timor Tourism & Booking Site",
+      description: "Tourism and booking platform for Timor-Leste tours and operators.",
+      category: "Travel",
+      slug: "timor-booking-site",
       year: "2024",
-      tags: ["Writing", "AI", "Creativity"],
+      tags: ["Travel", "Booking", "Timor-Leste"],
+      image: "/placeholder.svg?height=200&width=400",
+    },
+    {
+      title: "ANATUR Tourism Homepage",
+      description: "Homepage for ANATUR, the national tourism authority of Timor-Leste.",
+      category: "Travel",
+      slug: "anatur-tourism-homepage",
+      year: "2024",
+      tags: ["Tourism", "Government", "Timor-Leste"],
       image: "/placeholder.svg?height=200&width=400",
     },
   ]
@@ -75,7 +84,6 @@ export default function PortfolioPage() {
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Navigation />
 
-      {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -91,7 +99,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Portfolio Grid */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

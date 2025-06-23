@@ -19,11 +19,11 @@ export default function Portfolio() {
       slug: "childrens-library-app",
     },
     {
-      title: "AI Tools Wiki",
+      title: "AI Wiki Toolbox",
       description: "Comprehensive resource hub for AI tools and their creative applications.",
       category: "Documentation",
       color: "from-green-500 to-teal-500",
-      slug: "ai-tools-wiki",
+      slug: "ai-wiki-toolbox",
     },
     {
       title: "Oracle Card Generator",
@@ -31,6 +31,83 @@ export default function Portfolio() {
       category: "Creative Tools",
       color: "from-orange-500 to-red-500",
       slug: "oracle-card-generator",
+    },
+    {
+      title: "AI-Powered LMS",
+      description: "Prototype learning management system with AI-generated course content.",
+      category: "AI Tools",
+      color: "from-indigo-500 to-purple-500",
+      slug: "ai-powered-lms",
+    },
+    {
+      title: "HouseShare NZ (Sharespace)",
+      description: "Community platform for house sharing, flatmates, and tiny home land listings.",
+      category: "Community",
+      color: "from-yellow-500 to-orange-500",
+      slug: "houseshare-nz",
+    },
+    {
+      title: "Women's Housing Site",
+      description: "Prototype site supporting women's housing and community connections.",
+      category: "Community",
+      color: "from-pink-500 to-red-400",
+      slug: "womens-housing-site",
+    },
+    {
+      title: "Children’s AR Story App",
+      description: "Prototype augmented reality app for interactive children's storytelling.",
+      category: "Education",
+      color: "from-emerald-500 to-teal-400",
+      slug: "childrens-ar-story-app",
+    },
+    {
+      title: "Timor Tourism & Booking Site",
+      description: "Tourism and booking platform for Timor-Leste tours and operators.",
+      category: "Travel",
+      color: "from-green-500 to-yellow-400",
+      slug: "timor-booking-site",
+    },
+    {
+      title: "Hotel Reservation App",
+      description: "Prototype hotel reservation platform with modern UI.",
+      category: "Travel",
+      color: "from-blue-700 to-blue-400",
+      slug: "hotel-reservation-app",
+    },
+    {
+      title: "ANATUR Tourism Homepage",
+      description: "Homepage for ANATUR, the national tourism authority of Timor-Leste.",
+      category: "Travel",
+      color: "from-amber-500 to-orange-400",
+      slug: "anatur-tourism-homepage",
+    },
+    {
+      title: "L&D Portfolio Hub",
+      description: "Showcase of learning design portfolio and capabilities.",
+      category: "Portfolio",
+      color: "from-sky-500 to-indigo-400",
+      slug: "ld-portfolio-hub",
+    },
+    {
+      title: "CBI Solutions Company Site",
+      description: "Company website for Chyna Blue Ink solutions and services.",
+      category: "Portfolio",
+      color: "from-gray-600 to-gray-400",
+      slug: "cbi-solutions-site",
+    },
+    {
+      title: "AI Tool Wiki Prototype",
+      description: "Early prototype of an AI tools wiki and knowledge hub.",
+      category: "Prototype",
+      color: "from-slate-500 to-slate-400",
+      slug: "ai-tool-wiki-prototype",
+    },
+    {
+      title: "Wiki Prototype",
+      description: "Initial wiki platform prototype built for experimentation.",
+      category: "Prototype",
+      color: "from-lime-500 to-green-400",
+      slug: "wiki-prototype",
     },
   ]
 
@@ -45,7 +122,7 @@ export default function Portfolio() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <Link
               key={project.title}
               href={`/portfolio/${project.slug}`}
