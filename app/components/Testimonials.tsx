@@ -18,7 +18,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "Working with CBI Solutions on our digital publishing project was exceptional. Their attention to detail and creative vision exceeded our expectations.",
+        "Working with CBI Learning Solutions on our digital publishing project was exceptional. Their attention to detail and creative vision exceeded our expectations.",
       author: "Emily Rodriguez",
       role: "Author & Entrepreneur",
       company: "Independent Publisher",

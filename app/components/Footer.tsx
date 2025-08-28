@@ -11,7 +11,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-yellow-400 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold">CBI</span>
               </div>
-              <span className="text-xl font-bold">CBI Solutions</span>
+              <span className="text-xl font-bold">CBI Learning Solutions</span>
             </Link>
             <p className="text-gray-300 leading-relaxed max-w-md">
               Guiding storytellers, educators, and businesses from tradition to innovation with AI and creative tools.

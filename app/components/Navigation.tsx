@@ -26,7 +26,7 @@ export default function Navigation() {
             <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-yellow-400 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">CBI</span>
             </div>
-            <span className="text-xl font-bold text-gray-800">CBI Solutions</span>
+            <span className="text-xl font-bold text-gray-800">CBI Learning Solutions</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

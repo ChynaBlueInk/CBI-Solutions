@@ -20,9 +20,9 @@ const events = {
     duration: "90 minutes",
     category: "Workshop",
     level: "Beginner",
-    instructor: "Chyna Blue",
+    instructor: "CHeryl Tyler",
     instructorBio:
-      "Chyna Blue is the founder of CBI Solutions with over 8 years of experience in educational technology and AI-powered content creation.",
+      "Cheryl Tyler is the founder of CBI Learning Solutions with over 8 years of experience in educational technology and AI-powered content creation.",
     attendees: 45,
     maxAttendees: 100,
     price: "Free",

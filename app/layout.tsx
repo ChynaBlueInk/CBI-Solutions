@@ -10,8 +10,8 @@ import Footer from "./components/Footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "CBI Solutions - Creative Solutions for Bold Thinkers",
-  description: "Chyna Blue Ink offers digital products, workshops, and AI-powered tools for creatives and educators.",
+  title: "CBI Learning Solutions - Creative Solutions for Bold Thinkers",
+  description: "Here at CBI we offer digital products, workshops, and AI-powered tools for creatives and educators.",
   generator: "v0.dev",
 }
 

@@ -11,7 +11,7 @@ export default function Hero() {
         <div className="relative z-10 text-left max-w-2xl mx-auto animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-secondary text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4" />
-            Welcome to CBI Solutions
+            Welcome to CBI Learning Solutions
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">

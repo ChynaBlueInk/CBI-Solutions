@@ -89,7 +89,7 @@ export default function Portfolio() {
       slug: "ld-portfolio-hub",
     },
     {
-      title: "CBI Solutions Company Site",
+      title: "CBI Learning Solutions Company Site",
       description: "Company website for Chyna Blue Ink solutions and services.",
       category: "Portfolio",
       color: "from-gray-600 to-gray-400",

@@ -143,7 +143,7 @@ export default function RecordingDetailPage({ params }: { params: { id: string }
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">{recording.instructor}</p>
-                      <p className="text-gray-600 text-sm">Founder & Creative Director at CBI Solutions</p>
+                      <p className="text-gray-600 text-sm">Founder & Creative Director at CBI Learning Solutions</p>
                     </div>
                   </div>
                 </div>
