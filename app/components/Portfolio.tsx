@@ -1,3 +1,4 @@
+// app/components/Portfolio.tsx
 import Link from "next/link"
 import { ExternalLink, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -6,105 +7,105 @@ export default function Portfolio() {
   const projects = [
     {
       title: "Memoir Wizard",
-      description: "AI-powered memoir writing assistant that helps users craft their life stories.",
+      description: "AI-assisted memoir writing to help people craft life stories with ease.",
       category: "AI Tools",
       color: "from-blue-500 to-cyan-500",
       slug: "memoir-wizard",
     },
     {
       title: "Children's Library App",
-      description: "Interactive digital library platform designed specifically for young readers.",
+      description: "A kid-friendly digital library designed for real-world low-bandwidth contexts.",
       category: "Education",
       color: "from-purple-500 to-pink-500",
       slug: "childrens-library-app",
     },
     {
       title: "AI Wiki Toolbox",
-      description: "Comprehensive resource hub for AI tools and their creative applications.",
+      description: "A practical hub for AI tools and how to use them well.",
       category: "Documentation",
       color: "from-green-500 to-teal-500",
       slug: "ai-wiki-toolbox",
     },
     {
       title: "Oracle Card Generator",
-      description: "Digital platform for creating and sharing custom oracle card decks.",
+      description: "Create and share custom oracle decks — print or digital.",
       category: "Creative Tools",
       color: "from-orange-500 to-red-500",
       slug: "oracle-card-generator",
     },
     {
       title: "AI-Powered LMS",
-      description: "Prototype learning management system with AI-generated course content.",
+      description: "Prototype LMS with AI-generated course outlines and content ideas.",
       category: "AI Tools",
       color: "from-indigo-500 to-purple-500",
       slug: "ai-powered-lms",
     },
     {
       title: "HouseShare NZ (Sharespace)",
-      description: "Community platform for house sharing, flatmates, and tiny home land listings.",
+      description: "Aotearoa community platform for flatshares, housemates, and tiny-home land.",
       category: "Community",
       color: "from-yellow-500 to-orange-500",
       slug: "houseshare-nz",
     },
     {
       title: "Women's Housing Site",
-      description: "Prototype site supporting women's housing and community connections.",
+      description: "Prototype site supporting women’s housing and community connections.",
       category: "Community",
       color: "from-pink-500 to-red-400",
       slug: "womens-housing-site",
     },
     {
       title: "Children’s AR Story App",
-      description: "Prototype augmented reality app for interactive children's storytelling.",
+      description: "Interactive storytelling prototype using augmented reality for tamariki.",
       category: "Education",
       color: "from-emerald-500 to-teal-400",
       slug: "childrens-ar-story-app",
     },
     {
       title: "Timor Tourism & Booking Site",
-      description: "Tourism and booking platform for Timor-Leste tours and operators.",
+      description: "Tourism and booking platform for Timor-Leste operators and tours.",
       category: "Travel",
       color: "from-green-500 to-yellow-400",
       slug: "timor-booking-site",
     },
     {
       title: "Hotel Reservation App",
-      description: "Prototype hotel reservation platform with modern UI.",
+      description: "Modern hotel booking prototype with a clean, simple UI.",
       category: "Travel",
       color: "from-blue-700 to-blue-400",
       slug: "hotel-reservation-app",
     },
     {
       title: "ANATUR Tourism Homepage",
-      description: "Homepage for ANATUR, the national tourism authority of Timor-Leste.",
+      description: "Homepage concept for Timor-Leste’s national tourism authority.",
       category: "Travel",
       color: "from-amber-500 to-orange-400",
       slug: "anatur-tourism-homepage",
     },
     {
       title: "L&D Portfolio Hub",
-      description: "Showcase of learning design portfolio and capabilities.",
+      description: "A tidy showcase of learning design work and capability.",
       category: "Portfolio",
       color: "from-sky-500 to-indigo-400",
       slug: "ld-portfolio-hub",
     },
     {
       title: "CBI Learning Solutions Company Site",
-      description: "Company website for Chyna Blue Ink solutions and services.",
+      description: "The core company website for services and projects.",
       category: "Portfolio",
       color: "from-gray-600 to-gray-400",
       slug: "cbi-solutions-site",
     },
     {
       title: "AI Tool Wiki Prototype",
-      description: "Early prototype of an AI tools wiki and knowledge hub.",
+      description: "Early prototype of an AI tools knowledge base.",
       category: "Prototype",
       color: "from-slate-500 to-slate-400",
       slug: "ai-tool-wiki-prototype",
     },
     {
       title: "Wiki Prototype",
-      description: "Initial wiki platform prototype built for experimentation.",
+      description: "Initial wiki experiment used for testing layouts and content flow.",
       category: "Prototype",
       color: "from-lime-500 to-green-400",
       slug: "wiki-prototype",
@@ -116,8 +117,8 @@ export default function Portfolio() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Portfolio Highlights</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore some of our recent projects that showcase our commitment to innovation and creativity.
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            A few recent projects that show how we blend creativity and tech — practical, lightweight, and human-centred.
           </p>
         </div>
 
@@ -129,9 +130,9 @@ export default function Portfolio() {
               className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block"
             >
               <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
                 <div className="absolute top-4 right-4">
-                  <span className="bg-white bg-opacity-20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
                     {project.category}
                   </span>
                 </div>
@@ -146,9 +147,9 @@ export default function Portfolio() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{project.description}</p>
+                <p className="text-gray-700 leading-relaxed mb-4">{project.description}</p>
                 <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Learn More
+                  Learn more
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </div>
               </div>
@@ -158,7 +159,7 @@ export default function Portfolio() {
 
         <div className="text-center mt-12">
           <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold">
-            <Link href="/portfolio">View All Projects</Link>
+            <Link href="/portfolio">View all projects</Link>
           </Button>
         </div>
       </div>

@@ -1,3 +1,4 @@
+// app/components/Navigation.tsx
 "use client"
 
 import { useState } from "react"
@@ -15,7 +16,7 @@ export default function Navigation() {
     { name: "Portfolio", href: "/portfolio" },
     { name: "Events", href: "/events" },
     { name: "Recordings", href: "/recordings" },
-    { name: "Contact", href: "/contact" },
+    // Contact removed; CTA handles it
   ]
 
   return (
@@ -40,7 +41,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Button asChild className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full">
-              <Link href="/contact">Get Started</Link>
+              <Link href="/contact?intent=start">Get Started</Link>
             </Button>
           </div>
 
@@ -62,7 +63,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Button asChild className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white rounded-full">
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
+              <Link href="/contact?intent=start" onClick={() => setIsOpen(false)}>
                 Get Started
               </Link>
             </Button>

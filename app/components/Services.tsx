@@ -1,3 +1,4 @@
+// app/components/Services.tsx
 import { BookOpen, Bot, Film, FileText, Users, Camera } from "lucide-react"
 
 export default function Services() {
@@ -5,32 +6,38 @@ export default function Services() {
     {
       icon: BookOpen,
       title: "Online Course Development",
-      description: "Custom e-learning platforms and interactive course content that engages and educates.",
+      description:
+        "Interactive learning and lightweight delivery that holds up well in low-connectivity environments.",
     },
     {
       icon: Bot,
       title: "AI Writing Tools",
-      description: "Intelligent writing assistants and content generation tools powered by cutting-edge AI.",
+      description:
+        "Assistants and content workflows to speed up drafting, localisation, and QA — without losing voice or quality.",
     },
     {
       icon: Film,
       title: "Animation & Storytelling",
-      description: "Compelling visual narratives and animated content that brings stories to life.",
+      description:
+        "Compelling visual narratives that bring ideas to life — from concept to final cut.",
     },
     {
       icon: FileText,
       title: "Digital Publishing",
-      description: "Books, oracle cards, and digital publications designed for modern audiences.",
+      description:
+        "Books, oracle cards, and modern digital publications designed for today’s readers.",
     },
     {
       icon: Users,
       title: "Remote L&D Consulting",
-      description: "Learning and development strategies tailored for distributed teams and organizations.",
+      description:
+        "Learning systems for distributed teams and organisations across Aotearoa and the Pacific.",
     },
     {
       icon: Camera,
       title: "Print on Demand",
-      description: "Photography and art services with seamless print-on-demand integration.",
+      description:
+        "Photography and artwork with seamless print-on-demand integration when you’re ready to sell.",
     },
   ]
 
@@ -39,14 +46,13 @@ export default function Services() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We Do</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We offer a comprehensive suite of creative and educational services designed to help you succeed in the
-            digital age.
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            Practical creative and education services — built for real-world use here in Aotearoa and across the Pacific.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.title}
               className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
@@ -55,7 +61,7 @@ export default function Services() {
                 <service.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+              <p className="text-gray-700 leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>
