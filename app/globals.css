@@ -3,59 +3,82 @@
 @tailwind utilities;
 
 @layer base {
- :root {
-  --background: 37, 66%, 91%;
-  --foreground: 222.2, 47.4%, 11.2%;
-  --card: 45, 50%, 98%;
-  --card-foreground: 222.2, 47.4%, 11.2%;
-  --popover: 45, 50%, 98%;
-  --popover-foreground: 222.2, 47.4%, 11.2%;
-  --primary: 185, 61%, 35%;
-  --primary-foreground: 210, 40%, 98%;
-  --secondary: 45, 100%, 80%;
-  --secondary-foreground: 222.2, 47.4%, 11.2%;
-  --muted: 45, 50%, 95%;
-  --muted-foreground: 215.4, 16.3%, 46.9%;
-  --accent: 185, 61%, 35%;
-  --accent-foreground: 45, 50%, 98%;
-  --destructive: 0, 84.2%, 60.2%;
-  --destructive-foreground: 210, 40%, 98%;
-  --border: 185, 61%, 85%;
-  --input: 185, 61%, 90%;
-  --ring: 185, 61%, 35%;
-  --radius: 0.5rem;
-  --chart-1: 45, 100%, 70%;
-  --chart-2: 185, 60%, 45%;
-  --chart-3: 185, 30%, 25%;
-  --chart-4: 43, 74%, 66%;
-  --chart-5: 27, 87%, 67%;
-}
+  :root {
+    /* --- Neutrals (soft sand + deep charcoal) --- */
+    --background: 42, 45%, 96%;         /* pale sand page bg */
+    --foreground: 222, 47%, 11%;        /* near-black text */
 
+    --card: 42, 52%, 98%;
+    --card-foreground: 222, 47%, 11%;
+
+    --popover: 42, 52%, 98%;
+    --popover-foreground: 222, 47%, 11%;
+
+    /* --- Brand core --- */
+    --primary: 185, 60%, 34%;           /* Transformative Teal (anchor) */
+    --primary-foreground: 210, 40%, 98%;
+
+    --secondary: 154, 28%, 35%;         /* muted fern (NZ/Pacific) */
+    --secondary-foreground: 210, 40%, 98%;
+
+    --accent: 189, 52%, 48%;            /* turquoise highlight for hovers */
+    --accent-foreground: 210, 40%, 98%;
+
+    /* --- Support --- */
+    --muted: 190, 24%, 94%;             /* cool-muted section bg */
+    --muted-foreground: 215, 16%, 47%;
+
+    --destructive: 0, 72%, 45%;
+    --destructive-foreground: 210, 40%, 98%;
+
+    /* --- UI lines/inputs --- */
+    --border: 185, 24%, 78%;
+    --input: 185, 30%, 92%;
+    --ring: 185, 60%, 34%;
+    --radius: 0.5rem;
+
+    /* --- Charts (tonal harmony, teal-first) --- */
+    --chart-1: 189, 52%, 48%;   /* turquoise */
+    --chart-2: 185, 60%, 34%;   /* brand teal */
+    --chart-3: 154, 28%, 35%;   /* fern */
+    --chart-4: 43, 74%, 60%;    /* warm sand/gold (sparingly) */
+    --chart-5: 205, 36%, 35%;   /* deep ocean blue */
+  }
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Dark mode keeps the same hue family, lifts contrast */
+    --background: 210 28% 7%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+
+    --card: 210 28% 9%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+
+    --popover: 210 28% 9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 185 61% 35%;
-    --primary-foreground: 45 50% 98%;
-    --secondary: 45 100% 80%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 185 61% 35%;
-    --accent-foreground: 45 50% 98%;
-    --destructive: 0 62.8% 30.6%;
+
+    --primary: 185 60% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 154 28% 42%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 189 52% 54%;
+    --accent-foreground: 210 40% 98%;
+
+    --muted: 210 22% 16%;
+    --muted-foreground: 210 18% 70%;
+
+    --destructive: 0 65% 48%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 185 60% 45%;
-    --chart-2: 45 100% 70%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+
+    --border: 210 22% 18%;
+    --input: 210 22% 18%;
+    --ring: 185 60% 40%;
+
+    --chart-1: 189 52% 54%;
+    --chart-2: 185 60% 40%;
+    --chart-3: 154 28% 42%;
+    --chart-4: 43 74% 60%;
+    --chart-5: 205 36% 45%;
   }
 }
 
