@@ -50,7 +50,7 @@ export default function Home() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">{project.description}</p>
@@ -67,7 +67,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300 text-sm">
+                <div className="flex items-center text-gray-600 font-semibold group-hover:translate-x-2 transition-transform duration-300 text-sm">
                   View Project
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </div>
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-12">
-          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold">
+          <Button asChild className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-full font-semibold">
             <Link href="/portfolio">View Full Portfolio</Link>
           </Button>
         </div>

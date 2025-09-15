@@ -1,3 +1,4 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,8 +6,8 @@
 @layer base {
   :root {
     /* --- Neutrals (soft sand + deep charcoal) --- */
-    --background: 42, 45%, 96%;         /* pale sand page bg */
-    --foreground: 222, 47%, 11%;        /* near-black text */
+    --background: 42, 45%, 96%;
+    --foreground: 222, 47%, 11%;
 
     --card: 42, 52%, 98%;
     --card-foreground: 222, 47%, 11%;
@@ -15,17 +16,17 @@
     --popover-foreground: 222, 47%, 11%;
 
     /* --- Brand core --- */
-    --primary: 185, 60%, 34%;           /* Transformative Teal (anchor) */
+    --primary: 185, 60%, 34%;         /* Transformative Teal */
     --primary-foreground: 210, 40%, 98%;
 
-    --secondary: 154, 28%, 35%;         /* muted fern (NZ/Pacific) */
+    --secondary: 154, 28%, 35%;       /* muted fern */
     --secondary-foreground: 210, 40%, 98%;
 
-    --accent: 189, 52%, 48%;            /* turquoise highlight for hovers */
+    --accent: 189, 52%, 48%;          /* turquoise highlight */
     --accent-foreground: 210, 40%, 98%;
 
     /* --- Support --- */
-    --muted: 190, 24%, 94%;             /* cool-muted section bg */
+    --muted: 190, 24%, 94%;
     --muted-foreground: 215, 16%, 47%;
 
     --destructive: 0, 72%, 45%;
@@ -37,15 +38,25 @@
     --ring: 185, 60%, 34%;
     --radius: 0.5rem;
 
-    /* --- Charts (tonal harmony, teal-first) --- */
-    --chart-1: 189, 52%, 48%;   /* turquoise */
-    --chart-2: 185, 60%, 34%;   /* brand teal */
-    --chart-3: 154, 28%, 35%;   /* fern */
-    --chart-4: 43, 74%, 60%;    /* warm sand/gold (sparingly) */
-    --chart-5: 205, 36%, 35%;   /* deep ocean blue */
+    /* --- Charts --- */
+    --chart-1: 189, 52%, 48%;
+    --chart-2: 185, 60%, 34%;
+    --chart-3: 154, 28%, 35%;
+    --chart-4: 43, 74%, 60%;
+    --chart-5: 205, 36%, 35%;
+
+    /* Optional sidebar tokens (kept for future use) */
+    --sidebar-background: 42 45% 96%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 185 60% 34%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 190 24% 94%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 185 24% 78%;
+    --sidebar-ring: 185 60% 34%;
   }
+
   .dark {
-    /* Dark mode keeps the same hue family, lifts contrast */
     --background: 210 28% 7%;
     --foreground: 210 40% 98%;
 
@@ -79,54 +90,42 @@
     --chart-3: 154 28% 42%;
     --chart-4: 43 74% 60%;
     --chart-5: 205 36% 45%;
+
+    --sidebar-background: 210 28% 9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 185 60% 40%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 22% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 210 22% 18%;
+    --sidebar-ring: 185 60% 40%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
   body {
     @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif; /* keep your chosen system font */
   }
 }
 
+/* Utilities */
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-in-out;
-  }
+  .text-balance { text-wrap: balance; }
+  .animate-fade-in { animation: fadeIn 0.6s ease-in-out; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1a1; }

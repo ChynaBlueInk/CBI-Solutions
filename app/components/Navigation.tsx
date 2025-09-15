@@ -3,6 +3,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -16,20 +17,28 @@ export default function Navigation() {
     { name: "Portfolio", href: "/portfolio" },
     { name: "Events", href: "/events" },
     { name: "Recordings", href: "/recordings" },
-    // Contact removed; CTA handles it
   ]
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(30,48%,94%)]/90 backdrop-blur-md border-b border-[hsl(30,20%,80%)]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
+          {/* Logo + Brand */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-yellow-400 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CBI</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">CBI Learning Solutions</span>
+            <Image
+              src="/brand/cbi-logo.png" // ✅ save your new logo here
+              alt="CBI Learning Solutions"
+              width={40}
+              height={40}
+              className="object-contain"
+              priority
+            />
+            <span className="text-xl font-bold text-gray-800">
+              CBI Learning Solutions
+            </span>
           </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
@@ -41,15 +50,17 @@ export default function Navigation() {
               </Link>
             ))}
             <Button asChild className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full">
-              <Link href="/contact?intent=start">Get Started</Link>
+              <Link href="/contact?intent=start">Contact us</Link>
             </Button>
           </div>
 
+          {/* Mobile Menu Button */}
           <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             {navItems.map((item) => (

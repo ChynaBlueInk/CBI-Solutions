@@ -1,64 +1,71 @@
-import Link from "next/link"
+"use client"
+
 import Image from "next/image"
-import { ArrowRight, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Hero() {
   return (
-    <>
-      <section className="relative min-h-screen flex items-center justify-between px-4 py-20 overflow-hidden bg-background">
-        {/* Text Content */}
-        <div className="relative z-10 text-left max-w-2xl mx-auto animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-secondary text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4" />
-            Welcome to CBI Learning Solutions
-          </div>
+    <section className="relative">
+      {/* HERO */}
+      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <div
+          className="
+            grid items-center gap-8
+            md:grid-cols-2
+            pt-10 md:pt-14 lg:pt-16
+            pb-8 md:pb-10 lg:pb-12
+            min-h-[62vh] md:min-h-[58vh]   /* was 90–100vh; much tighter */
+          "
+        >
+          {/* Left: copy */}
+          <div>
+            {/* small badge */}
+          <div className="inline-flex items-center rounded-full bg-[hsl(var(--primary))] px-3 py-1 text-xs font-medium text-[hsl(var(--primary-foreground))] ring-1 ring-inset ring-[hsl(var(--border))]">
+  Welcome to CBI Learning Solutions
+</div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Creative Solutions for <br />
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Bold Thinkers
-            </span>
-          </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            Empowering storytellers, educators, and innovators with AI tools and digital creativity.
-          </p>
+            <h1 className="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight text-[hsl(var(--foreground))] leading-tight">
+              Creative Solutions for{" "}
+              <span className="text-[hsl(var(--primary))]">Bold Thinkers</span>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/80 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
-            >
-              <Link href="/portfolio">
+            <p className="mt-4 md:mt-5 max-w-xl text-base md:text-lg text-[hsl(var(--muted-foreground))]">
+              Empowering storytellers, educators, and innovators with AI tools and digital creativity.
+            </p>
+
+            <div className="mt-6 flex items-center gap-3">
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center rounded-full bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-[hsl(var(--primary-foreground))] shadow-sm hover:bg-[hsl(var(--accent))] transition"
+              >
                 Explore Our Work
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span aria-hidden className="ml-2">→</span>
               </Link>
-            </Button>
 
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
-            >
-              <Link href="/events">Join Our Events</Link>
-            </Button>
+              <Link
+                href="/events"
+                className="inline-flex items-center rounded-full border border-[hsl(var(--border))] px-5 py-3 text-sm font-semibold text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] transition"
+              >
+                Join Our Events
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: feather image */}
+          <div className="relative h-[34vh] md:h-[44vh] lg:h-[48vh]">
+            <Image
+              src="../banner-ink-to-ai.png"   /* your asset path */
+              alt="CBI feather"
+              fill
+              priority
+              sizes="(min-width: 1024px) 40vw, 80vw"
+              className="object-contain drop-shadow-sm"
+            />
           </div>
         </div>
+      </div>
 
-        {/* Banner Image */}
-        <div className="hidden lg:block relative w-1/2 max-w-xl">
-          <Image
-            src="/banner-ink-to-ai.png"
-            alt="Feather to AI Illustration"
-            width={600}
-            height={600}
-            className="rounded-3xl object-contain"
-          />
-        </div>
       </section>
-    </>
   )
 }

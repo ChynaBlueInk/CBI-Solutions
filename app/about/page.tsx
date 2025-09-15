@@ -123,17 +123,17 @@ export default function AboutPage() {
   const WHATSAPP = "https://wa.me/64278183098"
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <section className="min-h-screen bg-[hsl(var(--muted))]">
       {/* Hero */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[hsl(var(--foreground))] mb-6">
             About{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">
               CBI Learning Solutions
             </span>
           </h1>
-          <p className="text-xl text-gray-700 leading-relaxed">
+          <p className="text-xl text-[hsl(var(--muted-foreground))] leading-relaxed">
             A small Aotearoa New Zealand studio pairing creativity and tech to deliver
             practical learning — fast, accessible, and measurable.
           </p>
@@ -145,24 +145,24 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6">Our Story</h2>
+              <p className="text-lg text-[hsl(var(--muted-foreground))] mb-6 leading-relaxed">
                 CBI Learning Solutions began with a straightforward goal: bridge creativity and
                 technology in education. What started as a passion project helping educators build
                 engaging online content has grown into a suite of lightweight, scalable learning tools.
               </p>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-[hsl(var(--muted-foreground))] mb-6 leading-relaxed">
                 We believe creativity can transform learning and business. Our mission is to provide
                 innovative digital solutions that help educators, creatives, and entrepreneurs share
                 their knowledge with the world — with a strong focus on Timor-Leste, the Pacific, and
                 communities that benefit from low-bandwidth design.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed">
                 We’re remote-first and values-led — ethical, inclusive, and geared for sustainable growth.
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+              <div className="bg-gradient-to-br from-[hsl(var(--primary))/10] to-[hsl(var(--accent))/10] rounded-3xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-300">
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <Image
                     src="/placeholder.svg?height=250&width=350"
@@ -172,8 +172,8 @@ export default function AboutPage() {
                     className="w-full h-48 object-cover rounded-xl mb-4"
                   />
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Small team, big mahi</h3>
-                    <p className="text-gray-700">Creativity × Technology for education</p>
+                    <h3 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Small team, big mahi</h3>
+                    <p className="text-[hsl(var(--muted-foreground))]">Creativity × Technology for education</p>
                   </div>
                 </div>
               </div>
@@ -183,11 +183,11 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-16 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section className="py-16 px-4 bg-[hsl(var(--muted))]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6">Our Core Values</h2>
+            <p className="text-xl text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
               Principles that guide every project and partnership.
             </p>
           </div>
@@ -198,10 +198,10 @@ export default function AboutPage() {
                 key={value.label}
                 className="text-center group hover:scale-105 transition-transform duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                  <value.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:shadow-lg transition-shadow">
+                  <value.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]" />
                 </div>
-                <p className="font-semibold text-gray-900">{value.label}</p>
+                <p className="font-semibold text-[hsl(var(--foreground))]">{value.label}</p>
               </div>
             ))}
           </div>
@@ -212,11 +212,11 @@ export default function AboutPage() {
                 key={value.title}
                 className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-                  <value.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                  <value.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-4">{value.title}</h3>
+                <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
@@ -227,8 +227,8 @@ export default function AboutPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We Do</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-[hsl(var(--foreground))] mb-6">What We Do</h2>
+            <p className="text-xl text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
               A practical set of creative and educational services.
             </p>
           </div>
@@ -237,13 +237,13 @@ export default function AboutPage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                className="bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10] rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-4">{service.title}</h3>
+                <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
@@ -251,11 +251,11 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="py-16 px-4 bg-[hsl(var(--accent))/10]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Meet the Team</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6">Meet the Team</h2>
+            <p className="text-xl text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
               Two roles, clear lanes — small, nimble, and accountable.
             </p>
           </div>
@@ -271,11 +271,11 @@ export default function AboutPage() {
                     height={200}
                     className="w-32 h-32 object-cover rounded-full mx-auto shadow-lg"
                   />
-                  <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:opacity-0 transition-opacity duration-300" />
+                  <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-[hsl(var(--primary))/20] to-[hsl(var(--accent))/20] group-hover:opacity-0 transition-opacity duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-blue-700 font-semibold mb-4">{member.role}</p>
-                <p className="text-gray-700 leading-relaxed">{member.description}</p>
+                <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-2">{member.name}</h3>
+                <p className="text-[hsl(var(--primary))] font-semibold mb-4">{member.role}</p>
+                <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">{member.description}</p>
               </div>
             ))}
           </div>
@@ -285,15 +285,27 @@ export default function AboutPage() {
       {/* Contact / CTA */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Keen to work with us?</h2>
-          <p className="text-xl text-gray-700 mb-8">
-            Email <a className="text-blue-600 hover:underline" href={`mailto:${EMAIL}`}>{EMAIL}</a> or message us on{" "}
-            <a className="text-blue-600 hover:underline" href={WHATSAPP} target="_blank" rel="noopener noreferrer">WhatsApp (+64&nbsp;278&nbsp;183&nbsp;098)</a>.
+          <h2 className="text-3xl font-bold text-[hsl(var(--foreground))] mb-4">Keen to work with us?</h2>
+          <p className="text-xl text-[hsl(var(--muted-foreground))] mb-8">
+            Email{" "}
+            <a className="text-[hsl(var(--primary))] hover:underline" href={`mailto:${EMAIL}`}>
+              {EMAIL}
+            </a>{" "}
+            or message us on{" "}
+            <a
+              className="text-[hsl(var(--primary))] hover:underline"
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp (+64&nbsp;278&nbsp;183&nbsp;098)
+            </a>
+            .
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`mailto:${EMAIL}?subject=${encodeURIComponent("About page enquiry")}`}
-              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold"
+              className="inline-flex items-center justify-center bg-[hsl(var(--primary))] hover:bg-[hsl(var(--accent))] text-[hsl(var(--primary-foreground))] px-6 py-3 rounded-2xl font-semibold"
             >
               <Mail className="w-4 h-4 mr-2" />
               Email us
@@ -302,20 +314,22 @@ export default function AboutPage() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center border border-gray-300 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-2xl font-semibold"
+              className="inline-flex items-center justify-center border border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] px-6 py-3 rounded-2xl font-semibold"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               WhatsApp
             </a>
             <Link
               href="/contact?intent=start"
-              className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-2xl font-semibold"
+              className="inline-flex items-center justify-center bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] hover:from-[hsl(var(--accent))] hover:to-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] px-6 py-3 rounded-2xl font-semibold"
             >
               Get started
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
-          <p className="text-xs text-gray-500 mt-4">We keep it simple: no marketing emails — ever.</p>
+          <p className="text-xs text-[hsl(var(--muted-foreground))] mt-4">
+            We keep it simple: no marketing emails — ever.
+          </p>
         </div>
       </section>
     </section>

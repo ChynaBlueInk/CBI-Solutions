@@ -9,11 +9,16 @@ import Footer from "./components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: "CBI Learning Solutions - Creative Solutions for Bold Thinkers",
-  description: "Here at CBI we offer digital products, workshops, and AI-powered tools for creatives and educators.",
-  generator: "v0.dev",
+export const metadata = {
+  title: "CBI Learning Solutions",
+  description: "Creative solutions for bold thinkers.",
+  icons: {
+    icon: "/favicon.png",          // default
+    shortcut: "/favicon.png",      // browser shortcut
+    apple: "/favicon.png",         // Apple touch icon
+  },
 }
+
 
 export default function RootLayout({
   children,

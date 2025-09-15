@@ -57,19 +57,19 @@ export default function ServicesPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <main className="min-h-screen bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[hsl(var(--foreground))] mb-6">
             Our{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">
               Services
             </span>
           </h1>
-          <p className="text-xl text-gray-700 leading-relaxed">
-            Practical digital solutions to help your learning, content, and creative projects land well — here in Aotearoa
-            and across the Pacific.
+          <p className="text-xl text-[hsl(var(--muted-foreground))] leading-relaxed">
+            Practical digital solutions to help your learning, content, and creative projects land well —
+            here in Aotearoa and across the Pacific.
           </p>
         </div>
       </section>
@@ -83,16 +83,16 @@ export default function ServicesPage() {
                 key={service.title}
                 className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-700 leading-relaxed mb-6">{service.description}</p>
+                <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-4">{service.title}</h3>
+                <p className="text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">{service.description}</p>
 
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-700">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3" />
+                    <li key={idx} className="flex items-center text-sm text-[hsl(var(--muted-foreground))]">
+                      <span className="w-2 h-2 bg-[hsl(var(--primary))] rounded-full mr-3" />
                       {feature}
                     </li>
                   ))}
@@ -101,7 +101,7 @@ export default function ServicesPage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white group-hover:scale-105 transition-all duration-300"
+                  className="w-full border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] group-hover:scale-105 transition-all duration-300"
                 >
                   <Link href={`/services/${service.slug}`}>
                     Learn more
@@ -115,16 +115,16 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-[hsl(var(--muted))]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Keen to get started?</h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6">Keen to get started?</h2>
+          <p className="text-xl text-[hsl(var(--muted-foreground))] mb-8">
             Let’s chat about how we can help bring your ideas to life.
           </p>
           <Button
             asChild
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold"
+            className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--accent))] text-[hsl(var(--primary-foreground))] px-8 py-4 rounded-full text-lg font-semibold"
           >
             <Link href="/contact">Start your project</Link>
           </Button>
