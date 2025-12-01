@@ -6,12 +6,14 @@ export const challenges: Challenge[] = [
     month: "December",
     title: "AI-Assisted L&D Profile",
     theme: "Clarify and update your professional story as an L&D practitioner",
+        isLive: true, // 👈 visible
+
     intro: [
       "We're starting the December challenge lightly. This month is about clarity and credibility, not personal branding polish. It's something to refresh your brand and how you want to be seen going into 2026.",
       "Everything is broken into 4 small steps (~30 mins each). You can follow weekly, or batch the whole thing into one 1.5–2 hour session.",
       "You'll need a download of your current LinkedIn PDF and a current copy of your CV to get started.",
     ],
-    tools: ["ChatGPT", "Canva Free"],
+    tools: ["ChatGPT", "GravityWrite"],
     project:
       "Use AI to refresh your L&D profile and create one simple intro slide that reflects how you describe your work",
     timeCommitment: "~30 minutes per week",
@@ -19,7 +21,6 @@ export const challenges: Challenge[] = [
       "Updated LinkedIn About section",
       "Short professional tagline",
       "Clear strengths summary",
-      "One intro slide (with basic logo/name mark + colours + fonts)",
       "Optional: CV wording aligned to your new positioning",
     ],
     weeks: [
@@ -138,6 +139,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "January",
     title: "Logo + Brand Kit",
     theme: "Create a simple but distinctive personal brand identity you can use across all platforms",
+        isLive: false, // 👈 visible
+
     intro: [
       "This month you're building a lightweight brand identity that reflects your L&D work and AI focus.",
       "Using free tools like Canva and AI image generators, you'll create a logo, colour palette, typography, and simple brand guide.",
@@ -195,6 +198,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "February",
     title: "Infographic",
     theme: "Explain an L&D concept visually in a way that's easy to share and understand",
+        isLive: false, // 👈 visible
+
     intro: [
       "This month you're creating one infographic that explains a learning or development concept clearly and visually.",
       "Using Canva, Adobe Express, or Piktochart, you'll turn data, steps, or ideas into something shareable and useful.",
@@ -238,6 +243,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "March",
     title: "One-Page Website / Portfolio",
     theme: "Build a live portfolio page that showcases your work and makes it easy for people to find you",
+            isLive: false, // 👈 visible
+
     intro: [
       "This month you're creating a real, live portfolio website you can share with others.",
       "Using free tools like V0.dev, Framer, Notion, or GitHub Pages, you'll build a one-page site with your bio, portfolio samples, and contact information.",
@@ -288,7 +295,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "April",
     title: "Create Your AI Theme Song",
     theme: "Have fun and experiment with AI music generation to create a personal theme song or intro sting",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "Yes, really. This month you're using AI to create a fun personal theme song, training intro sting, or audio signature.",
       "Using free tools like Suno AI and Udio, you'll write lyrics or describe a vibe, and let AI compose the music.",
       "You'll walk away with an MP3 you can actually use in videos, presentations, or just for fun.",
@@ -336,7 +344,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "May",
     title: "Microlearning Video",
     theme: "Create a short, snappy learning video that explains an L&D or AI concept in under 60 seconds",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're making a short, shareable microlearning video using AI-generated visuals, voiceover, and subtitles.",
       "Using Google Veo, Runway, and Descript, you'll take a script and turn it into a professional-looking explainer video.",
       "Perfect for training materials, social media, or your portfolio.",
@@ -386,7 +395,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "June",
     title: "Animated Clip",
     theme: "Create a short, eye-catching animation that explains a scenario, process, or concept",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're using AI video generation to create an animated clip or scenario animation.",
       "Using tools like Vidu, Pika Labs, or Canva Animation, you'll turn a storyboard and prompts into a moving visual.",
       "These clips work great for training intros, scenario practice, or portfolio pieces.",
@@ -430,7 +440,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     title: "AI Notebook / Workbook",
     theme:
       "Create a practical workbook or notebook that guides learners through a topic with prompts, templates, and checklists",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're building a workbook—either as a PDF or Notion template—that people can actually use in their learning or work.",
       "It'll include reflection prompts, templates, checklists, how-to cards, and resources they can fill in, copy, or adapt.",
       "A solid workbook is an evergreen portfolio piece that demonstrates your instructional design thinking.",
@@ -479,7 +490,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "August",
     title: "Branching Scenario / Case Study",
     theme: "Create an interactive scenario where learners make decisions and see the consequences of their choices",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're building a branching scenario or interactive case study that simulates real decisions learners face in their role.",
       "Using tools like Brancher.ai, Twine, or ChatGPT, you'll create multiple pathways, dialogue, and feedback based on learner choices.",
       "Scenarios are powerful learning tools and strong portfolio pieces.",
@@ -529,7 +541,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "September",
     title: "Micro-Course",
     theme: "Build a complete, self-contained mini-course with lessons, assessments, and one multimedia component",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're assembling all your skills into a complete micro-course: 3–5 lessons on a topic you care about.",
       "Using V0.dev (or Notion), ChatGPT, and Canva, you'll create structured lessons, quick assessments, and at least one video or animation.",
       "A finished course is one of the strongest portfolio pieces you can have.",
@@ -580,7 +593,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "October",
     title: "Personal Dashboard / Career Compass",
     theme: "Build a personalised tracking tool to monitor your L&D growth, learning goals, and AI skill development",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're creating a dashboard or template that helps you track your own L&D journey throughout the year.",
       "Using Notion, Airtable, or Google Sheets with AI assistance, you'll design a system to monitor goals, skills, projects, and reflections.",
       "It's both useful for you and a strong demonstration of data design and personal knowledge management.",
@@ -629,7 +643,8 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "November",
     title: "AI Portfolio",
     theme: "Compile all your year's work into a cohesive portfolio that tells the story of your AI-in-L&D journey",
-    intro: [
+            isLive: false, // 👈 visible
+intro: [
       "This month you're curating the best pieces from the past year into a portfolio that showcases your growth and skills.",
       "You'll create case studies, a 30-second reel, workflow diagrams, and a reflective narrative about what you've learned.",
       "This is your 'My AI Year' portfolio—proof that you've learned, built, and experimented.",

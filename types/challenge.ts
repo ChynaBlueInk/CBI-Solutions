@@ -1,3 +1,5 @@
+// types/challenge.ts
+
 export interface Week {
   number: number
   title: string
@@ -36,4 +38,5 @@ export interface Challenge {
   sideQuests?: SideQuest[]
   closingNote: string
   submissions?: Submission[]
+  isLive?: boolean // 👈 add this so filtering in ChallengeHub compiles
 }

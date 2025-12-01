@@ -7,9 +7,26 @@ import {challenges}from "../../data/challenges"
 import type {Challenge}from "../../types/challenge"
 
 export default function ChallengeHub(){
-  const[firstSelectedId]=useState<string|null>(challenges[0]?.id||null)
+  const liveChallenges:Challenge[]=challenges.filter((challenge)=>challenge.isLive)
+
+  const[firstSelectedId]=useState<string|null>(
+    liveChallenges[0]?.id||null
+  )
   const[selectedMonth,setSelectedMonth]=useState<string|null>(firstSelectedId)
-  const selectedChallenge:Challenge|undefined=challenges.find((c)=>c.id===selectedMonth)
+
+  const selectedChallenge:Challenge|undefined=liveChallenges.find(
+    (challenge)=>challenge.id===selectedMonth
+  )
+
+  if(liveChallenges.length===0){
+    return(
+      <div className="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <p className="text-muted-foreground text-sm">
+          New challenges will appear here as they go live. Check back soon.
+        </p>
+      </div>
+    )
+  }
 
   return(
     <div className="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -21,7 +38,7 @@ export default function ChallengeHub(){
               All Challenges
             </h2>
             <div className="space-y-2">
-              {challenges.map((challenge)=>(
+              {liveChallenges.map((challenge)=>(
                 <button
                   key={challenge.id}
                   onClick={()=>setSelectedMonth(challenge.id)}
