@@ -48,7 +48,7 @@ export default function EventsPage() {
       attendees: 0,
       maxAttendees: 0,
       price: "Free",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/VibeCoding.png",
       tags: ["Apps", "AI", "Prototyping"],
     },
     {
@@ -65,7 +65,7 @@ export default function EventsPage() {
       attendees: 0,
       maxAttendees: 0,
       price: "Free",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/ArtStory.png",
       tags: ["Storytelling", "Education", "Visuals"],
     },
   ]
@@ -86,7 +86,7 @@ export default function EventsPage() {
       attendees: 45,
       maxAttendees: 100,
       price: "Free",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/AIContent.png",
       tags: ["AI", "Content Creation", "Education"],
     },
     {
@@ -103,7 +103,7 @@ export default function EventsPage() {
       attendees: 78,
       maxAttendees: 150,
       price: "$29",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/BuildingCourses.png",
       tags: ["Course Design", "Education", "Engagement"],
     },
     {
@@ -120,7 +120,7 @@ export default function EventsPage() {
       attendees: 120,
       maxAttendees: 200,
       price: "Free",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/DigitalPublishing.png",
       tags: ["Publishing", "Digital", "Strategy"],
     },
     {
@@ -136,7 +136,7 @@ export default function EventsPage() {
       attendees: 32,
       maxAttendees: 75,
       price: "$49",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/RemoteTeam.png",
       tags: ["Remote Work", "Training", "Leadership"],
     },
     {
@@ -152,7 +152,7 @@ export default function EventsPage() {
       attendees: 15,
       maxAttendees: 50,
       price: "Free",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/CreativeWriting.png",
       tags: ["Writing", "AI", "Creativity"],
     },
     {
@@ -168,7 +168,7 @@ export default function EventsPage() {
       attendees: 95,
       maxAttendees: 100,
       price: "$79",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/events/OracleDesign.png",
       tags: ["Design", "Oracle Cards", "Business"],
     },
   ]
