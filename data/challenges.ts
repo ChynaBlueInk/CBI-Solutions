@@ -1,3 +1,4 @@
+//data/challenges.ts
 import type { Challenge } from "@/types/challenge"
 
 export const challenges: Challenge[] = [
