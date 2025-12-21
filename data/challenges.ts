@@ -139,7 +139,7 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "January",
     title: "Logo + Brand Kit",
     theme: "Create a simple but distinctive personal brand identity you can use across all platforms",
-        isLive: false, // 👈 visible
+        isLive: true, // 👈 visible
 
     intro: [
       "This month you're building a lightweight brand identity that reflects your L&D work and AI focus.",
