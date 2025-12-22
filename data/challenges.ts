@@ -135,65 +135,127 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     closingNote:
       "Progress over perfection. Share your updated profile if you would like, or complete it privately. Either way, you will start 2026 with a clearer picture of who you are and how you want to be seen.",
   },
-  {
+   {
     id: "january",
     month: "January",
-    title: "Logo + Brand Kit",
-    theme: "Create a simple but distinctive personal brand identity you can use across all platforms",
-        isLive: true, // 👈 visible
-
+    title: "Logo + Brand Kit (AI-Assisted)",
+    theme: "Create a simple, distinctive personal brand identity you can actually use",
+    isLive: true,
     intro: [
-      "This month you're building a lightweight brand identity that reflects your L&D work and AI focus.",
-      "Using free tools like Canva and AI image generators, you'll create a logo, colour palette, typography, and simple brand guide.",
-      "Everything is designed to be practical and reusable across LinkedIn, slides, documents, and your website.",
+      "This challenge helps you build a lightweight personal brand for your L&D work — something consistent, usable, and flexible.",
+      "You do not need to have completed December’s challenge. You’ll start from whatever you already have (or don’t have).",
+      "Each week introduces one new free tool, with clear guidance. Plan ~30 minutes per week (or 1.5–2 hours total)."
     ],
-    tools: ["Canva Free", "Leonardo", "Gencraft", "Ideogram"],
-    project: "Create a personal L&D logo, colour palette, typography, and simple brand guide you can actually use",
+    tools: ["ChatGPT", "Ideogram", "Leonardo AI", "Canva Free"],
+    project: "Turn existing ideas into a simple, reusable brand system",
     timeCommitment: "~30 minutes per week",
     outputs: [
       "Personal L&D logo (text + symbol)",
       "Colour palette (2–3 colours with hex codes)",
-      "Font pairing options",
+      "Readable font pairing",
       "Simple brand guide (1 page)",
-      "Background graphics for slides or documents",
+      "One branded asset (LinkedIn banner, slide background, or document header)"
     ],
     weeks: [
       {
         number: 1,
-        title: "Brand Direction",
-        purpose: "Define the personality and visual direction of your brand.",
+        title: "Brand Direction & Inputs",
+        purpose: "Clarify what your brand should feel like before creating anything visual.",
         tools: "ChatGPT",
-        prompt: `[Content to be added]`,
-        miniOutput: "Brand direction and personality defined",
+        prompt: `Act as a brand and learning design advisor.
+
+I want to create a simple personal brand for my Learning & Development work.
+
+First, ask me questions to understand:
+– whether I already have any colours, visuals, or branding
+– what I like and dislike visually
+– whether my work feels more:
+  calm / bold / playful / practical / reflective / modern
+– where I plan to use this brand (LinkedIn, slides, documents, website)
+– how “visible” I want my brand to be
+
+If I upload screenshots or references, analyse them.
+If I don’t, help me clarify preferences through questions.
+
+Then:
+– summarise my brand direction in plain language
+– list 3–5 brand personality words
+– describe the overall tone my brand should convey
+
+Keep this practical and grounded.
+Avoid marketing jargon.`,
+        miniOutput: "Clear brand direction + personality summary"
       },
       {
         number: 2,
         title: "Logo Concepts",
-        purpose: "Generate logo ideas using AI and free design tools.",
-        tools: "Ideogram, Leonardo, Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "3 logo concept options ready to refine",
+        purpose: "Generate simple logo ideas without design skills (text-based logos + simple symbols).",
+        tools: "Ideogram",
+        prompt: `Create 3 clean logo concept ideas for a personal Learning & Development brand.
+
+Style:
+– professional and minimal
+– suitable for education or learning work
+– text-based or text with a simple symbol
+– no mascots or cartoon characters
+– no heavy effects or gradients
+
+Brand direction:
+[paste your Week 1 brand summary here]
+
+Keep designs simple and readable.`,
+        miniOutput: "3 logo concepts to choose from or refine"
       },
       {
         number: 3,
-        title: "Visual Identity",
-        purpose: "Create colour palette, typography, and usage guidelines.",
-        tools: "Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "Complete brand kit with colours, fonts, and usage rules",
+        title: "Colour & Visual Style",
+        purpose: "Explore colour palettes and visual mood before locking anything in.",
+        tools: "Leonardo AI",
+        prompt: `Create a visual style reference for a personal Learning & Development brand.
+
+Focus on:
+– a 2–3 colour palette
+– calm, professional mood
+– suitable for education, workshops, and learning materials
+
+Brand direction:
+[paste your Week 1 summary here]
+
+Style:
+– clean
+– modern
+– readable
+– not corporate-heavy
+– not playful or gimmicky
+
+Do not include text.
+This is for visual direction only.`,
+        miniOutput: "Chosen colour palette + visual mood"
       },
       {
         number: 4,
-        title: "Brand Application",
-        purpose: "Test your brand across different materials and platforms.",
+        title: "Brand Kit & Application",
+        purpose: "Turn everything into something usable immediately (brand guide + one real asset).",
         tools: "Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "Brand applied to LinkedIn banner, slides, and documents",
-      },
+        prompt: `Help me assemble a simple one-page personal brand guide using:
+– my logo concept
+– my colours
+– my fonts
+
+Then help me apply it to ONE practical asset:
+– a LinkedIn banner OR
+– a simple slide background OR
+– a document header / cover page
+
+Explain step by step how to do this in Canva Free.
+Assume I am not a designer.`,
+        miniOutput: "One-page brand guide + one branded asset you can use straight away"
+      }
     ],
     closingNote:
-      "A strong personal brand doesn't need to be complicated. Keep it consistent, keep it yours, and let it evolve as you do.",
+      "A strong personal brand doesn’t need to be complicated. It just needs to be consistent and recognisable. Let this evolve as your work evolves."
   },
+
   {
     id: "february",
     month: "February",
