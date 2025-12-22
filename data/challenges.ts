@@ -140,7 +140,7 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     month: "January",
     title: "Logo + Brand Kit (AI-Assisted)",
     theme: "Create a simple, distinctive personal brand identity you can actually use",
-    isLive: true,
+    isLive: false,
     intro: [
       "This challenge helps you build a lightweight personal brand for your L&D work — something consistent, usable, and flexible.",
       "You do not need to have completed December’s challenge. You’ll start from whatever you already have (or don’t have).",
