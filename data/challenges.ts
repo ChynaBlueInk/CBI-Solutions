@@ -135,7 +135,7 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     closingNote:
       "Progress over perfection. Share your updated profile if you would like, or complete it privately. Either way, you will start 2026 with a clearer picture of who you are and how you want to be seen.",
   },
-   {
+  {
     id: "january",
     month: "January",
     title: "Logo + Brand Kit (AI-Assisted)",
@@ -144,9 +144,9 @@ Do not rewrite everything. Explain why each suggestion improves clarity or credi
     intro: [
       "This challenge helps you build a lightweight personal brand for your L&D work — something consistent, usable, and flexible.",
       "You do not need to have completed December’s challenge. You’ll start from whatever you already have (or don’t have).",
-      "Each week introduces one new free tool, with clear guidance. Plan ~30 minutes per week (or 1.5–2 hours total)."
+      "Each week introduces one new AI-based step, using ChatGPT, Ideogram or Leonardo AI, and Canva Free. Plan ~30 minutes per week (or 1.5–2 hours total)."
     ],
-    tools: ["ChatGPT", "Ideogram", "Leonardo AI", "Canva Free"],
+    tools: ["ChatGPT","Ideogram","Leonardo AI","Canva Free"],
     project: "Turn existing ideas into a simple, reusable brand system",
     timeCommitment: "~30 minutes per week",
     outputs: [
@@ -178,83 +178,108 @@ If I upload screenshots or references, analyse them.
 If I don’t, help me clarify preferences through questions.
 
 Then:
-– summarise my brand direction in plain language
+– summarise my brand direction in plain language (2–3 sentences)
 – list 3–5 brand personality words
 – describe the overall tone my brand should convey
 
 Keep this practical and grounded.
-Avoid marketing jargon.`,
+Avoid marketing jargon or over-the-top praise.`,
         miniOutput: "Clear brand direction + personality summary"
       },
       {
         number: 2,
         title: "Logo Concepts",
-        purpose: "Generate simple logo ideas without design skills (text-based logos + simple symbols).",
-        tools: "Ideogram",
-        prompt: `Create 3 clean logo concept ideas for a personal Learning & Development brand.
+        purpose: "Use ChatGPT to define logo ideas, then generate simple logo images with Ideogram or Leonardo AI.",
+        tools: "ChatGPT + Ideogram or Leonardo AI",
+        prompt: `Act as a brand and learning design advisor.
 
-Style:
+I’m designing a simple logo for my personal Learning & Development brand.
+
+Here is my brand direction and personality from Week 1:
+[paste your Week 1 brand summary + personality words]
+
+Help me turn this into 3 different logo concept descriptions that I can use in image tools like Ideogram or Leonardo AI.
+
+Constraints:
 – professional and minimal
 – suitable for education or learning work
 – text-based or text with a simple symbol
 – no mascots or cartoon characters
 – no heavy effects or gradients
+– limited colour palette (neutrals plus my main brand colours)
 
-Brand direction:
-[paste your Week 1 brand summary here]
+For each concept, give me:
+– a short concept name
+– a 2–3 sentence description of the layout and elements
+– an image-generation prompt I can paste into Ideogram or Leonardo AI (include “flat vector logo, no gradients, clean lines, white or light background” at the end).
 
-Keep designs simple and readable.`,
-        miniOutput: "3 logo concepts to choose from or refine"
+Keep the concepts simple and readable.`,
+        miniOutput: "3 logo concept prompts + logo images to choose from or refine"
       },
       {
         number: 3,
         title: "Colour & Visual Style",
-        purpose: "Explore colour palettes and visual mood before locking anything in.",
-        tools: "Leonardo AI",
-        prompt: `Create a visual style reference for a personal Learning & Development brand.
+        purpose: "Use ChatGPT to refine a calm, professional colour palette, then create a simple visual mood reference with image AI.",
+        tools: "ChatGPT + Ideogram or Leonardo AI",
+        prompt: `I want a 2–3 colour palette and a visual style reference for my Learning & Development personal brand.
 
-Focus on:
-– a 2–3 colour palette
+Here is my brand direction and personality from Week 1:
+[paste your Week 1 summary + personality words]
+
+First:
+– Give me 2 palette options.
+For each option, provide:
+– colour roles (primary, secondary, neutral)
+– HEX codes
+– a one-line suggestion for where to use each colour (background, headings, accents).
+
+Constraints:
 – calm, professional mood
 – suitable for education, workshops, and learning materials
-
-Brand direction:
-[paste your Week 1 summary here]
-
-Style:
-– clean
-– modern
-– readable
-– not corporate-heavy
+– clean, modern, readable
+– not very corporate-heavy
 – not playful or gimmicky
 
-Do not include text.
-This is for visual direction only.`,
-        miniOutput: "Chosen colour palette + visual mood"
+Then, using my chosen palette, write ONE image-generation prompt I can paste into Ideogram or Leonardo AI to create a simple visual style reference (no text). It should look like a clean, modern moodboard with blocks of colour and simple shapes only. No photos of people, no text, no gradients.`,
+        miniOutput: "Chosen 2–3 colour palette + one visual mood image"
       },
       {
         number: 4,
         title: "Brand Kit & Application",
-        purpose: "Turn everything into something usable immediately (brand guide + one real asset).",
-        tools: "Canva Free",
-        prompt: `Help me assemble a simple one-page personal brand guide using:
-– my logo concept
-– my colours
-– my fonts
+        purpose: "Turn your logo, colours, and fonts into a simple one-page brand guide and one usable asset.",
+        tools: "ChatGPT + Canva Free",
+        prompt: `Help me assemble a simple one-page personal brand guide for my Learning & Development work.
 
-Then help me apply it to ONE practical asset:
-– a LinkedIn banner OR
-– a simple slide background OR
-– a document header / cover page
+Here is my logo concept or chosen logo:
+[describe your chosen logo or paste the prompt you used in Ideogram/Leonardo]
 
-Explain step by step how to do this in Canva Free.
-Assume I am not a designer.`,
+Here is my colour palette:
+[paste your final HEX codes and colour roles]
+
+Here are my fonts (or how I want fonts to feel):
+[e.g. “modern sans serif for headings, simple sans serif for body; Canva options like Montserrat + Open Sans are fine.”]
+
+First, give me:
+– a clear section structure for a one-page brand guide (logo, colours, typography, imagery, simple do/don’t rules)
+– short, practical notes on how to use my logo, colours, and fonts consistently (no long paragraphs).
+
+Then, give me step-by-step instructions for creating ONE practical asset in Canva Free using this brand guide:
+– choose ONE: a LinkedIn banner, a simple slide background, or a document header / cover page
+– explain exactly what size to create
+– what background colour to use
+– where to place the logo
+– which colours to use where
+– which fonts and approximate sizes to use
+– basic spacing tips so it looks clean and professional.
+
+Assume I am not a designer and need clear, simple steps.`,
         miniOutput: "One-page brand guide + one branded asset you can use straight away"
       }
     ],
     closingNote:
       "A strong personal brand doesn’t need to be complicated. It just needs to be consistent and recognisable. Let this evolve as your work evolves."
   },
+
 
   {
     id: "february",
