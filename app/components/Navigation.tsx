@@ -1,22 +1,23 @@
 // app/components/Navigation.tsx
 "use client"
 
-import { useState } from "react"
+import {useState}from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import {Menu,X}from "lucide-react"
+import {Button}from "@/components/ui/button"
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen,setIsOpen]=useState(false)
 
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Events", href: "/events" },
-    { name: "Recordings", href: "/recordings" },
+  const navItems=[
+    {name:"Home",href:"/"},
+    {name:"About",href:"/about"},
+    {name:"Services",href:"/services"},
+    {name:"Portfolio",href:"/portfolio"},
+    {name:"CV",href:"/cv"},
+    {name:"Events",href:"/events"},
+    {name:"Recordings",href:"/recordings"},
   ]
 
   return (
@@ -26,7 +27,7 @@ export default function Navigation() {
           {/* Logo + Brand */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/brand/cbi-logo.png" // ✅ save your new logo here
+              src="/brand/cbi-logo.png"
               alt="CBI Learning Solutions"
               width={40}
               height={40}
@@ -40,7 +41,7 @@ export default function Navigation() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {navItems.map((item)=>(
               <Link
                 key={item.name}
                 href={item.href}
@@ -55,26 +56,26 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button className="md:hidden" onClick={()=>setIsOpen(!isOpen)}>
+            {isOpen?<X className="w-6 h-6" />:<Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
+        {isOpen&&(
           <div className="md:hidden py-4 border-t border-gray-200">
-            {navItems.map((item) => (
+            {navItems.map((item)=>(
               <Link
                 key={item.name}
                 href={item.href}
                 className="block py-2 text-gray-700 hover:text-teal-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
+                onClick={()=>setIsOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
             <Button asChild className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white rounded-full">
-              <Link href="/contact?intent=start" onClick={() => setIsOpen(false)}>
+              <Link href="/contact?intent=start" onClick={()=>setIsOpen(false)}>
                 Get Started
               </Link>
             </Button>
