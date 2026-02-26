@@ -103,6 +103,8 @@ function copyToClipboard(text:string){
 }
 
 export default function ChallengeCard({challenge}:{challenge:Challenge}){
+  const submissionsEnabled=false
+
   return(
     <article className="space-y-4">
       {/* Header */}
@@ -284,13 +286,31 @@ export default function ChallengeCard({challenge}:{challenge:Challenge}){
         {/* Output submissions */}
         <details className="bg-card border border-border rounded-lg">
           <summary className="cursor-pointer select-none px-6 py-4 font-semibold text-foreground">
-            Output submissions (saved on this device)
+            Output submissions
           </summary>
           <div className="px-6 pb-6 pt-1">
-            <p className="text-sm text-muted-foreground mt-4">
-              Capture examples of your work for the {challenge.month} challenge. These stay in your browser only.
-            </p>
-            <OutputSubmissions challengeMonth={challenge.month}/>
+            {submissionsEnabled?(
+              <>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Capture examples of your work for the {challenge.month} challenge. These stay in your browser only.
+                </p>
+                <OutputSubmissions challengeMonth={challenge.month}/>
+              </>
+            ):(
+              <div className="mt-4 rounded-lg border border-border bg-muted/40 p-5">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-semibold text-foreground">
+                    Submissions are currently closed
+                  </p>
+                  <span className="text-xs rounded-full bg-gray-200 text-gray-700 px-2 py-1">
+                    Coming soon
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Once more people are doing the challenges, you’ll be able to share links or uploads here and showcase results.
+                </p>
+              </div>
+            )}
           </div>
         </details>
 
