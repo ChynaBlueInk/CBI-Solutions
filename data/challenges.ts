@@ -281,51 +281,116 @@ Assume I am not a designer and need clear, simple steps.`,
   },
 
 
-  {
-    id: "february",
-    month: "February",
-    title: "Infographic",
-    theme: "Explain an L&D concept visually in a way that's easy to share and understand",
-        isLive: false, // 👈 visible
+ {
+  id: "february",
+  month: "February",
+  title: "AI Course Sprint",
+  theme: "Build the same short course in three AI tools and compare the results",
+  isLive: true, // 👈 visible
 
-    intro: [
-      "This month you're creating one infographic that explains a learning or development concept clearly and visually.",
-      "Using Canva, Adobe Express, or Piktochart, you'll turn data, steps, or ideas into something shareable and useful.",
-      "Perfect for training materials, social posts, or your portfolio.",
-    ],
-    tools: ["Canva Free", "Adobe Express", "Piktochart"],
-    project: "Create 1 infographic explaining an L&D or AI concept in a clear, visual way",
-    timeCommitment: "~30 minutes per week",
-    outputs: ["One completed infographic", "PNG and PDF versions", "Ready for training, social, or portfolio use"],
-    weeks: [
-      {
-        number: 1,
-        title: "Topic & Content",
-        purpose: "Choose your topic and gather the key information to visualise.",
-        tools: "ChatGPT, Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "Topic chosen with 5–7 key points to visualise",
-      },
-      {
-        number: 2,
-        title: "Design & Layout",
-        purpose: "Build your infographic layout, choose colours and icons.",
-        tools: "Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "Infographic layout with icons, colours, and text positioning",
-      },
-      {
-        number: 3,
-        title: "Polish & Export",
-        purpose: "Refine details and export in multiple formats.",
-        tools: "Canva Free",
-        prompt: `[Content to be added]`,
-        miniOutput: "Finished infographic in PNG and PDF format",
-      },
-    ],
-    closingNote:
-      "A good infographic tells a story quickly. If someone can't understand it in 10 seconds, simplify it further.",
-  },
+  intro: [
+    "This month you're testing three AI course-generation platforms using the same shared prompt.",
+    "The goal isn't to replace instructional design. It's to see what these tools produce, compare outputs, and strengthen your professional judgement.",
+    "Think of it as a structured AI tool check — practical, hands-on, and grounded in real L&D thinking.",
+  ],
+
+  tools: ["Coassemble", "ProProfs", "SafetyCulture Training"],
+
+  project:
+    "Generate the same 10–15 minute training module in three different AI tools, compare the outputs, and create one improved final version.",
+
+  timeCommitment: "30–45 minutes total (~15 minutes per tool)",
+
+  outputs: [
+    "3 mini-course drafts (one per tool)",
+    "1 comparison scorecard",
+    "1 improved 'best version' course outline",
+  ],
+
+  weeks: [
+    {
+      number: 1,
+      title: "Choose Your Topic",
+      purpose:
+        "Select one topic you could genuinely teach or support at work so your comparison is realistic and useful.",
+      tools: "Your choice of topic",
+      prompt: `Choose ONE topic you could genuinely teach or support at work.
+
+Optional ideas:
+– Giving & Receiving Constructive Feedback
+– Onboarding New Staff: First Week Essentials
+– Handling Difficult Conversations (Customer Service)
+– AI Use at Work: Responsible Basics
+– Respectful Workplace Communication
+
+Keep it simple. The goal is comparison, not complexity.`,
+      miniOutput: "One clearly defined topic to use in all three tools",
+    },
+
+    {
+      number: 2,
+      title: "Generate the Course in 3 Tools",
+      purpose:
+        "Use the same prompt in Coassemble, ProProfs, and SafetyCulture to create comparable drafts.",
+      tools: "Coassemble, ProProfs, SafetyCulture",
+      prompt: `Copy and paste this SAME prompt into each platform:
+
+Create a short, practical training module for adult learners.
+
+Topic: [INSERT TOPIC]
+Audience: [INSERT ROLE / CONTEXT]
+Time: 10–15 minutes total
+Format: simple, clear, real-world, not academic
+
+Include:
+1) A short course title (clear and specific)
+2) 3 learning outcomes written in plain language
+3) A mini lesson structure with 4 short sections (headings + key points)
+4) One scenario example learners can relate to
+5) A 5-question knowledge check (mix of multiple choice and true/false)
+6) One short reflection question
+7) A takeaway checklist learners can use immediately
+
+Tone:
+– professional and human
+– avoid buzzwords and filler
+– keep it actionable and beginner-friendly
+
+Capture:
+– 1 screenshot of the outline
+– 1 screenshot of the quiz
+– 1 short note on what felt strong or weak`,
+      miniOutput: "3 generated course drafts ready for comparison",
+    },
+
+    {
+      number: 3,
+      title: "Compare & Improve",
+      purpose:
+        "Evaluate the outputs critically and combine the best elements into one improved version.",
+      tools: "Your judgement + optional ChatGPT",
+      prompt: `Rate each tool from 1–5 on:
+– Clarity of outcomes
+– Lesson structure
+– Scenario realism
+– Quiz quality
+– Ease of editing
+– Would you use it at work?
+
+Then combine the best elements into ONE improved course outline:
+– strongest structure
+– best scenario
+– clearest questions
+– tightened language
+
+Optional: Use ChatGPT to merge the best parts into a refined final outline.`,
+      miniOutput: "One improved, practical course outline you'd actually use",
+    },
+  ],
+
+  closingNote:
+    "AI course generators do not replace good instructional design. They can speed up drafting, but they do not automatically provide learning strategy, meaningful practice, accessibility, or behaviour change. This challenge is a tool check — your professional judgement remains the engine behind quality learning.",
+},
   {
     id: "march",
     month: "March",
