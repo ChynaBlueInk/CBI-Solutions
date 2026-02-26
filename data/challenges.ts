@@ -391,58 +391,108 @@ Optional: Use ChatGPT to merge the best parts into a refined final outline.`,
   closingNote:
     "AI course generators do not replace good instructional design. They can speed up drafting, but they do not automatically provide learning strategy, meaningful practice, accessibility, or behaviour change. This challenge is a tool check — your professional judgement remains the engine behind quality learning.",
 },
-  {
-    id: "march",
-    month: "March",
-    title: "One-Page Website / Portfolio",
-    theme: "Build a live portfolio page that showcases your work and makes it easy for people to find you",
-            isLive: false, // 👈 visible
+ {
+  id:"march",
+  month:"March",
+  title:"AI Portfolio Page (Free + Fast)",
+  theme:"Create a live, one-page portfolio you can share, with links/embeds to your challenge outputs",
+  isLive:true, // 👈 visible
 
-    intro: [
-      "This month you're creating a real, live portfolio website you can share with others.",
-      "Using free tools like V0.dev, Framer, Notion, or GitHub Pages, you'll build a one-page site with your bio, portfolio samples, and contact information.",
-      "This is your digital home for your L&D and AI work.",
-    ],
-    tools: ["V0.dev", "Framer (free tier)", "Notion", "GitHub Pages"],
-    project:
-      "Build a clean one-page portfolio website that showcases your L&D work and includes about, samples, and contact sections",
-    timeCommitment: "~45 minutes per week",
-    outputs: [
-      "A live website with a real URL",
-      "About section with your updated positioning",
-      "Portfolio samples or case studies section",
-      "Contact or connection information",
-      "Optional: embedded AI chatbot",
-    ],
-    weeks: [
-      {
-        number: 1,
-        title: "Plan & Structure",
-        purpose: "Decide what sections your site needs and sketch the layout.",
-        tools: "ChatGPT, Pen & Paper",
-        prompt: `[Content to be added]`,
-        miniOutput: "Site map with planned sections and content outline",
-      },
-      {
-        number: 2,
-        title: "Build & Design",
-        purpose: "Create your site using a free tool and apply your brand identity.",
-        tools: "V0.dev, Framer, or Notion",
-        prompt: `[Content to be added]`,
-        miniOutput: "Live website with all sections and basic styling applied",
-      },
-      {
-        number: 3,
-        title: "Content & Polish",
-        purpose: "Fill in content, refine visuals, and test all links and functionality.",
-        tools: "Canva Free (for images), ChatGPT (for copy)",
-        prompt: `[Content to be added]`,
-        miniOutput: "Complete portfolio site ready to share",
-      },
-    ],
-    closingNote:
-      "Your portfolio is a living document. You can update it anytime. Start simple and add to it as you complete more challenges this year.",
-  },
+  intro:[
+    "This month you’re creating a real, live portfolio page you can share with a single link.",
+    "You’ll use Framer AI (free) to generate a one-page site, then connect your challenge artefacts using free links and embeds (Google Drive, YouTube, slides, docs).",
+    "Keep it simple: one page, clear sections, and a few strong examples."
+  ],
+
+  tools:["Framer AI (free tier)","Google Drive (free hosting for PDFs/docs/images)","ChatGPT (optional copy help)"],
+
+  project:
+    "Build a clean one-page portfolio website with About, Work Samples, and Contact sections, plus links/embeds to your challenge outputs.",
+
+  timeCommitment:"~45 minutes per week",
+
+  outputs:[
+    "A live website with a real URL (framer.website)",
+    "About section with your positioning",
+    "Work Samples section linking to 3–6 artefacts (docs/links/embeds)",
+    "Contact section (email, LinkedIn, booking link if you have one)",
+    "Optional: a simple ‘Challenge Archive’ links section"
+  ],
+
+  weeks:[
+    {
+      number:1,
+      title:"Plan Your Page + Gather Assets",
+      purpose:"Decide your sections, choose 3–6 artefacts to showcase, and prepare links (Drive/docs/embeds).",
+      tools:"ChatGPT (optional), Google Drive",
+      prompt:`Create a one-page portfolio structure for an L&D professional.
+
+Ask me 5 questions first about:
+– what I do in L&D
+– who I want to work with / support
+– what I want to be known for (3 themes)
+– what artefacts I can share (docs, links, embeds)
+– how formal vs friendly my tone should be
+
+Then output:
+1) a simple one-page site outline with these sections:
+   – Hero (name + one line)
+   – About (short)
+   – Work Samples (3–6 items)
+   – Contact
+2) suggested headings for each section
+3) a short checklist of what links I need to gather (Drive PDFs, videos, slides, websites)
+
+Keep it clean, grounded, and not buzzword-heavy.`,
+      miniOutput:"One-page site outline + a shortlist of 3–6 artefacts to feature"
+    },
+    {
+      number:2,
+      title:"Generate the Site in Framer AI",
+      purpose:"Use one prompt to generate your portfolio page, then replace placeholders with your content.",
+      tools:"Framer AI (free tier)",
+      prompt:`FRAMER AI PROMPT:
+
+Create a clean one-page portfolio website for a Learning & Development professional.
+Style: calm, modern, lots of white space, readable typography, professional but not corporate.
+
+Sections:
+1) Hero: Name, role/title, 1-line positioning statement, button links (LinkedIn + Email)
+2) About: 120–180 words, grounded tone, NZ English
+3) Work Samples: 6 cards (title, 1–2 lines, button link). Each card must support links to external artefacts (PDFs, websites, videos).
+4) Contact: email + LinkedIn + optional booking link.
+
+Include subtle visual accents (simple shapes/lines), no heavy gradients, no gimmicks.
+Use a neutral light background and one calm accent colour.`,
+      miniOutput:"A generated one-page site draft in Framer with your basic sections in place"
+    },
+    {
+      number:3,
+      title:"Add Artefacts + Publish",
+      purpose:"Link your real artefacts, tidy layout, test mobile, and publish the final URL.",
+      tools:"Framer, Google Drive",
+      prompt:`Create a quick ‘Work Samples’ set for my one-page portfolio.
+
+Ask me to paste up to 6 links (Drive PDFs, videos, slides, websites).
+For each link, generate:
+– a clear sample title (6–10 words)
+– a 1–2 sentence description (what it is + what it shows)
+– one outcome/impact line if appropriate
+
+Keep it practical. Avoid fluff.
+Then give a final QA checklist for my portfolio page:
+– link test
+– mobile spacing
+– readability
+– consistent headings
+– contact visibility.`,
+      miniOutput:"Live published portfolio URL + Work Samples fully linked and tested"
+    }
+  ],
+
+  closingNote:
+    "This is a minimum-viable portfolio. One clean page beats a perfect site that never gets published. You can add more examples as you complete future challenges."
+},
   {
     id: "april",
     month: "April",
