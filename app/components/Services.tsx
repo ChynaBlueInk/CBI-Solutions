@@ -1,64 +1,64 @@
 // app/components/Services.tsx
-import { BookOpen, Bot, Film, FileText, Users, Camera } from "lucide-react"
+import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow}from "lucide-react"
 
-export default function Services() {
-  const services = [
+export default function Services(){
+  const services=[
     {
-      icon: BookOpen,
-      title: "Online Course Development",
+      icon:BookOpen,
+      title:"Learning Design & Course Development",
       description:
-        "Interactive learning and lightweight delivery that holds up well in low-connectivity environments.",
+        "Story-led learning journeys, microlearning, and blended programmes that make complex topics clear and usable.",
     },
     {
-      icon: Bot,
-      title: "AI Writing Tools",
+      icon:Film,
+      title:"Scenario Design & Storytelling",
       description:
-        "Assistants and content workflows to speed up drafting, localisation, and QA — without losing voice or quality.",
+        "Decision-based scenarios, scripts, and narratives that reflect real-world work — designed to change behaviour, not just tick boxes.",
     },
     {
-      icon: Film,
-      title: "Animation & Storytelling",
+      icon:ClipboardCheck,
+      title:"Assessment, QA & Learning Evidence",
       description:
-        "Compelling visual narratives that bring ideas to life — from concept to final cut.",
+        "Defensible assessment design, feedback loops, and quality checks so your learning holds up in regulated and high-stakes environments.",
     },
     {
-      icon: FileText,
-      title: "Digital Publishing",
+      icon:Workflow,
+      title:"Learning Systems & Digital Delivery",
       description:
-        "Books, oracle cards, and modern digital publications designed for today’s readers.",
+        "LMS setup and optimisation, content structures, templates, and rollout support — including low-bandwidth-friendly approaches when needed.",
     },
     {
-      icon: Users,
-      title: "Remote L&D Consulting",
+      icon:Users,
+      title:"Capability Uplift & Team Enablement",
       description:
-        "Learning systems for distributed teams and organisations across Aotearoa and the Pacific.",
+        "Workshops and mentoring for SMEs and teams to improve how they write, design, and maintain learning content (including sensible AI use where it helps).",
     },
     {
-      icon: Camera,
-      title: "Print on Demand",
+      icon:FileText,
+      title:"Content Editing & Plain-Language Rewrite",
       description:
-        "Photography and artwork with seamless print-on-demand integration when you’re ready to sell.",
+        "Clear, human writing for learning, policy, and product content — improving readability, tone, and structure without losing accuracy or voice.",
     },
   ]
 
-  return (
+  return(
     <section className="py-20 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We Do</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Services</h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Practical creative and education services — built for real-world use here in Aotearoa and across the Pacific.
+            Practical learning design and digital delivery — grounded in real-world performance, with storytelling at the centre.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
+          {services.map((service)=>(
             <div
               key={service.title}
               className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-8 h-8 text-white" />
+                <service.icon className="w-8 h-8 text-white"/>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
               <p className="text-gray-700 leading-relaxed">{service.description}</p>

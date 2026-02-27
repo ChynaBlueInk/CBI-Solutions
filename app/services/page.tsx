@@ -1,75 +1,69 @@
 // app/services/page.tsx
 import Link from "next/link"
-import { BookOpen, Bot, Film, FileText, Users, Camera, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow,ArrowRight}from "lucide-react"
 
-// Note: Navigation and Footer are handled in app/layout.tsx
-
-export default function ServicesPage() {
-  const services = [
+export default function ServicesPage(){
+  const services=[
     {
-      icon: BookOpen,
-      title: "Online Course Development",
+      icon:BookOpen,
+      title:"Learning Design & Course Development",
       description:
-        "Custom e-learning and interactive course content that engages learners and works well in low-bandwidth settings.",
-      features: ["Interactive Learning Modules", "Assessment Tools", "Progress Tracking", "Mobile Optimisation"],
-      slug: "course-development",
+        "Story-led learning journeys, microlearning, and blended programmes that make complex topics clear and usable.",
+      features:["Learning journeys & course design","Interactive modules & resources","Blended delivery support","Low-bandwidth-friendly options"],
+      slug:"learning-design",
     },
     {
-      icon: Bot,
-      title: "AI Writing Tools",
+      icon:Film,
+      title:"Scenario Design & Storytelling",
       description:
-        "Assistants and workflows to speed up drafting, localisation, and QA — without losing your voice or quality.",
-      features: ["Content Generation", "Writing Assistance", "Grammar & Style Checking", "Custom AI Models"],
-      slug: "ai-tools",
+        "Decision-based scenarios, scripts, and narratives that reflect real-world work — designed to change behaviour, not just tick boxes.",
+      features:["Scenario mapping & branching","Storyboarding & scripts","Role-based practice activities","Behaviour-focused learning design"],
+      slug:"storytelling",
     },
     {
-      icon: Film,
-      title: "Animation & Storytelling",
-      description: "Compelling visual narratives that bring ideas to life — from concept to final cut.",
-      features: ["2D/3D Animation", "Storyboarding", "Character Design", "Motion Graphics"],
-      slug: "animation-storytelling",
+      icon:ClipboardCheck,
+      title:"Assessment, QA & Learning Evidence",
+      description:
+        "Defensible assessment design, feedback loops, and quality checks so your learning holds up in regulated and high-stakes environments.",
+      features:["Assessment design & rubrics","Feedback loops & checks","Compliance-aligned learning","Evaluation and evidence support"],
+      slug:"assessment-qa",
     },
     {
-      icon: FileText,
-      title: "Digital Publishing",
+      icon:Workflow,
+      title:"Learning Systems & Digital Delivery",
       description:
-        "Apps, books, oracle cards, and modern digital publications designed for today’s audiences.",
-      features: ["App Development", "eBook Creation", "Interactive Publications", "Oracle Card Design", "Distribution Strategy"],
-      slug: "digital-publishing",
+        "LMS setup and optimisation, content structures, templates, and rollout support — so learning is easy to maintain and scale.",
+      features:["LMS setup & optimisation","Templates and content structures","Rollout and adoption support","Tracking and reporting foundations"],
+      slug:"digital-delivery",
     },
     {
-      icon: Users,
-      title: "Remote L&D Consulting",
+      icon:Users,
+      title:"Capability Uplift & Team Enablement",
       description:
-        "Learning and development systems tailored for distributed teams and organisations across Aotearoa and the Pacific.",
-      features: ["Training Strategy", "Remote Learning Design", "App Development Consultation", "Team Development", "Performance Analytics"],
-      slug: "consulting",
+        "Workshops and mentoring for SMEs and teams to improve how they write, design, and maintain learning content (including sensible AI use where it helps).",
+      features:["Team workshops & mentoring","SME enablement and coaching","Writing for learning support","Practical AI use guidelines"],
+      slug:"team-enablement",
     },
     {
-      icon: Camera,
-      title: "Print on Demand",
+      icon:FileText,
+      title:"Content Editing & Plain-Language Rewrite",
       description:
-        "Photography and art with seamless print-on-demand integration when you’re ready to sell.",
-      features: ["Product Photography", "Art Direction", "Print Setup", "Quality Control"],
-      slug: "print-on-demand",
+        "Clear, human writing for learning, policy, and product content — improving readability, tone, and structure without losing accuracy or voice.",
+      features:["Plain-language rewrites","Structure and flow improvements","Tone and consistency checks","Learning-ready content formatting"],
+      slug:"editing",
     },
   ]
 
-  return (
+  return(
     <main className="min-h-screen bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[hsl(var(--foreground))] mb-6">
-            Our{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">
-              Services
-            </span>
+            Services
           </h1>
           <p className="text-xl text-[hsl(var(--muted-foreground))] leading-relaxed">
-            Practical digital solutions to help your learning, content, and creative projects land well —
-            here in Aotearoa and across the Pacific.
+            Practical learning design and digital delivery — grounded in real-world performance, with storytelling at the centre.
           </p>
         </div>
       </section>
@@ -78,36 +72,34 @@ export default function ServicesPage() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
+            {services.map((service)=>(
               <div
                 key={service.title}
                 className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]" />
+                  <service.icon className="w-8 h-8 text-[hsl(var(--primary-foreground))]"/>
                 </div>
+
                 <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-4">{service.title}</h3>
                 <p className="text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">{service.description}</p>
 
                 <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
+                  {service.features.map((feature,idx)=>(
                     <li key={idx} className="flex items-center text-sm text-[hsl(var(--muted-foreground))]">
-                      <span className="w-2 h-2 bg-[hsl(var(--primary))] rounded-full mr-3" />
+                      <span className="w-2 h-2 bg-[hsl(var(--primary))] rounded-full mr-3"/>
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] group-hover:scale-105 transition-all duration-300"
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="inline-flex w-full items-center justify-center rounded-full border border-[hsl(var(--primary))] px-4 py-3 text-sm font-semibold text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] group-hover:scale-[1.02] transition-all duration-300"
                 >
-                  <Link href={`/services/${service.slug}`}>
-                    Learn more
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
+                  Learn more
+                  <ArrowRight className="ml-2 w-4 h-4"/>
+                </Link>
               </div>
             ))}
           </div>
@@ -119,15 +111,14 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6">Keen to get started?</h2>
           <p className="text-xl text-[hsl(var(--muted-foreground))] mb-8">
-            Let’s chat about how we can help bring your ideas to life.
+            Tell me what you’re building, who it’s for, and what “good” looks like — I’ll help you shape the learning to get there.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--accent))] text-[hsl(var(--primary-foreground))] px-8 py-4 rounded-full text-lg font-semibold"
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--accent))] text-[hsl(var(--primary-foreground))] px-8 py-4 text-lg font-semibold transition"
           >
-            <Link href="/contact">Start your project</Link>
-          </Button>
+            Contact Me
+          </Link>
         </div>
       </section>
     </main>
