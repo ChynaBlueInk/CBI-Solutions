@@ -18,7 +18,7 @@ export default function PortfolioPage() {
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[hsl(var(--foreground))] mb-6">
-            Our{" "}
+            {" "}
             <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">
               Portfolio
             </span>

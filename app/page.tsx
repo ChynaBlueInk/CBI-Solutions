@@ -22,32 +22,32 @@ export default function Home() {
           <p className="text-lg text-gray-600">A few recent highlights from our portfolio.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {featured.map((project) => (
+<div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {featured.map((project) => (
             <Link
               key={project.slug}
               href={`/portfolio/${project.slug}`}
               className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block"
             >
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={project.heroImage || "/placeholder.svg"}
-                  alt={project.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                  <span className="bg-white bg-opacity-20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {project.category}
-                  </span>
-                  <div className="flex items-center gap-2 text-white text-sm">
-                    <Calendar className="w-4 h-4" />
-                    {project.year}
-                  </div>
-                </div>
-              </div>
+              <div className="relative aspect-square overflow-hidden">
+  <Image
+    src={project.heroImage || "/placeholder.svg"}
+    alt={project.title}
+    fill
+    sizes="(max-width:768px) 100vw, 33vw"
+    className="object-cover group-hover:scale-105 transition-transform duration-300"
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+  <div className="absolute top-3 left-3 right-3 flex justify-between items-start">
+    <span className="bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">
+      {project.category}
+    </span>
+    <div className="flex items-center gap-1 text-white text-xs">
+      <Calendar className="w-3 h-3" />
+      {project.year}
+    </div>
+  </div>
+</div>
 
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
