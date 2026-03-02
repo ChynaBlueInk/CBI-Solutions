@@ -400,11 +400,11 @@ Optional: Use ChatGPT to merge the best parts into a refined final outline.`,
 
   intro:[
     "This month you’re creating a real, live portfolio page you can share with a single link.",
-    "You’ll use Framer AI (free) to generate a one-page site, then connect your challenge artefacts using free links and embeds (Google Drive, YouTube, slides, docs).",
+    "You’ll use Base44 AI (free) to generate a one-page site, then connect your challenge artefacts using free links and embeds (Google Drive, YouTube, slides, docs).",
     "Keep it simple: one page, clear sections, and a few strong examples."
   ],
 
-  tools:["Framer AI (free tier)","Google Drive (free hosting for PDFs/docs/images)","ChatGPT (optional copy help)"],
+  tools:["Base44 AI (free tier)","Google Drive (free hosting for PDFs/docs/images)","ChatGPT (optional copy help)"],
 
   project:
     "Build a clean one-page portfolio website with About, Work Samples, and Contact sections, plus links/embeds to your challenge outputs.",
@@ -412,7 +412,7 @@ Optional: Use ChatGPT to merge the best parts into a refined final outline.`,
   timeCommitment:"~45 minutes per week",
 
   outputs:[
-    "A live website with a real URL (framer.website)",
+    "A live website with a real URL (base44.ai)",
     "About section with your positioning",
     "Work Samples section linking to 3–6 artefacts (docs/links/embeds)",
     "Contact section (email, LinkedIn, booking link if you have one)",
@@ -448,10 +448,10 @@ Keep it clean, grounded, and not buzzword-heavy.`,
     },
     {
       number:2,
-      title:"Generate the Site in Framer AI",
+      title:"Generate the Site in Base44 AI",
       purpose:"Use one prompt to generate your portfolio page, then replace placeholders with your content.",
-      tools:"Framer AI (free tier)",
-      prompt:`FRAMER AI PROMPT:
+      tools:"Base44 AI (free tier)",
+      prompt:`BASE44 AI PROMPT:
 
 Create a clean one-page portfolio website for a Learning & Development professional.
 Style: calm, modern, lots of white space, readable typography, professional but not corporate.
@@ -464,13 +464,13 @@ Sections:
 
 Include subtle visual accents (simple shapes/lines), no heavy gradients, no gimmicks.
 Use a neutral light background and one calm accent colour.`,
-      miniOutput:"A generated one-page site draft in Framer with your basic sections in place"
+      miniOutput:"A generated one-page site draft in Base44 with your basic sections in place"
     },
     {
       number:3,
       title:"Add Artefacts + Publish",
       purpose:"Link your real artefacts, tidy layout, test mobile, and publish the final URL.",
-      tools:"Framer, Google Drive",
+      tools:"Base44 AI, Google Drive",
       prompt:`Create a quick ‘Work Samples’ set for my one-page portfolio.
 
 Ask me to paste up to 6 links (Drive PDFs, videos, slides, websites).

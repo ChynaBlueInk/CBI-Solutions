@@ -1,8 +1,16 @@
 // app/components/Services.tsx
-import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow}from "lucide-react"
+import Link from "next/link"
+import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow,Bot}from "lucide-react"
+
+type ServiceItem={
+  icon:any;
+  title:string;
+  description:string;
+  href?:string;
+}
 
 export default function Services(){
-  const services=[
+  const services:ServiceItem[]=[
     {
       icon:BookOpen,
       title:"Learning Design & Course Development",
@@ -39,6 +47,13 @@ export default function Services(){
       description:
         "Clear, human writing for learning, policy, and product content — improving readability, tone, and structure without losing accuracy or voice.",
     },
+    {
+      icon:Bot,
+      title:"AI Training for Businesses",
+      description:
+        "Safe, ethical, secure AI training built for real workplace tasks — reducing risk while improving everyday productivity.",
+      href:"/services/ai-training",
+    },
   ]
 
   return(
@@ -52,18 +67,34 @@ export default function Services(){
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service)=>(
-            <div
-              key={service.title}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-8 h-8 text-white"/>
+          {services.map((service)=>{
+            const Card=(
+              <div
+                className={[
+                  "bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group",
+                  service.href?"cursor-pointer":""
+                ].join(" ")}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="w-8 h-8 text-white"/>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{service.description}</p>
+
+                {service.href?(
+                  <p className="mt-5 text-sm font-semibold text-gray-900">
+                    Learn more <span aria-hidden="true">→</span>
+                  </p>
+                ):null}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-700 leading-relaxed">{service.description}</p>
-            </div>
-          ))}
+            )
+
+            return service.href?(
+              <Link key={service.title}href={service.href}className="block">{Card}</Link>
+            ):(
+              <div key={service.title}>{Card}</div>
+            )
+          })}
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 // app/services/page.tsx
 import Link from "next/link"
-import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow,ArrowRight}from "lucide-react"
-
+import {BookOpen,Film,FileText,Users,ClipboardCheck,Workflow,ArrowRight,Bot}from "lucide-react"
 export default function ServicesPage(){
   const services=[
     {
@@ -52,6 +51,19 @@ export default function ServicesPage(){
       features:["Plain-language rewrites","Structure and flow improvements","Tone and consistency checks","Learning-ready content formatting"],
       slug:"editing",
     },
+    {
+  icon:Bot,
+  title:"AI Training for Businesses",
+  description:
+    "Safe. Ethical. Secure. Built for real workplace tasks — not hype.",
+  features:[
+    "Hands-on AI workshops for real workflows",
+    "Data security, privacy, and safe boundaries",
+    "Ethical use frameworks and internal guidelines",
+    "Prompting techniques + verification practices"
+  ],
+  slug:"ai-training",
+},
   ]
 
   return(
