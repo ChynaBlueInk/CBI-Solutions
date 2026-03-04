@@ -516,35 +516,39 @@ Tone throughout: warm, direct, confident. No jargon."`,
       purpose: "You have your content — now use AI to turn it into a site builder prompt, then paste it into your chosen tool and let it handle the design. Pick the builder that suits you best from the options below.",
       tools: "Readdy.ai / Framer / Trickle.so / V0.app",
       prompt: `STEP 1 — GENERATE YOUR SITE BUILDER PROMPT
-Paste this into your AI tool (continuing the same conversation from Steps 1 and 2):
+Paste this into your AI tool (continuing the same conversation from Steps 1 and 2 — your content is already there, so AI fills everything in for you):
 
-"Now write the exact prompt I'll paste into my AI site builder to generate the page. Be specific about the layout, sections, and content. Use this structure:
+"Using all the content we've created together in this conversation, write me a complete, ready-to-paste prompt for an AI site builder. Fill in every section with my actual content — don't leave any placeholders except for the three button links, which I'll add myself.
+
+Use this structure:
 
 'Build a clean, modern one-page portfolio website for an L&D professional. Warm but professional colour palette. Generous white space. Mobile responsive. No stock photo hero image.
 
 HERO
-[paste your hero content]
+[fill in from our conversation]
 
 ABOUT
-[paste your about section]
+[fill in from our conversation]
 
 WORK SAMPLES
 Three cards displayed side by side.
 
 Card 1 — CV
-[paste title, description, and button label]
-Button links to: [paste your Google Drive CV link — upload your CV to Google Drive, right-click, Share, Anyone with the link, Copy]
+[fill in title, description, and button label from our conversation]
+Button links to: PLACEHOLDER — I will add my Google Drive CV link
 
 Card 2 — Achievement Story
-[paste title, Challenge, Approach, Outcome, and button label]
-Button links to: [paste a Google Doc link with the full case study, or ask the builder to display it as a second page]
+[fill in title, Challenge, Approach, Outcome, and button label from our conversation]
+Button links to: PLACEHOLDER — I will add my link (or ask the builder to open this as an expanded section on the same page)
 
 Card 3 — Live Project or Tool
-[paste title, description, and button label]
-Button links to: [paste the live URL]
+[fill in title, description, and button label from our conversation]
+Button links to: PLACEHOLDER — I will add the live URL
 
 CONTACT
-[paste your contact section]'"
+[fill in from our conversation]'
+
+Once you've written the prompt, I'll swap the three PLACEHOLDER spots for my real links, then paste the whole thing into the site builder."
 
 ---
 
@@ -599,15 +603,7 @@ Write a portfolio card with:
 
 Tone: specific and confident. Show that I built this intentionally, not by accident."
 
----
-
-HOW TO GET A SHAREABLE LINK FROM COMMON TOOLS
-• Google Doc / Slides / PDF — right-click in Drive, Share, Anyone with link, Copy
-• Canva — Share, Anyone with link, Copy link
-• Genially — Publish, Share, copy the public URL
-• Gamma — Publish, copy public link
-• Loom / YouTube — copy the share URL directly
-• Any AI-generated output — save as PDF, upload to Drive, copy shareable link`,
+`,
       miniOutput: "New card added and portfolio republished — 2 minutes once the habit is in place"
     }
   ],
