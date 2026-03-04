@@ -391,107 +391,229 @@ Optional: Use ChatGPT to merge the best parts into a refined final outline.`,
   closingNote:
     "AI course generators do not replace good instructional design. They can speed up drafting, but they do not automatically provide learning strategy, meaningful practice, accessibility, or behaviour change. This challenge is a tool check — your professional judgement remains the engine behind quality learning.",
 },
- {
-  id:"march",
-  month:"March",
-  title:"AI Portfolio Page (Free + Fast)",
-  theme:"Create a live, one-page portfolio you can share, with links/embeds to your challenge outputs",
-  isLive:true, // 👈 visible
+{
+  id: "march",
+  month: "March",
+  title: "Your AI Portfolio Page",
+  theme: "Use AI at every step to build a live portfolio that grows with every future challenge you complete",
+  isLive: true,
 
-  intro:[
-    "This month you’re creating a real, live portfolio page you can share with a single link.",
-    "You’ll use Base44 AI (free) to generate a one-page site, then connect your challenge artefacts using free links and embeds (Google Drive, YouTube, slides, docs).",
-    "Keep it simple: one page, clear sections, and a few strong examples."
+  intro: [
+    "This month you're building a real, live portfolio page — and AI is your co-pilot for every step.",
+    "You'll use AI to figure out what to showcase, write all your content, and then drop it straight into an AI site builder that does the design for you. No coding, no design skills needed.",
+    "Your portfolio has three cards: your CV, an achievement story, and a live example of your work. Future challenge outputs plug straight in — so your portfolio keeps growing automatically.",
+    "One page. A real URL. Done in around 90 minutes."
   ],
 
-  tools:["Base44 AI (free tier)","Google Drive (free hosting for PDFs/docs/images)","ChatGPT (optional copy help)"],
+  tools: [
+    "Claude / ChatGPT / Gemini (free — writes all your content)",
+    "Your CV as a PDF (optional but recommended — speeds everything up)",
+    "Readdy.ai / Framer / Trickle.so / V0.app (free tiers — builds and hosts your live portfolio page)"
+  ],
 
   project:
-    "Build a clean one-page portfolio website with About, Work Samples, and Contact sections, plus links/embeds to your challenge outputs.",
+    "Build a live one-page portfolio with Hero, About, Work Samples, and Contact sections — AI writes the content, an AI site builder handles the design. Then keep it growing by adding new challenge outputs each month.",
 
-  timeCommitment:"~45 minutes per week",
+  timeCommitment: "~90 minutes total (flexible — do it all at once or spread across a few sessions)",
 
-  outputs:[
-    "A live website with a real URL (base44.ai)",
-    "About section with your positioning",
-    "Work Samples section linking to 3–6 artefacts (docs/links/embeds)",
-    "Contact section (email, LinkedIn, booking link if you have one)",
-    "Optional: a simple ‘Challenge Archive’ links section"
+  outputs: [
+    "A live portfolio URL you can share immediately",
+    "Hero section — your name, role, and one-line positioning statement",
+    "About section — 3 short paragraphs in your own voice, written with AI",
+    "Work Samples section — 3 cards: your CV, an achievement story, and a live project or tool",
+    "Contact section — email, LinkedIn, and optional booking link"
   ],
 
-  weeks:[
+  weeks: [
     {
-      number:1,
-      title:"Plan Your Page + Gather Assets",
-      purpose:"Decide your sections, choose 3–6 artefacts to showcase, and prepare links (Drive/docs/embeds).",
-      tools:"ChatGPT (optional), Google Drive",
-      prompt:`Create a one-page portfolio structure for an L&D professional.
+      number: 1,
+      title: "Let AI Help You Decide What Goes In",
+      purpose: "Before you open any tool, use AI to figure out what your portfolio should actually show. Most people skip this and then struggle to write anything. Don't skip it. Upload your CV if you have it — it saves time and gets you sharper questions straight away. Save the conversation — it's your raw material for everything that follows.",
+      tools: "Claude / ChatGPT / Gemini",
+      prompt: `OPTION A — IF YOU HAVE YOUR CV (recommended)
+Upload your CV as a PDF, then paste this:
 
-Ask me 5 questions first about:
-– what I do in L&D
-– who I want to work with / support
-– what I want to be known for (3 themes)
-– what artefacts I can share (docs, links, embeds)
-– how formal vs friendly my tone should be
+"I'm uploading my CV and building a portfolio page as part of an AI challenge. Read my CV, then ask me 5 questions to help figure out what to include and how to position myself — focus on anything my CV doesn't fully capture, like my working style, what I'm proudest of, or where I want to take my career next.
 
-Then output:
-1) a simple one-page site outline with these sections:
-   – Hero (name + one line)
-   – About (short)
-   – Work Samples (3–6 items)
-   – Contact
-2) suggested headings for each section
-3) a short checklist of what links I need to gather (Drive PDFs, videos, slides, websites)
+Once I've answered, give me:
+– What are the 5–6 strongest things I could showcase?
+– What's the one thing about my work that makes me different from other L&D people?
+– What should I NOT include — things that might confuse the story?
+– If my portfolio could only say one thing about me, what should it be?"
 
-Keep it clean, grounded, and not buzzword-heavy.`,
-      miniOutput:"One-page site outline + a shortlist of 3–6 artefacts to feature"
+---
+
+OPTION B — NO CV TO HAND
+Paste this and fill in the brackets:
+
+"I'm building a portfolio page as part of an AI challenge. Here's some background about me:
+
+My job title / role: [e.g. L&D Specialist, Learning Designer, Training Manager]
+How long I've been in L&D: [e.g. 3 years]
+The kinds of things I work on: [e.g. onboarding, compliance training, leadership programmes]
+Industries or organisations I've worked in: [e.g. retail, NHS, local government]
+Tools I use: [e.g. PowerPoint, Articulate, Canva, LMS admin]
+One thing I'm proud of that I've made or done: [describe it briefly]
+
+Ask me 5 questions that will help me decide what to include and how to position myself.
+
+Once I've answered, give me:
+– What are the 5–6 strongest things I could showcase?
+– What's the one thing about my work that makes me different from other L&D people?
+– What should I NOT include — things that might confuse the story?
+– If my portfolio could only say one thing about me, what should it be?"`,
+      miniOutput: "A rough list of 5–6 portfolio items and a clear sense of how you want to position yourself"
     },
+
     {
-      number:2,
-      title:"Generate the Site in Base44 AI",
-      purpose:"Use one prompt to generate your portfolio page, then replace placeholders with your content.",
-      tools:"Base44 AI (free tier)",
-      prompt:`BASE44 AI PROMPT:
+      number: 2,
+      title: "Write All Your Content with AI",
+      purpose: "Use your Step 1 conversation to generate everything in one go — your hero statement, about section, and all three portfolio cards. Write everything before you touch the site builder. The more specific you are, the better the output. Review everything once it's done and change any line that doesn't sound like you before moving on.",
+      tools: "Claude / ChatGPT / Gemini",
+      prompt: `Paste this into the same conversation from Step 1:
 
-Create a clean one-page portfolio website for a Learning & Development professional.
-Style: calm, modern, lots of white space, readable typography, professional but not corporate.
+"Using everything I've just told you, write all the content for my portfolio page ready to paste into a website builder. Include:
 
-Sections:
-1) Hero: Name, role/title, 1-line positioning statement, button links (LinkedIn + Email)
-2) About: 120–180 words, grounded tone, NZ English
-3) Work Samples: 6 cards (title, 1–2 lines, button link). Each card must support links to external artefacts (PDFs, websites, videos).
-4) Contact: email + LinkedIn + optional booking link.
+1. HERO SECTION
+My name, job title, and a one-line positioning statement.
+Tone: warm, human, not corporate. 2 lines maximum.
 
-Include subtle visual accents (simple shapes/lines), no heavy gradients, no gimmicks.
-Use a neutral light background and one calm accent colour.`,
-      miniOutput:"A generated one-page site draft in Base44 with your basic sections in place"
+2. ABOUT SECTION
+Exactly 3 short paragraphs:
+Paragraph 1 — My background: where I've worked and what I've focused on
+Paragraph 2 — My approach: how I think about learning, what I care about
+Paragraph 3 — Right now: what I'm exploring or excited about
+Tone: warm, direct, first person. No buzzwords. No 'passionate about' or 'results-driven'. 120–160 words total.
+
+3. THREE PORTFOLIO CARDS
+
+Card 1 — CV Card
+A simple card linking to my CV. Write a title (4–7 words), a 1-sentence description, and a button label ('View my CV').
+
+Card 2 — Achievement Story
+I want to showcase this piece of work: [describe it — what it was, who it was for, what problem it solved, what you actually did].
+Write it as a mini case study with:
+- A title (4–7 words)
+- Challenge: 2–3 sentences on the context and problem
+- Approach: 2–3 sentences on what I did
+- Outcome: 2–3 sentences on what was built or changed
+Button label: 'Read the story'
+
+Card 3 — Live Project or Tool
+[Describe it: what it is, where it lives, what it shows about your skills]
+Write a title (4–7 words), a 1–2 sentence description, and a button label.
+
+4. CONTACT SECTION
+One sentence inviting people to get in touch, with placeholders for email and LinkedIn.
+
+Tone throughout: warm, direct, confident. No jargon."`,
+      miniOutput: "Hero statement, About section, and three portfolio cards — all written and ready to paste"
     },
+
     {
-      number:3,
-      title:"Add Artefacts + Publish",
-      purpose:"Link your real artefacts, tidy layout, test mobile, and publish the final URL.",
-      tools:"Base44 AI, Google Drive",
-      prompt:`Create a quick ‘Work Samples’ set for my one-page portfolio.
+      number: 3,
+      title: "Build Your Site with an AI Site Builder",
+      purpose: "You have your content — now use AI to turn it into a site builder prompt, then paste it into your chosen tool and let it handle the design. Pick the builder that suits you best from the options below.",
+      tools: "Readdy.ai / Framer / Trickle.so / V0.app",
+      prompt: `STEP 1 — GENERATE YOUR SITE BUILDER PROMPT
+Paste this into your AI tool (continuing the same conversation from Steps 1 and 2):
 
-Ask me to paste up to 6 links (Drive PDFs, videos, slides, websites).
-For each link, generate:
-– a clear sample title (6–10 words)
-– a 1–2 sentence description (what it is + what it shows)
-– one outcome/impact line if appropriate
+"Now write the exact prompt I'll paste into my AI site builder to generate the page. Be specific about the layout, sections, and content. Use this structure:
 
-Keep it practical. Avoid fluff.
-Then give a final QA checklist for my portfolio page:
-– link test
-– mobile spacing
-– readability
-– consistent headings
-– contact visibility.`,
-      miniOutput:"Live published portfolio URL + Work Samples fully linked and tested"
+'Build a clean, modern one-page portfolio website for an L&D professional. Warm but professional colour palette. Generous white space. Mobile responsive. No stock photo hero image.
+
+HERO
+[paste your hero content]
+
+ABOUT
+[paste your about section]
+
+WORK SAMPLES
+Three cards displayed side by side.
+
+Card 1 — CV
+[paste title, description, and button label]
+Button links to: [paste your Google Drive CV link — upload your CV to Google Drive, right-click, Share, Anyone with the link, Copy]
+
+Card 2 — Achievement Story
+[paste title, Challenge, Approach, Outcome, and button label]
+Button links to: [paste a Google Doc link with the full case study, or ask the builder to display it as a second page]
+
+Card 3 — Live Project or Tool
+[paste title, description, and button label]
+Button links to: [paste the live URL]
+
+CONTACT
+[paste your contact section]'"
+
+---
+
+STEP 2 — CHOOSE YOUR SITE BUILDER AND PASTE YOUR PROMPT
+
+• Readdy.ai — fastest. Paste your prompt and it builds the full page instantly. Best for getting live quickly.
+• Framer — most design-forward. Great if you want a polished, creative look.
+• Trickle.so — most conversational. Describe what you want in plain language and refine as you go.
+• V0.app — most powerful. Generates clean code you can deploy to Vercel. Best if you're comfortable with a slightly more technical tool.
+
+All are free to start. Pick one and paste your prompt into it.
+
+---
+
+STUCK? Ask your AI tool:
+"I'm building a portfolio page in [tool name] and I'm stuck on: [describe exactly what you're trying to do]. Tell me step by step what to click. Assume I'm a complete beginner."
+
+---
+
+STEP 3 — AI REVIEW BEFORE PUBLISHING
+Paste this before you hit publish:
+
+"Here's my portfolio content:
+Hero: [paste]
+About: [paste]
+Work samples: [paste titles and descriptions]
+
+Give me honest feedback:
+1. Does the overall story feel clear and consistent?
+2. Is anything vague, jargony, or confusing?
+3. What's the strongest thing on this page?
+4. What's the one thing I should fix before publishing?"
+
+Make the fixes. Then publish and share your live URL in the group.`,
+      miniOutput: "A live URL — open it, click every link, check it on your phone, share it in the group"
+    },
+
+    {
+      number: 4,
+      title: "Keep It Growing After Every Challenge",
+      purpose: "Every future AI challenge you complete can become a new portfolio card in about 2 minutes. Make something, get the shareable link, run the prompt below, add the card, republish. Done.",
+      tools: "Your site builder + Claude / ChatGPT / Gemini",
+      prompt: `Paste this into your AI tool:
+
+"I've just completed an AI challenge and created this:
+[Describe what you made: the tool you used, what it does, who it's for, what problem it solves or skill it demonstrates]
+
+Write a portfolio card with:
+- A title (4–7 words)
+- A 1–2 sentence description explaining what it is and what it shows about my skills
+- A button label (3–4 words)
+
+Tone: specific and confident. Show that I built this intentionally, not by accident."
+
+---
+
+HOW TO GET A SHAREABLE LINK FROM COMMON TOOLS
+• Google Doc / Slides / PDF — right-click in Drive, Share, Anyone with link, Copy
+• Canva — Share, Anyone with link, Copy link
+• Genially — Publish, Share, copy the public URL
+• Gamma — Publish, copy public link
+• Loom / YouTube — copy the share URL directly
+• Any AI-generated output — save as PDF, upload to Drive, copy shareable link`,
+      miniOutput: "New card added and portfolio republished — 2 minutes once the habit is in place"
     }
   ],
 
   closingNote:
-    "This is a minimum-viable portfolio. One clean page beats a perfect site that never gets published. You can add more examples as you complete future challenges."
+    "Don't wait for it to be perfect. A live, real portfolio beats a perfect one that never gets published. Publish something real this month — then let it grow with every challenge that follows. AI drafts, you decide: edit every output until it genuinely sounds like you."
 },
   {
     id: "april",
