@@ -611,55 +611,89 @@ Tone: specific and confident. Show that I built this intentionally, not by accid
   closingNote:
     "Don't wait for it to be perfect. A live, real portfolio beats a perfect one that never gets published. Publish something real this month — then let it grow with every challenge that follows. AI drafts, you decide: edit every output until it genuinely sounds like you."
 },
-  {
-    id: "april",
-    month: "April",
-    title: "Create Your AI Theme Song",
-    theme: "Have fun and experiment with AI music generation to create a personal theme song or intro sting",
-            isLive: false, // 👈 visible
-intro: [
-      "Yes, really. This month you're using AI to create a fun personal theme song, training intro sting, or audio signature.",
-      "Using free tools like Suno AI and Udio, you'll write lyrics or describe a vibe, and let AI compose the music.",
-      "You'll walk away with an MP3 you can actually use in videos, presentations, or just for fun.",
-    ],
-    tools: ["Suno AI (free)", "Udio (free)", "ElevenLabs VoiceLab (free tier)"],
-    project: "Create a personal theme song, training intro sting, or short audio signature using AI music generation",
-    timeCommitment: "~40 minutes per week",
-    outputs: [
-      "One MP3 audio file",
-      "Lyrics (if text-based)",
-      "Cover art / visual",
-      "Optional: multiple versions (fun, professional, short sting)",
-    ],
-    weeks: [
-      {
-        number: 1,
-        title: "Concept & Lyrics",
-        purpose: "Decide the vibe and write or generate lyrics or a description.",
-        tools: "ChatGPT, Suno AI",
-        prompt: `[Content to be added]`,
-        miniOutput: "Lyrics or music brief ready to send to AI generator",
-      },
-      {
-        number: 2,
-        title: "Music Generation",
-        purpose: "Generate multiple versions and choose the one that works best.",
-        tools: "Suno AI, Udio",
-        prompt: `[Content to be added]`,
-        miniOutput: "3–5 generated music versions to choose from",
-      },
-      {
-        number: 3,
-        title: "Polish & Export",
-        purpose: "Download your final version and create cover art.",
-        tools: "Canva Free (for cover art)",
-        prompt: `[Content to be added]`,
-        miniOutput: "Final MP3 with cover art ready to use",
-      },
-    ],
-    closingNote:
-      "This challenge is deliberately playful. AI music is still experimental. The point is to experiment, have fun, and build confidence with a new tool.",
-  },
+ {
+  id:"april",
+  month:"April",
+  title:"Create Your AI Theme Song",
+  theme:"A quick, fun one-off challenge to create a personal theme song or intro sting using AI",
+  isLive:true,
+
+  intro:[
+    "This month is a one-off challenge — quick, simple, and a bit of fun.",
+    "Use AI to generate your own theme song, intro sting, or audio signature.",
+    "No pressure, no polish required. Even a 20-second track is enough."
+  ],
+
+  tools:["Suno AI (free)","Udio (free)","Optional: Canva (cover image)"],
+
+  project:
+    "Create a short AI-generated theme song or intro sting that reflects your work, personality, or sense of humour.",
+
+  timeCommitment:"15–30 minutes total",
+
+  outputs:[
+    "One short audio track (link or MP3)",
+    "Optional: title or concept",
+    "Optional: simple cover image"
+  ],
+
+  weeks:[
+    {
+      number:1,
+      title:"Pick a Vibe",
+      purpose:"Decide what your theme song represents — serious, calm, quirky, dramatic, or completely random.",
+      tools:"ChatGPT (optional)",
+      prompt:`Help me create a short theme song.
+
+Ask me 3 quick questions about:
+– my work or role
+– my personality or vibe
+– how I want the song to feel
+
+Then generate:
+– a short title
+– simple lyrics OR a music description
+– suggested style for Suno/Udio
+
+Keep it natural, not overproduced, and a bit creative.`,
+      miniOutput:"A clear theme, tone, and music direction"
+    },
+    {
+      number:2,
+      title:"Generate Your Track",
+      purpose:"Use Suno or Udio to create one or two versions and choose your favourite.",
+      tools:"Suno AI or Udio",
+      prompt:`Using the title, lyrics, or music description you created, generate a short theme song or intro sting.
+
+Keep it:
+– short
+– simple
+– easy to listen to
+– aligned to the vibe you chose
+
+Try one or two versions only, then pick your favourite.`,
+      miniOutput:"One short AI-generated track"
+    },
+    {
+      number:3,
+      title:"Share It (Optional)",
+      purpose:"Give your track a title, optionally create a simple cover image, and share if you want to.",
+      tools:"Optional: Canva",
+      prompt:`Help me finish my AI theme song challenge.
+
+Based on my track, suggest:
+– a final title
+– a one-line description
+– an optional simple cover image idea I could make in Canva
+
+Keep it light, clean, and not overdesigned.`,
+      miniOutput:"Final track link or MP3, plus optional title or cover image"
+    }
+  ],
+
+  closingNote:
+    "This is about trying something new, not getting it perfect. If it makes you laugh or slightly uncomfortable, you're probably doing it right. This challenge is about experimenting with AI tools for fun. It’s not intended to replace musicians, composers, or the craft of making music. Creating meaningful music takes skill, experience, and creativity — this is simply a playful way to explore what these tools can do.",
+},
   {
     id: "may",
     month: "May",
