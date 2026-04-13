@@ -1,4 +1,10 @@
 // app/portfolio/projects-data.ts
+export type ProjectDocument={
+  title:string
+  file:string
+  type?:"pdf"|"docx"
+}
+
 export type Project={
   title:string
   description:string
@@ -16,6 +22,7 @@ export type Project={
   results:string
   liveUrl?:string
   githubUrl?:string
+  documents?:ProjectDocument[]
 }
 
 export const projects:Project[]=[
@@ -180,5 +187,59 @@ export const projects:Project[]=[
     solution:"Strong visual hierarchy and simple structure.",
     results:"Useful prototype for stakeholder discussions.",
     liveUrl:"https://anatur-homepage.vercel.app"
+  },
+  {
+    title:"AI Learning PDFs",
+    description:"Downloadable AI, eLearning, and EdTech resource documents.",
+    longDescription:
+      "A portfolio collection of downloadable learning design, AI, Moodle, gamification, and eLearning planning documents that show practical content development work.",
+    category:"Courses & Learning Design",
+    slug:"ai-learning-pdfs",
+    year:"2026",
+    tags:["AI","eLearning","EdTech","Learning Design"],
+    heroImage:"/portfolio/portfolio.png",
+    images:[],
+    features:[
+      "Downloadable learning resources",
+      "AI and education topics",
+      "eLearning planning and best practice samples",
+      "Portfolio evidence of content development work"
+    ],
+    technologies:["Learning Design","AI","Moodle","EdTech","Content Development"],
+    challenges:"Present downloadable resource samples without cluttering the portfolio.",
+    solution:"Grouped the documents into one clean portfolio item with direct file access.",
+    results:"A simple project page that lets visitors browse and open supporting documents.",
+    documents:[
+      {
+        title:"AI Adaptive Learning 2026",
+        file:"/portfolio/PDF/ai_adaptive_learning_2026.docx",
+        type:"docx"
+      },
+      {
+        title:"AI Gamification Learning 2026",
+        file:"/portfolio/PDF/ai_gamification_learning_2026.docx",
+        type:"docx"
+      },
+      {
+        title:"AI Moodle Teachers 2026",
+        file:"/portfolio/PDF/ai_moodle_teachers_2026.docx",
+        type:"docx"
+      },
+      {
+        title:"eLearning Best Practices 2026",
+        file:"/portfolio/PDF/elearning_best_practices_2026.docx",
+        type:"docx"
+      },
+      {
+        title:"Learning Systems EdTech 2026",
+        file:"/portfolio/PDF/learning_systems_edtech_2026.docx",
+        type:"docx"
+      },
+      {
+        title:"PM eLearning 2026",
+        file:"/portfolio/PDF/pm_elearning_2026.docx",
+        type:"docx"
+      }
+    ]
   }
 ]

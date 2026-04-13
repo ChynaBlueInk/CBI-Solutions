@@ -2,7 +2,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, Calendar, Tag, ExternalLink, Github } from "lucide-react"
+import { ArrowLeft, Calendar, Tag, ExternalLink, Github, FileText, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { projects } from "../projects-data"
 
@@ -97,6 +97,43 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Resources */}
+      {project.documents && project.documents.length > 0 && (
+        <section className="py-16 px-4 bg-[hsl(var(--muted))/35]">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-6">Resources</h2>
+            <div className="grid gap-4">
+              {project.documents.map((doc) => (
+                <a
+                  key={doc.file}
+                  href={doc.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-2xl border border-[hsl(var(--border))] bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--muted))]">
+                      <FileText className="w-5 h-5 text-[hsl(var(--primary))]" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-[hsl(var(--foreground))]">{doc.title}</p>
+                      <p className="text-sm text-[hsl(var(--muted-foreground))]">
+                        {doc.type ? doc.type.toUpperCase() : "FILE"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--primary))]">
+                    Open file
+                    <Download className="w-4 h-4" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CSR blocks */}
       <section className="py-16 px-4 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
         <div className="max-w-5xl mx-auto space-y-8">
@@ -122,17 +159,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-6">Gallery</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {project.images.map((img, i) => (
-             <Image
-  key={i}
-  src={img}
-  alt={`${project.title} screenshot ${i + 1}`}
-  width={400}
-  height={250}
-  placeholder="blur"
-  blurDataURL={img} // quick fallback
-  className="rounded-xl shadow-md object-cover w-full h-48"
-/>
-
+                <Image
+                  key={i}
+                  src={img}
+                  alt={`${project.title} screenshot ${i + 1}`}
+                  width={400}
+                  height={250}
+                  placeholder="blur"
+                  blurDataURL={img}
+                  className="rounded-xl shadow-md object-cover w-full h-48"
+                />
               ))}
             </div>
           </div>
