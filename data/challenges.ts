@@ -694,13 +694,17 @@ Keep it light, clean, and not overdesigned.`,
   closingNote:
     "This is about trying something new, not getting it perfect. If it makes you laugh or slightly uncomfortable, you're probably doing it right. This challenge is about experimenting with AI tools for fun. It’s not intended to replace musicians, composers, or the craft of making music. Creating meaningful music takes skill, experience, and creativity — this is simply a playful way to explore what these tools can do.",
 },
+ 
+  // ─────────────────────────────────────────────
+  // MAY — Microlearning Video
+  // ─────────────────────────────────────────────
   {
     id: "may",
     month: "May",
     title: "Microlearning Video",
     theme: "Create a short, snappy learning video that explains an L&D or AI concept in under 60 seconds",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're making a short, shareable microlearning video using AI-generated visuals, voiceover, and subtitles.",
       "Using Google Veo, Runway, and Descript, you'll take a script and turn it into a professional-looking explainer video.",
       "Perfect for training materials, social media, or your portfolio.",
@@ -720,38 +724,133 @@ intro: [
       {
         number: 1,
         title: "Script & Storyboard",
-        purpose: "Write a short script and plan what visuals you'll need.",
+        purpose:
+          "Write a clear, focused script before you touch any video tool. The script is 80% of the work. If your script is muddy, your video will be muddy too. This step gives you a tight 30–60 second script and a simple shot-by-shot visual plan.",
         tools: "ChatGPT",
-        prompt: `[Content to be added]`,
-        miniOutput: "60–90 second script with 5–6 visual scene descriptions",
+        prompt: `Act as an instructional designer and video script writer.
+
+I want to create a 30–60 second microlearning video about a topic in L&D or AI.
+
+First, ask me:
+– What topic or concept do I want to explain?
+– Who is my audience (their role, what they already know)?
+– What should they be able to DO or UNDERSTAND after watching?
+– Where will this video be shared or used?
+
+Then write:
+
+1. A final script formatted like this:
+   [VISUAL: brief description of what's on screen]
+   VOICEOVER: "The words I'll say out loud"
+   — for each of 5–7 scenes, max 60 seconds of spoken text at natural pace
+
+2. A storyboard summary — one sentence per scene describing what the viewer sees
+
+3. Flagging for me:
+   – anything that's too complex to show in 60 seconds (so I can simplify)
+   – any jargon that needs replacing with plain language
+   – the single most important sentence in the whole script
+
+Rules:
+– No more than 120 spoken words total
+– One idea per scene
+– Conversational tone, not academic
+– No introduction longer than one sentence ("Hi, I'm X and today we'll...": skip it)`,
+        miniOutput: "60–90 word script with 5–6 visual scene descriptions",
       },
       {
         number: 2,
         title: "Visuals & Voiceover",
-        purpose: "Generate AI visuals and record or generate voiceover.",
-        tools: "Google Veo, Descript, ElevenLabs",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Generate the visual content and record or create your voiceover separately, so you have clean assets to combine. You don't need a perfect voice or expensive equipment — AI voiceover tools sound professional and take minutes.",
+        tools: "Google Veo or Runway (visuals), Descript or ElevenLabs (voiceover)",
+        prompt: `I have my video script and storyboard from last week. Now I need to create:
+1. AI-generated visuals for each scene
+2. A voiceover audio track
+
+PART 1 — VISUAL PROMPTS (use in Google Veo or Runway)
+
+For each scene in my script, help me write an image or video generation prompt.
+
+Follow this format for each:
+Scene [number]: [VISUAL description from my script]
+→ Prompt: [clean, specific prompt for Veo or Runway]
+
+Rules for every visual prompt:
+– professional, clean, modern style
+– no text overlaid (I'll add that in editing)
+– avoid stock-photo clichés (no handshakes, no pointing at whiteboards)
+– consistent visual style throughout (specify a style word like: "flat illustration", "soft 3D render", "clean minimal animation", or "documentary-style footage")
+– max 2 sentences per prompt
+
+PART 2 — VOICEOVER
+
+Option A: I'll record myself.
+Give me 3 tips for recording clear voiceover on a phone or laptop.
+
+Option B: I'll use AI voiceover (ElevenLabs free tier or Descript's AI voice).
+Tell me:
+– how to paste my script in
+– which voice type suits a professional L&D video
+– how to export as MP3
+
+Tell me which part to do first and why.`,
         miniOutput: "Visuals and voiceover audio ready to combine",
       },
       {
         number: 3,
         title: "Edit & Export",
-        purpose: "Combine visuals, audio, and subtitles into a finished video.",
-        tools: "Descript, Runway",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Combine your visuals and voiceover into one finished video, add captions, and export a clean MP4. Descript makes this straightforward even with no editing experience.",
+        tools: "Descript (primary), Runway (optional polish)",
+        prompt: `I have my visual clips and voiceover audio. Now I need to assemble, caption, and export my microlearning video.
+
+Help me work through this in Descript:
+
+STEP 1 — ASSEMBLY
+Tell me exactly how to:
+– start a new project in Descript
+– import my audio voiceover
+– import my video or image clips
+– place each clip to match each section of the voiceover
+
+STEP 2 — CAPTIONS
+– How do I auto-generate captions from my voiceover in Descript?
+– How do I clean up any errors in the transcript?
+– What caption style looks clean and professional (font size, position, colour)?
+
+STEP 3 — EXPORT
+– What export settings should I use for a 30–60 second video I'll share on LinkedIn or embed in a course?
+– What file format and resolution?
+
+STEP 4 — REVIEW CHECKLIST
+Before I export, help me check:
+– Does the voiceover match the visuals in timing?
+– Are captions readable on mobile?
+– Is there a hard cut or rough edit anywhere?
+– Does it open and close strongly?
+
+Give me a yes/no checklist I can run through before exporting.
+
+My video topic is: [paste your topic]
+My script is: [paste your script]`,
         miniOutput: "Finished MP4 video with subtitles ready to share",
       },
     ],
     closingNote:
       "Microlearning is all about saying one thing clearly in a short time. Resist the urge to cover everything. Pick one idea and do it well.",
   },
+
+  // ─────────────────────────────────────────────
+  // JUNE — Animated Clip
+  // ─────────────────────────────────────────────
   {
     id: "june",
     month: "June",
     title: "Animated Clip",
     theme: "Create a short, eye-catching animation that explains a scenario, process, or concept",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're using AI video generation to create an animated clip or scenario animation.",
       "Using tools like Vidu, Pika Labs, or Canva Animation, you'll turn a storyboard and prompts into a moving visual.",
       "These clips work great for training intros, scenario practice, or portfolio pieces.",
@@ -764,40 +863,128 @@ intro: [
       {
         number: 1,
         title: "Concept & Storyboard",
-        purpose: "Choose your scenario and sketch out 4–6 visual frames.",
-        tools: "ChatGPT, Pen & Paper",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Plan your animation before generating anything. Animation tools work best when you give them specific, visual instructions — so a clear storyboard saves you time and gets much better results.",
+        tools: "ChatGPT",
+        prompt: `Act as a learning experience designer and animation director.
+
+I want to create a short 6–10 second animated clip for learning purposes.
+
+First, ask me:
+– What scenario, process, or concept am I animating?
+– Is this a workplace scenario (characters), a process (steps/flow), or an abstract concept (shapes/motion)?
+– Where will it be used — training intro, LinkedIn post, portfolio piece?
+– What tone: professional, warm, slightly playful, or neutral?
+
+Then create:
+
+1. A CONCEPT SUMMARY — 2 sentences describing exactly what the viewer will see and feel
+
+2. A STORYBOARD — 4–6 frames described like this:
+   Frame [number] — [time: e.g. 0–2 sec]
+   What's visible: [describe shapes, characters, text, movement]
+   What's changing: [describe the animation or transition]
+   Text overlay (if any): "[exact words]"
+
+3. ANIMATION STYLE — recommend one consistent style for all frames:
+   e.g. "flat 2D vector characters, clean lines, muted professional palette"
+   or "abstract shapes and smooth morphing transitions, no characters"
+   or "minimal line animation on white background"
+   Explain why this style suits my use case.
+
+4. COLOUR & MOOD — suggest 2–3 HEX colours and explain what feeling they create
+
+Keep the storyboard achievable in a free AI tool. No complex physics, no crowds, no photorealism.`,
         miniOutput: "Storyboard with 4–6 frames and animation flow described",
       },
       {
         number: 2,
         title: "Generate Animations",
-        purpose: "Create AI-generated animation clips for each frame.",
-        tools: "Vidu, Pika Labs",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Use your storyboard to prompt Vidu or Pika Labs to generate the individual clips. You'll likely need 2–3 attempts per frame — this is normal. Save every clip that works.",
+        tools: "Vidu or Pika Labs",
+        prompt: `I have my storyboard from last week. Help me turn each frame into an AI animation prompt.
+
+My storyboard:
+[paste your storyboard from Week 1]
+
+My animation style: [paste style from Week 1]
+
+For each frame, write a clean prompt I can paste into Vidu or Pika Labs.
+
+Follow this format:
+Frame [number] prompt:
+"[Describe what the animation shows. Start with the visual scene, then describe the motion, then the mood. End with style and technical notes.]"
+
+Rules for every prompt:
+– Describe motion explicitly: "slides in from the left", "fades to reveal", "a figure walks towards camera", "text appears one word at a time"
+– Specify style at the end of every prompt: [paste your style line]
+– Keep each clip to 2–4 seconds (they combine better)
+– No text within the AI-generated clip (I'll overlay text in editing)
+– If a frame is complex, split it into two simpler ones
+
+After the prompts, give me:
+– A warning about anything that might not render well in free-tier tools
+– A tip for what to do if a clip looks wrong (prompt adjustments, not just "try again")`,
         miniOutput: "3–4 animation clips ready to combine",
       },
       {
         number: 3,
         title: "Combine & Polish",
-        purpose: "String animations together, add transitions and sound.",
-        tools: "Canva Animation, Descript",
-        prompt: `[Content to be added]`,
+        purpose:
+          "String your clips together, add any text overlays or sound, and export a finished animation. Canva's video editor is the simplest way to do this — no experience needed.",
+        tools: "Canva (free), optional: Descript for sound",
+        prompt: `I have my individual animation clips and want to combine them into one finished 6–10 second animated clip.
+
+I'm using Canva Free to assemble everything.
+
+Help me work through this:
+
+STEP 1 — SETUP
+– What video dimensions should I use for [LinkedIn / training module / portfolio]?
+– How do I start a video project in Canva and import my clips?
+
+STEP 2 — ASSEMBLY
+– How do I place clips in sequence on the Canva timeline?
+– How do I trim the start or end of a clip if it's slightly too long?
+– What's the simplest transition between clips that looks professional (not cheesy)?
+
+STEP 3 — TEXT OVERLAYS
+Based on my storyboard, these are the text overlays I planned:
+[paste any text overlay notes from your storyboard]
+
+For each one:
+– where should the text appear on screen (top, bottom, centre)?
+– what font style suits my animation style: [paste your style]?
+– how do I animate the text in Canva so it doesn't just appear flat?
+
+STEP 4 — SOUND (optional)
+– Where can I find a free, royalty-free background sound or music sting that suits a [professional / warm / energetic] tone?
+– How do I add it in Canva without it overpowering the visuals?
+
+STEP 5 — EXPORT
+– What export settings for a short animation I'll share on LinkedIn or embed in a slide deck?
+
+Give me a final checklist to check before exporting.`,
         miniOutput: "Finished 6–10 second animation with transitions",
       },
     ],
     closingNote:
       "Animation catches attention. Even a simple clip can make a learning moment more memorable. Keep it short and punchy.",
   },
+
+  // ─────────────────────────────────────────────
+  // JULY — AI Notebook / Workbook
+  // ─────────────────────────────────────────────
   {
     id: "july",
     month: "July",
     title: "AI Notebook / Workbook",
     theme:
       "Create a practical workbook or notebook that guides learners through a topic with prompts, templates, and checklists",
-            isLive: false, // 👈 visible
-intro: [
-      "This month you're building a workbook—either as a PDF or Notion template—that people can actually use in their learning or work.",
+    isLive: true,
+    intro: [
+      "This month you're building a workbook — either as a PDF or Notion template — that people can actually use in their learning or work.",
       "It'll include reflection prompts, templates, checklists, how-to cards, and resources they can fill in, copy, or adapt.",
       "A solid workbook is an evergreen portfolio piece that demonstrates your instructional design thinking.",
     ],
@@ -815,38 +1002,132 @@ intro: [
       {
         number: 1,
         title: "Topic & Outline",
-        purpose: "Choose your topic and design the workbook structure.",
+        purpose:
+          "Choose a topic you genuinely know and care about, then design a workbook structure that guides learners through it — not just information, but action and reflection. A good workbook structure is worth more than polished content written too early.",
         tools: "ChatGPT",
-        prompt: `[Content to be added]`,
+        prompt: `Act as an instructional designer specialising in self-directed learning resources.
+
+I want to create a practical workbook that learners can fill in, work through, or use as a reference during learning or on the job.
+
+First, ask me:
+– What topic or skill is this workbook for?
+– Who will use it — their role, experience level, and context?
+– Will they use it during a workshop, independently, or as a follow-up resource?
+– Should it feel structured (step-by-step) or more exploratory (open-ended prompts)?
+– Do I have a preferred format — PDF, Notion, or printed?
+
+Then design a workbook outline:
+
+1. TITLE — working title for the workbook (specific, not generic)
+
+2. PURPOSE STATEMENT — 2 sentences: what problem this solves and what learners will walk away with
+
+3. SECTION OUTLINE — 4–6 sections, each with:
+   – Section heading
+   – One-sentence purpose (why this section exists)
+   – 2–3 content types to include (e.g. reflection prompt, template, checklist, how-to steps, example, space to write)
+   – Estimated time to complete
+
+4. LEARNING FLOW — a brief note on how the sections connect and build on each other
+
+5. ONE THING TO AVOID — common workbook mistake that makes this topic harder to use
+
+Keep it practical. This should feel like something a real person will pick up and use, not a corporate training handout.`,
         miniOutput: "Workbook outline with 4–6 sections and learning flow",
       },
       {
         number: 2,
         title: "Content & Activities",
-        purpose: "Write activities, prompts, and templates for each section.",
-        tools: "ChatGPT, Canva Free",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Write the actual content for each section — but resist the urge to write too much. Workbooks work because they give people space to think. Your job is to prompt reflection and action, not fill every page with information.",
+        tools: "ChatGPT",
+        prompt: `I have my workbook outline. Now I want to write the content for each section.
+
+My workbook topic: [paste topic]
+My audience: [paste audience]
+My outline: [paste outline from Week 1]
+
+For each section, write the following:
+
+1. A SHORT INTRO (2–4 sentences) — what this section is about and why it matters
+
+2. ONE CORE CONCEPT or KEY IDEA — explained simply, in 3–5 bullet points or a short paragraph
+
+3. A REAL EXAMPLE — a brief workplace scenario or case that makes the concept concrete (not hypothetical, not academic)
+
+4. ONE REFLECTION PROMPT — an open question that makes the learner apply it to their own situation
+   Format: "Think about [context]. What would you [do / say / notice / change]?"
+
+5. ONE TEMPLATE, TOOL, OR CHECKLIST — something practical they can use or fill in
+   This could be: a 3-column table, a yes/no checklist, a planning grid, or a fill-in-the-blank worksheet
+
+Rules:
+– Each section should take no more than 5–7 minutes to read and complete
+– Use plain language, no buzzwords
+– Leave visual space — note "[space for writing]" where the learner should fill something in
+– If a section is getting long, split it into two
+– Do not summarise everything at the end — let the activities do the work`,
         miniOutput: "Draft content for all sections with reflection activities",
       },
       {
         number: 3,
         title: "Design & Delivery",
-        purpose: "Format the workbook professionally and export as PDF or Notion.",
-        tools: "Canva Free or Notion",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Format your workbook so it looks professional and is easy to use. You don't need to be a designer — Canva's templates do the heavy lifting. Focus on readability and usability over visual complexity.",
+        tools: "Canva Free (PDF) or Notion (digital template)",
+        prompt: `I have all my workbook content and want to format it into a finished, shareable workbook.
+
+I'm using [Canva Free / Notion — delete as appropriate].
+
+OPTION A — CANVA (for a PDF workbook)
+
+Help me format this in Canva:
+
+1. What Canva template type should I start with? (Give me the exact search term to use in Canva's template search)
+
+2. LAYOUT GUIDANCE — for each section type, tell me:
+   – Intro text: font size, weight, spacing
+   – Key concept or bullet list: how to format so it's scannable
+   – Reflection prompt: how to make it visually distinct (box, background colour, icon)
+   – Templates/checklists: how to create simple tables or grid layouts in Canva
+   – "[Space for writing]" sections: how to create a clean, lined or boxed area
+
+3. COVER PAGE — what to include (title, subtitle, my name/brand, a simple visual element)
+
+4. EXPORT — settings for a PDF that looks sharp on screen and when printed
+
+OPTION B — NOTION (for a digital interactive workbook)
+
+Help me set up this in Notion:
+
+1. How do I create a shareable Notion page others can duplicate as a template?
+2. How do I structure each section with toggles, callout blocks, and tables?
+3. How do I add reflection prompts so they stand out visually?
+4. How do I add a checklist that people can tick off as they go?
+5. How do I make the page shareable — a link anyone can open?
+
+EITHER FORMAT — give me a final review checklist:
+– Is the workbook easy to navigate?
+– Is there enough white space?
+– Can someone complete it in 20–30 minutes?
+– Would a real person pick this up and use it?`,
         miniOutput: "Finished workbook ready to share or download",
       },
     ],
     closingNote:
       "A good workbook guides learning without overwhelming the reader. Give people space to think and write their own answers.",
   },
+
+  // ─────────────────────────────────────────────
+  // AUGUST — Branching Scenario / Case Study
+  // ─────────────────────────────────────────────
   {
     id: "august",
     month: "August",
     title: "Branching Scenario / Case Study",
     theme: "Create an interactive scenario where learners make decisions and see the consequences of their choices",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're building a branching scenario or interactive case study that simulates real decisions learners face in their role.",
       "Using tools like Brancher.ai, Twine, or ChatGPT, you'll create multiple pathways, dialogue, and feedback based on learner choices.",
       "Scenarios are powerful learning tools and strong portfolio pieces.",
@@ -866,38 +1147,136 @@ intro: [
       {
         number: 1,
         title: "Scenario & Structure",
-        purpose: "Design the scenario situation and plan the decision branches.",
-        tools: "ChatGPT, Pen & Paper",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Design a situation that feels real and puts learners in the middle of a genuine decision — not a knowledge quiz dressed up as a story. Good branching scenarios are grounded in real workplace tension, not obvious right-and-wrong choices.",
+        tools: "ChatGPT",
+        prompt: `Act as an instructional designer specialising in scenario-based learning.
+
+I want to create a branching scenario where learners face realistic workplace decisions and experience different outcomes based on their choices.
+
+First, ask me:
+– What workplace situation or skill am I building this around?
+– Who is the learner (role, experience level)?
+– What bad habits or wrong assumptions does this scenario need to challenge?
+– How long should the scenario take — 5 minutes or 15 minutes?
+– Will this be used in a tool like Brancher.ai, Twine, or as a simple PDF/slide flow?
+
+Then design:
+
+1. THE OPENING SITUATION — 3–4 sentences that drop the learner into a realistic moment:
+   – Name the character (learner plays as them or observes them)
+   – Describe the specific setting (not "a manager" — "a team leader on their third month in the role")
+   – Create genuine tension — something where the right move isn't obvious
+   – End with a clear decision point
+
+2. THE BRANCH MAP — a visual outline like this:
+   Opening situation → Decision Point 1
+   Choice A: [label] → [brief consequence + next decision or end]
+   Choice B: [label] → [brief consequence + next decision or end]
+   Choice C: [label] → [brief consequence + next decision or end]
+   [Continue for 2–3 layers minimum, 4–6 branches total]
+
+3. WHAT MAKES EACH BRANCH REALISTIC — a note on why each choice is plausible (not "only an idiot would choose this")
+
+4. THE LEARNING MOMENT — where in the scenario does the key insight land, and for which branch?
+
+Rule: no choice should be obviously stupid. Learners should hesitate, not cruise.`,
         miniOutput: "Scenario premise with 4–6 decision branches mapped out",
       },
       {
         number: 2,
         title: "Dialogue & Feedback",
-        purpose: "Write realistic dialogue and consequence feedback for each path.",
+        purpose:
+          "Write the actual words — what characters say, what happens after each choice, and the feedback that explains the consequence. Good scenario dialogue sounds human. Good feedback explains the 'why', not just the 'wrong'.",
         tools: "ChatGPT",
-        prompt: `[Content to be added]`,
+        prompt: `I have my branching scenario structure. Now I need to write the dialogue and consequence feedback for each branch.
+
+My scenario overview: [paste your opening situation and branch map from Week 1]
+
+For EACH branch in my scenario, write:
+
+1. THE CHOICE TEXT — how the option appears to the learner
+   Format: "You decide to..." or "[Character name] chooses to..."
+   Keep it to one sentence. Make it sound like a real decision, not a textbook option.
+
+2. WHAT HAPPENS NEXT — 3–4 sentences of realistic consequence
+   – Describe what immediately happens (dialogue, reaction, situation change)
+   – Include one specific sensory or emotional detail that makes it feel real
+   – Don't resolve things too quickly — let some tension sit
+
+3. CONSEQUENCE FEEDBACK — what the learner sees after the scene plays out
+   Keep this to 3–4 sentences:
+   – Name what happened and why it matters
+   – Avoid "Great choice!" or "Wrong answer!"
+   – Explain the real-world logic: "In most workplaces, this kind of response..."
+   – If it's a poor choice, acknowledge what was understandable about it before explaining the impact
+
+4. WHERE TO NEXT — does this branch:
+   – Lead to a new decision point? (describe it briefly)
+   – End the scenario? (write a 2-sentence closing)
+   – Loop back to try again? (note which point)
+
+TONE RULES:
+– Dialogue should sound like real people, not training actors
+– Avoid "This is an example of poor communication." — show the impact instead
+– Never shame a learner for a wrong choice — help them understand`,
         miniOutput: "Complete dialogue and feedback for all branches",
       },
       {
         number: 3,
         title: "Build & Test",
-        purpose: "Assemble the scenario using Brancher or Twine and test all paths.",
-        tools: "Brancher.ai or Twine",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Assemble your scenario in Brancher.ai or Twine and walk through every single path before sharing it. Broken links and dead ends kill the learner experience — testing takes 10 minutes and catches everything.",
+        tools: "Brancher.ai or Twine (free)",
+        prompt: `I have my complete scenario text and want to build it in [Brancher.ai / Twine — delete as appropriate].
+
+OPTION A — BRANCHER.AI (recommended for beginners)
+
+Walk me through building my scenario:
+1. How do I create a new scenario and set up the opening scene?
+2. How do I add a decision point with multiple choices?
+3. How do I link each choice to the correct consequence scene?
+4. How do I add the feedback text after each consequence?
+5. How do I mark an endpoint so the scenario knows it's finished?
+6. How do I preview and test every path?
+7. How do I get a shareable link when it's ready?
+
+OPTION B — TWINE (more flexible, slightly more technical)
+
+Walk me through building my scenario:
+1. Which Twine story format should I use (Harlowe, Sugarcube, Chapbook)?
+2. How do I create passages and link them with [[choice text]]?
+3. How do I add feedback text that appears after a choice is made?
+4. How do I style it simply so it looks readable (not the default plain text)?
+5. How do I export it as a playable HTML file?
+6. How do I host it for free so I can share a link?
+
+TESTING CHECKLIST (for either tool):
+Before sharing, check:
+– Does every choice lead somewhere? (no dead ends)
+– Do all the feedback messages appear correctly?
+– Does every ending feel resolved, not cut off?
+– Is the opening situation clear enough for someone with no context?
+– Have you played the "worst path" all the way through?
+
+If I find something broken, help me fix it.`,
         miniOutput: "Playable, tested branching scenario ready to share",
       },
     ],
     closingNote:
       "Good scenarios feel real and respect learner choice. Avoid 'gotcha' feedback. Help learners understand why each outcome happened.",
   },
+
+  // ─────────────────────────────────────────────
+  // SEPTEMBER — Micro-Course
+  // ─────────────────────────────────────────────
   {
     id: "september",
     month: "September",
     title: "Micro-Course",
     theme: "Build a complete, self-contained mini-course with lessons, assessments, and one multimedia component",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're assembling all your skills into a complete micro-course: 3–5 lessons on a topic you care about.",
       "Using V0.dev (or Notion), ChatGPT, and Canva, you'll create structured lessons, quick assessments, and at least one video or animation.",
       "A finished course is one of the strongest portfolio pieces you can have.",
@@ -918,38 +1297,163 @@ intro: [
       {
         number: 1,
         title: "Course Design",
-        purpose: "Choose your topic and design the course flow and learning outcomes.",
+        purpose:
+          "Design your micro-course structure before writing a single word of content. The structure is the learning strategy. Get this right and everything else follows. Get it wrong and you end up with a long document dressed as a course.",
         tools: "ChatGPT",
-        prompt: `[Content to be added]`,
+        prompt: `Act as an instructional designer.
+
+I want to create a short, self-paced micro-course with 3–5 lessons on a topic I know well.
+
+First, ask me:
+– What is the topic?
+– Who is the learner — their role, what they already know, and why they're doing this?
+– What should learners be able to DO after completing this course (not just "understand")?
+– How long should the whole course take — 20 minutes or 45 minutes?
+– Where will this live — a website (V0.dev), Notion, or a shared document?
+
+Then design:
+
+1. COURSE TITLE — clear, specific, outcome-focused (avoid "Introduction to X")
+
+2. COURSE OVERVIEW — 3 sentences:
+   – Who it's for
+   – What they'll be able to do by the end
+   – Why this matters right now
+
+3. 3–5 LESSON OUTLINE — for each lesson:
+   Lesson [number]: [Title]
+   Learning outcome: one measurable thing learners can do
+   Key content: 3–4 bullet points (what is actually taught)
+   Learning activity: one thing learners do (not just read)
+   Estimated time: X minutes
+
+4. ASSESSMENT PLAN — one short quiz or reflection activity per lesson, plus a final check at the end
+
+5. ONE MULTIMEDIA MOMENT — identify which lesson would benefit most from a short video or animation (from your May or June challenge outputs, or a new one)
+
+6. PACING NOTE — is the difficulty level appropriate? Does anything need splitting or combining?
+
+Flag if any lesson is trying to do too much.`,
         miniOutput: "Course outline with 3–5 lessons and learning objectives",
       },
       {
         number: 2,
         title: "Lesson Content & Build",
-        purpose: "Write lesson content and begin building the course platform.",
-        tools: "ChatGPT, V0.dev or Notion",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Write all your lesson content and start building the course in your chosen platform. Write content first, build second — it's much faster than writing directly inside a tool.",
+        tools: "ChatGPT (content), V0.dev or Notion (build)",
+        prompt: `I have my course outline. Now I need to write the lesson content and begin building the course.
+
+My course outline: [paste from Week 1]
+
+PART 1 — WRITE THE LESSONS (in ChatGPT)
+
+For each lesson, write:
+
+1. LESSON INTRO — 2–3 sentences that explain what this lesson covers and why it matters. No filler.
+
+2. CORE CONTENT — the 3–4 key points from my outline, written as:
+   – Short heading
+   – 2–4 sentences of clear explanation
+   – One concrete example (real or realistic)
+
+3. LEARNING ACTIVITY — write the specific task or question learners do during this lesson
+   Format: "Before moving on, [do this specific thing]."
+   Keep it to 1–2 minutes. No multi-step projects here.
+
+4. LESSON SUMMARY — 3 bullet points: the three things to remember
+
+5. QUIZ QUESTION — one multiple choice or true/false question that checks the core point
+   Include: the question, 3–4 answer options, the correct answer, and a 1-sentence explanation of why it's correct
+
+PART 2 — BUILD THE COURSE
+
+OPTION A — V0.dev
+Paste this prompt into V0.dev:
+"Build a clean, minimal course page for a self-paced micro-course called [TITLE].
+
+Include:
+– A course header with title and overview
+– A lesson navigation sidebar (lessons listed as links)
+– A lesson content area showing one lesson at a time
+– A progress indicator
+– A simple quiz component with multiple choice options and a reveal-answer button
+– Clean, professional design, generous white space, readable typography"
+
+Then paste your lesson content section by section.
+
+OPTION B — Notion
+Create a Notion page with:
+– Course title and overview at the top
+– One sub-page per lesson
+– Each lesson page following the structure: Intro → Content → Activity → Summary → Quiz
+– A progress checklist on the main page learners can tick off
+
+Tell me which option you're using and I'll give you specific next steps.`,
         miniOutput: "Lesson drafts with content and platform structure created",
       },
       {
         number: 3,
         title: "Assessments, Media & Polish",
-        purpose: "Add assessments, embed video/animation, and finalize the course.",
-        tools: "ChatGPT, Canva Free, V0.dev",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Add a final assessment, embed your multimedia component, and review the whole course as if you're a learner taking it for the first time. The goal is a course someone would actually finish.",
+        tools: "ChatGPT, Canva Free, V0.dev or Notion",
+        prompt: `My course content and structure are built. Now I need to add the final assessment, embed media, and polish everything.
+
+STEP 1 — FINAL ASSESSMENT
+
+Based on my course learning outcomes: [paste outcomes]
+
+Write a final assessment with:
+– 5–8 questions (mix of multiple choice, true/false, and one short-answer reflection)
+– Questions that test application, not just memory
+– For multiple choice: 3–4 options, one clearly correct, others plausible
+– For reflection: one open question that asks learners to connect the content to their own work
+– A passing benchmark suggestion (e.g. "4/5 correct to continue")
+
+STEP 2 — MULTIMEDIA
+
+I want to embed [a short video / an animation clip] into lesson [number].
+
+If I already have an MP4 from a previous challenge:
+– How do I embed it in V0.dev / Notion?
+– What dimensions or aspect ratio works best?
+
+If I need to create a short visual:
+– Write me a 30-second explainer script for this lesson concept: [paste concept]
+– Give me a Canva or Veo prompt to create a simple supporting visual
+
+STEP 3 — POLISH & REVIEW
+
+Review my full course as a learner would. I'll paste the content below.
+[paste course content]
+
+Tell me:
+– Is the learning flow logical — does each lesson build on the previous?
+– Is anything over-explained or under-explained?
+– Which lesson is most likely to lose a learner's attention, and why?
+– Does the final assessment actually test the learning outcomes?
+– One thing I should change before sharing this
+
+STEP 4 — SHARE IT
+How do I get a shareable link for [V0.dev / Notion] that anyone can open without needing an account?`,
         miniOutput: "Complete, functional micro-course ready to launch",
       },
     ],
     closingNote:
       "A micro-course doesn't need to be complex. Clear structure, one idea per lesson, and one good assessment is enough. Quality over quantity.",
   },
+
+  // ─────────────────────────────────────────────
+  // OCTOBER — Personal Dashboard / Career Compass
+  // ─────────────────────────────────────────────
   {
     id: "october",
     month: "October",
     title: "Personal Dashboard / Career Compass",
     theme: "Build a personalised tracking tool to monitor your L&D growth, learning goals, and AI skill development",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're creating a dashboard or template that helps you track your own L&D journey throughout the year.",
       "Using Notion, Airtable, or Google Sheets with AI assistance, you'll design a system to monitor goals, skills, projects, and reflections.",
       "It's both useful for you and a strong demonstration of data design and personal knowledge management.",
@@ -968,41 +1472,155 @@ intro: [
       {
         number: 1,
         title: "Define & Plan",
-        purpose: "Decide what you want to track and how to organize it.",
-        tools: "ChatGPT, Pen & Paper",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Before building anything, get clear on what you actually want to track and why. Most dashboards fail because people track everything and use nothing. This step keeps it simple and purposeful.",
+        tools: "ChatGPT",
+        prompt: `Act as a personal development and learning strategy coach.
+
+I want to create a personal tracker or dashboard to monitor my L&D career growth, AI skill development, and professional projects.
+
+First, ask me:
+– What am I trying to get better at this year?
+– What do I currently track (if anything) and what's working or not?
+– How much time do I realistically want to spend on maintaining this — 5 minutes a week or 20?
+– Do I want to track goals, habits, projects, skills, reflections, or a mix?
+– Would I use this privately or share parts of it with a manager, coach, or community?
+
+Then design:
+
+1. DASHBOARD PURPOSE — one sentence: what problem does this solve for me?
+
+2. CORE TRACKING AREAS — 3–5 categories I should track. For each:
+   – Category name
+   – What I'm tracking (specific, not vague)
+   – Why it matters
+   – How often I'll update it (daily, weekly, monthly)
+
+3. WHAT TO LEAVE OUT — 2–3 things that might seem useful but would add noise or drop off after a week
+
+4. STRUCTURE RECOMMENDATION — for each category, recommend the best format:
+   e.g. simple table, progress bar, kanban view, log/journal, checklist, rating scale
+
+5. TOOL RECOMMENDATION — based on my needs, should I use:
+   – Notion (more flexible, visual, shareable)
+   – Airtable (more database-style, good for filtering)
+   – Google Sheets (simple, no new tool to learn)
+   Explain the tradeoff for my specific use case.
+
+One rule: start with the minimum. I can add more later.`,
         miniOutput: "Dashboard structure and tracking categories defined",
       },
       {
         number: 2,
         title: "Build Templates",
-        purpose: "Create database structure, views, and input forms.",
-        tools: "Notion or Airtable",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Create the database structure, views, and input forms in your chosen tool. This is the technical build step — follow the instructions methodically and don't try to perfect the design at this stage.",
+        tools: "Notion, Airtable, or Google Sheets",
+        prompt: `I've decided on my dashboard structure. Now I want to build it.
+
+My categories and structure: [paste from Week 1]
+My chosen tool: [Notion / Airtable / Google Sheets]
+
+FOR NOTION:
+
+Help me build each tracking area:
+
+1. For [Category 1 — paste name]:
+   – What database type should I use (table, gallery, board, list, calendar)?
+   – What properties/fields do I need and what types (text, select, date, number, checkbox, etc.)?
+   – What views should I create (e.g. "Active", "This month", "Completed")?
+   – Write me the exact steps to create this from scratch
+
+2. Repeat for each other category.
+
+3. DASHBOARD PAGE — how do I create a main "home" page that shows linked views from all my databases in one place?
+
+4. ENTRY TEMPLATE — for my most important category, how do I create a button or template so adding a new entry takes under 30 seconds?
+
+FOR AIRTABLE:
+
+1. Should I use one base with multiple tables or separate bases?
+2. For [Category 1], what fields do I need and what field types?
+3. How do I create a filtered view that shows only "this week" or "in progress" records?
+4. How do I create a simple form so I can add entries from my phone quickly?
+
+FOR GOOGLE SHEETS:
+
+1. How do I structure the sheets — one tab per category or one master sheet?
+2. For [Category 1], what columns do I need?
+3. How do I add a simple dropdown for status or category fields?
+4. How do I create a summary view at the top that auto-updates?
+
+After building: give me a 5-minute weekly check-in routine I can follow to keep this up to date.`,
         miniOutput: "Dashboard template with all fields and views created",
       },
       {
         number: 3,
         title: "Polish & Populate",
-        purpose: "Add styling, populate with initial data, and create instructions.",
-        tools: "Notion or Airtable",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Add visual clarity to your dashboard, populate it with real starting data, and write yourself a short guide so you actually use it. A dashboard you don't use is just a planning exercise.",
+        tools: "Notion, Airtable, or Google Sheets",
+        prompt: `My dashboard structure is built. Now I want to polish it, add real data, and make it a habit.
+
+My tool: [Notion / Airtable / Google Sheets]
+My categories: [paste from Week 1]
+
+STEP 1 — POLISH FOR USABILITY
+
+For Notion:
+– How do I add icons or cover images to make categories visually distinct?
+– How do I reorder sections so the most-used categories are at the top?
+– How do I add a callout block as a "weekly intention" prompt at the top of the home page?
+
+For Airtable:
+– How do I colour-code records by status?
+– How do I hide fields that I don't need to see in the default view?
+– How do I add a summary bar that counts completed vs in-progress items?
+
+For Google Sheets:
+– How do I use conditional formatting to colour-code status columns?
+– How do I freeze the header row and first column so they stay visible?
+– How do I add a simple chart that updates as I log data?
+
+STEP 2 — POPULATE WITH REAL DATA
+
+Help me fill in my dashboard with:
+– 3 real goals I want to track right now
+– My current AI challenge outputs as portfolio or project entries
+– My current skills to develop and a simple self-rating (1–5)
+– One reflection for this month that I can look back on in December
+
+STEP 3 — MAKE IT SHAREABLE
+
+How do I:
+– Share a view-only version with someone (a manager or coach)?
+– Duplicate it as a template others can copy?
+– Export a simple snapshot as a PDF if I ever need to?
+
+STEP 4 — THE USAGE HABIT
+
+Write me a 5-minute weekly routine for using this dashboard.
+Format it as a simple checklist I can copy into my calendar as a recurring event.`,
         miniOutput: "Finished, polished dashboard ready to use and share",
       },
     ],
     closingNote:
       "The best tracker is the one you'll actually use. Start simple with 3–4 key metrics. You can always add more later.",
   },
+
+  // ─────────────────────────────────────────────
+  // NOVEMBER — AI Portfolio
+  // ─────────────────────────────────────────────
   {
     id: "november",
     month: "November",
     title: "AI Portfolio",
     theme: "Compile all your year's work into a cohesive portfolio that tells the story of your AI-in-L&D journey",
-            isLive: false, // 👈 visible
-intro: [
+    isLive: true,
+    intro: [
       "This month you're curating the best pieces from the past year into a portfolio that showcases your growth and skills.",
-      "You'll create case studies, a 30-second reel, workflow diagrams, and a reflective narrative about what you've learned.",
-      "This is your 'My AI Year' portfolio—proof that you've learned, built, and experimented.",
+      "You'll create case studies, an optional showcase reel, and a reflective narrative about what you've learned.",
+      "This is your 'My AI Year' portfolio — proof that you've learned, built, and experimented.",
     ],
     tools: ["All tools from the year", "Notion or Canva", "Video editing (Descript)"],
     project:
@@ -1011,33 +1629,145 @@ intro: [
     outputs: [
       "One portfolio page or document",
       "3–4 case studies of your favourite projects",
-      "A 30-second reel showcasing your best work",
-      "A simple workflow diagram showing your process",
-      "A reflective blog post or narrative",
+      "An optional 15–30 second reel showcasing your best work",
+      "A reflective narrative about your year",
     ],
     weeks: [
       {
         number: 1,
         title: "Curate & Choose",
-        purpose: "Review all your work from the year and choose your best 4–5 pieces.",
-        tools: "Notion or Google Drive",
-        prompt: `[Content to be added]`,
+        purpose:
+          "You've made a lot this year. This step is about choosing the best 4–5 pieces — not all of them. Curation is a skill. A portfolio with 3 great pieces beats a portfolio with 11 average ones. Be honest about what you're actually proud of.",
+        tools: "Notion, Google Drive, or your portfolio page from March",
+        prompt: `Act as a career coach and portfolio reviewer with expertise in Learning & Development.
+
+I've completed a series of AI-assisted L&D challenges over the past year and I want to curate my best work into a final portfolio.
+
+Here's a summary of everything I produced this year:
+[Paste a brief description of each project you completed — even just the month and what you made. Include the ones you're unsure about.]
+
+First, ask me:
+– Who is this portfolio for — hiring managers, clients, peers, or personal reflection?
+– Do I want to show range (different skills and tools) or depth (mastery in one area)?
+– What do I want people to remember about me after seeing this portfolio?
+
+Then:
+
+1. RECOMMEND 4–5 PIECES TO INCLUDE
+   For each, explain:
+   – Why this piece is worth including (what it demonstrates)
+   – What kind of viewer or opportunity it's best suited for
+   – Any gap it leaves that another piece could fill
+
+2. FLAG WHAT TO LEAVE OUT — and why (not good enough, too similar to another piece, doesn't fit the story)
+
+3. PORTFOLIO STORY — write 2–3 sentences describing the thread that connects these pieces:
+   "This portfolio shows someone who..."
+   This becomes the basis for your portfolio intro.
+
+4. GAPS — is there anything obviously missing that I should consider adding or creating this month?
+
+5. ORDER — what order should these pieces appear in and why?`,
         miniOutput: "Your best projects selected and organised by month",
       },
       {
         number: 2,
         title: "Write Case Studies",
-        purpose: "Write 1-page case studies for 3–4 of your favourite projects.",
+        purpose:
+          "Turn your selected projects into short case studies that explain what you did, why, and what you learned. Case studies are how portfolio pieces become evidence of thinking, not just output.",
         tools: "ChatGPT, Canva Free",
-        prompt: `[Content to be added]`,
+        prompt: `I've selected my 4–5 portfolio pieces. Now I want to write a short case study for each one.
+
+My pieces: [paste the list of selected projects]
+My portfolio is for: [paste audience from Week 1]
+
+For EACH piece, write a case study using this structure:
+
+PROJECT TITLE
+[4–7 words, specific and clear — not "May Challenge"]
+
+THE BRIEF (2–3 sentences)
+What was the challenge, gap, or goal this project addressed?
+Who was it for, and what context were they in?
+
+WHAT I DID (3–4 sentences)
+What tools and approaches did I use?
+What decisions did I make and why?
+What was the hardest part?
+
+THE RESULT (2–3 sentences)
+What was created or produced?
+What happened, changed, or improved?
+If there's no clean "outcome", say what you learned instead.
+
+WHAT THIS SHOWS (1–2 sentences)
+What skill, capability, or mindset does this demonstrate?
+Write this in the third person, as if a reviewer is describing you.
+
+AI TOOL(S) USED
+List the tools. One sentence on how AI contributed (not replaced) your thinking.
+
+TONE RULES:
+– Write in first person, clear and direct
+– Avoid "I leveraged" — say "I used"
+– Avoid "impactful" — say what the impact actually was
+– Don't oversell. Let the work speak.
+– Keep the whole case study under 200 words
+
+After writing all case studies, give me:
+– A one-paragraph portfolio intro that ties them together
+– One sentence that describes what makes my approach to L&D distinctive`,
         miniOutput: "3–4 completed case studies with context and learnings",
       },
       {
         number: 3,
         title: "Compile & Reflect",
-        purpose: "Create your portfolio page, reel, and reflective narrative.",
-        tools: "Notion, Descript, Canva Free",
-        prompt: `[Content to be added]`,
+        purpose:
+          "Bring everything together into a final portfolio, create an optional short showcase clip, and write a reflective note about your year. The reflection is what turns a collection of projects into a story of growth.",
+        tools: "Notion or March portfolio page, optional Descript for reel, Canva Free",
+        prompt: `I have my case studies, selected projects, and portfolio intro. Now I want to compile everything into a final 'My AI Year' portfolio and add a reflection.
+
+STEP 1 — ASSEMBLE THE PORTFOLIO
+
+If I'm using my March portfolio page (website):
+– How do I update my Work Samples section with new cards for each case study?
+– Each new card should have: title, 2-sentence description, and a link to the case study
+– Write me the updated card text for each project: [paste project list]
+
+If I'm building a new Notion page:
+– Create a "My AI Year" Notion page structure with:
+  → A header section: portfolio intro paragraph
+  → 4–5 case study cards (each linking to a sub-page)
+  → A tools section: names of all tools I used this year
+  → A reflections section at the bottom
+
+STEP 2 — OPTIONAL SHOWCASE REEL (15–20 seconds)
+
+If I want to make a short video reel of my work:
+– What screen recordings or screenshots should I include and in what order?
+– Write me a 15-second voiceover script that narrates the year:
+  "[Name]'s AI year in L&D — from [Month 1 project] to [Month 11 project]..."
+– How do I stitch clips together in Descript and export as MP4?
+
+STEP 3 — THE REFLECTIVE NARRATIVE
+
+Help me write a short "Year in Review" narrative (200–300 words).
+
+Ask me:
+– What tool or output surprised me most this year?
+– What was harder than I expected?
+– What's one thing I now do differently at work because of this?
+– What do I want to do more of in the year ahead?
+
+Then write the narrative in my voice — first person, honest, not a performance.
+This goes at the bottom of my portfolio. It's what makes the whole thing human.
+
+STEP 4 — FINAL PORTFOLIO REVIEW
+
+Paste my final portfolio content and tell me:
+– Does the story feel coherent from beginning to end?
+– Is there anything that feels out of place or weakens the overall impression?
+– What's the one sentence someone will remember after reading this?`,
         miniOutput: "Complete 'My AI Year' portfolio ready to share",
       },
     ],
