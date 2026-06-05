@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -14,6 +14,14 @@ interface Plan {
   strengths_summary: string
   energy_purpose: string
   opportunities: Opportunity[]
+  actions: string[]
+  closing: string
+}
+
+interface DrillPlan {
+  opportunity: string
+  why: string
+  first_steps: string
   actions: string[]
   closing: string
 }
@@ -78,8 +86,7 @@ const emptyState = (): AppState => ({
   vt:'', st:'', it:'', o1:'', o2:'', o3:'', o4:'',
 })
 
-// ─── Styles injected as a real stylesheet ────────────────────────────────────
-// This guarantees mobile responsiveness regardless of Tailwind config
+// ─── Styles ───────────────────────────────────────────────────────────────────
 
 const globalStyles = `
   .nc-shell {
@@ -91,14 +98,11 @@ const globalStyles = `
     align-items: center;
     font-family: Lato, sans-serif;
   }
-
   .nc-outer {
     width: 100%;
     max-width: 760px;
     position: relative;
   }
-
-  /* Gold frame */
   .nc-frame {
     position: absolute;
     inset: -9px;
@@ -108,7 +112,6 @@ const globalStyles = `
     pointer-events: none;
     z-index: 20;
   }
-
   .nc-corner {
     position: absolute;
     font-size: 22px;
@@ -118,15 +121,11 @@ const globalStyles = `
     pointer-events: none;
     z-index: 25;
   }
-
-  /* Book spread — two columns on desktop */
   .nc-book {
     display: flex;
     flex-direction: row;
     filter: drop-shadow(0 12px 50px rgba(0,0,0,.85));
   }
-
-  /* Each page */
   .nc-page {
     flex: 1;
     position: relative;
@@ -136,14 +135,12 @@ const globalStyles = `
     display: flex;
     flex-direction: column;
   }
-
   .nc-page-left {
     background: radial-gradient(ellipse at 30% 40%, #f7efd8 0%, #f2e8c9 50%, #e3d4a5 100%);
     border-radius: 2px 0 0 2px;
     border: 1px solid #b8a06a;
     border-right: none;
   }
-
   .nc-page-right {
     background: radial-gradient(ellipse at 70% 60%, #f9f1dc 0%, #f2e8c9 50%, #e3d4a5 100%);
     border-radius: 0 2px 2px 0;
@@ -151,8 +148,6 @@ const globalStyles = `
     border: 1px solid #b8a06a;
     border-left: none;
   }
-
-  /* Parchment texture */
   .nc-page::before {
     content: '';
     position: absolute;
@@ -163,7 +158,6 @@ const globalStyles = `
       radial-gradient(ellipse at 10% 85%, rgba(139,101,52,.14) 0%, transparent 50%),
       radial-gradient(ellipse at 90% 10%, rgba(139,101,52,.09) 0%, transparent 40%);
   }
-
   .nc-page-content {
     position: relative;
     z-index: 10;
@@ -171,8 +165,6 @@ const globalStyles = `
     display: flex;
     flex-direction: column;
   }
-
-  /* Spine */
   .nc-spine {
     width: 26px;
     flex-shrink: 0;
@@ -181,16 +173,12 @@ const globalStyles = `
     position: relative;
     z-index: 10;
   }
-
-  /* Shelf */
   .nc-shelf {
     height: 20px;
     background: #1a0f07;
     border-top: 3px solid #5a3820;
     border-radius: 0 0 4px 4px;
   }
-
-  /* Progress bar */
   .nc-progress {
     display: flex;
     gap: 5px;
@@ -198,7 +186,6 @@ const globalStyles = `
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(139,101,52,.3);
   }
-
   .nc-pdot {
     height: 3px;
     flex: 1;
@@ -206,29 +193,20 @@ const globalStyles = `
     background: rgba(139,101,52,.3);
     transition: background .4s ease;
   }
-
   .nc-pdot.done { background: #1a7a5a; }
-
-  /* Page divider shown on mobile between top and bottom sections */
   .nc-mobile-divider {
     display: none;
     align-items: center;
     gap: 10px;
     padding: 10px 0;
   }
-  .nc-mobile-divider-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(139,101,52,.3);
-  }
+  .nc-mobile-divider-line { flex: 1; height: 1px; background: rgba(139,101,52,.3); }
   .nc-mobile-divider-text {
     font-family: 'IM Fell English', Georgia, serif;
     font-style: italic;
     font-size: 11px;
     color: rgba(139,101,52,.6);
   }
-
-  /* Page numbers */
   .nc-pgnum {
     position: absolute;
     bottom: 10px;
@@ -240,8 +218,6 @@ const globalStyles = `
   }
   .nc-pgnum-left  { left: 18px; }
   .nc-pgnum-right { right: 18px; }
-
-  /* Footer */
   .nc-footer {
     margin-top: 1.25rem;
     font-family: 'IM Fell English', Georgia, serif;
@@ -250,8 +226,6 @@ const globalStyles = `
     color: rgba(201,160,122,.35);
     text-align: center;
   }
-
-  /* Typography */
   .nc-label {
     font-family: 'IM Fell English', Georgia, serif;
     font-size: 10px;
@@ -260,7 +234,6 @@ const globalStyles = `
     color: #8b6534;
     margin-bottom: 5px;
   }
-
   .nc-title {
     font-family: 'IM Fell English', Georgia, serif;
     font-size: 20px;
@@ -268,11 +241,7 @@ const globalStyles = `
     margin-bottom: 6px;
     line-height: 1.25;
   }
-
-  .nc-title-large {
-    font-size: 26px;
-  }
-
+  .nc-title-large { font-size: 26px; }
   .nc-sub {
     font-family: Lato, sans-serif;
     font-size: 13px;
@@ -280,7 +249,6 @@ const globalStyles = `
     line-height: 1.65;
     margin-bottom: 9px;
   }
-
   .nc-note {
     font-family: 'IM Fell English', Georgia, serif;
     font-style: italic;
@@ -289,7 +257,6 @@ const globalStyles = `
     line-height: 1.6;
     margin-bottom: 7px;
   }
-
   .nc-ornament {
     text-align: center;
     color: #8b6534;
@@ -299,21 +266,17 @@ const globalStyles = `
     letter-spacing: 4px;
     opacity: .8;
   }
-
   .nc-rule {
     border: none;
     border-top: 1px solid rgba(139,101,52,.35);
     margin: 9px 0;
   }
-
-  /* Chips */
   .nc-chip-wrap {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     margin-bottom: 9px;
   }
-
   .nc-chip {
     border: 1px solid #b8a06a;
     border-radius: 2px;
@@ -328,15 +291,12 @@ const globalStyles = `
   }
   .nc-chip:hover { border-color: #1a7a5a; color: #1a7a5a; background: #d4efe5; }
   .nc-chip.on    { border-color: #1a7a5a; background: #d4efe5; color: #1a7a5a; font-weight: 700; }
-
-  /* Boxes */
   .nc-box-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
     margin-bottom: 9px;
   }
-
   .nc-box {
     border: 1px solid #b8a06a;
     border-radius: 2px;
@@ -352,8 +312,6 @@ const globalStyles = `
   }
   .nc-box:hover { border-color: #1a7a5a; color: #1a7a5a; background: #d4efe5; }
   .nc-box.on    { border-color: #1a7a5a; background: #d4efe5; color: #1a7a5a; font-weight: 700; }
-
-  /* Textareas */
   .nc-textarea {
     width: 100%;
     border: 1px solid rgba(139,101,52,.5);
@@ -368,6 +326,7 @@ const globalStyles = `
     margin-bottom: 8px;
     transition: border-color .2s;
     box-sizing: border-box;
+    display: block;
   }
   .nc-textarea:focus { outline: none; border-color: #1a7a5a; background: rgba(255,255,255,.35); }
   .nc-textarea-main { min-height: 72px; }
@@ -382,8 +341,6 @@ const globalStyles = `
   }
   .nc-textarea-open::placeholder { color: rgba(139,101,52,.45); }
   .nc-textarea-open:focus { border-style: solid; font-style: normal; color: #2c1a06; }
-
-  /* Open field */
   .nc-open-wrap {
     border-top: 1px dashed rgba(139,101,52,.4);
     margin-top: 8px;
@@ -404,8 +361,6 @@ const globalStyles = `
     line-height: 1.5;
     margin-bottom: 5px;
   }
-
-  /* Buttons */
   .nc-btn-primary {
     background: #1a7a5a;
     color: #fff;
@@ -422,7 +377,6 @@ const globalStyles = `
   }
   .nc-btn-primary:hover    { background: #0f5c42; }
   .nc-btn-primary:disabled { background: #d4bf88; cursor: not-allowed; box-shadow: none; color: rgba(255,255,255,.7); }
-
   .nc-btn-secondary {
     background: transparent;
     color: #8b6534;
@@ -435,7 +389,6 @@ const globalStyles = `
     transition: all .2s;
   }
   .nc-btn-secondary:hover { border-color: #8b6534; color: #2c1a06; }
-
   .nc-btn-row {
     display: flex;
     gap: 8px;
@@ -444,8 +397,6 @@ const globalStyles = `
     margin-top: auto;
     padding-top: 12px;
   }
-
-  /* Plan elements */
   .nc-ai-box {
     background: #d4efe5;
     border-left: 3px solid #1a7a5a;
@@ -467,7 +418,6 @@ const globalStyles = `
     line-height: 1.6;
     margin: 0;
   }
-
   .nc-plan-card {
     background: rgba(255,255,255,.25);
     border: 1px solid rgba(139,101,52,.4);
@@ -491,17 +441,49 @@ const globalStyles = `
     margin: 0;
   }
 
-  .nc-opp-item {
-    padding-bottom: 8px;
+  /* Opportunity cards — selectable */
+  .nc-opp-card {
+    border: 1px solid rgba(139,101,52,.35);
+    border-radius: 3px;
+    padding: 10px 12px;
     margin-bottom: 8px;
-    border-bottom: 1px solid rgba(139,101,52,.25);
+    cursor: pointer;
+    background: rgba(255,255,255,.2);
+    transition: all .2s;
+    position: relative;
   }
-  .nc-opp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .nc-opp-card:hover {
+    border-color: #1a7a5a;
+    background: rgba(212,239,229,.3);
+  }
+  .nc-opp-card.selected {
+    border-color: #1a7a5a;
+    background: #d4efe5;
+    box-shadow: 0 0 0 1px #1a7a5a;
+  }
+  .nc-opp-card:last-child { margin-bottom: 0; }
   .nc-opp-title {
     font-family: 'IM Fell English', Georgia, serif;
     font-size: 13.5px;
     color: #2c1a06;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .nc-opp-badge {
+    font-family: Lato, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: #1a7a5a;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
   }
   .nc-opp-desc {
     font-family: Lato, sans-serif;
@@ -509,6 +491,15 @@ const globalStyles = `
     color: #5a3e1a;
     line-height: 1.6;
   }
+  .nc-opp-prompt {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #1a7a5a;
+    margin-top: 4px;
+    display: none;
+  }
+  .nc-opp-card.selected .nc-opp-prompt { display: block; }
 
   .nc-act-row {
     display: flex;
@@ -536,7 +527,28 @@ const globalStyles = `
     margin-top: 1px;
   }
 
-  /* Loading dots */
+  /* Drill-down plan */
+  .nc-drill-header {
+    background: linear-gradient(135deg, #1a7a5a 0%, #0f5c42 100%);
+    border-radius: 3px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .nc-drill-header p {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 13px;
+    color: rgba(255,255,255,.9);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .nc-drill-header strong {
+    display: block;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
   .nc-dots { display: inline-flex; gap: 4px; align-items: center; margin-left: 4px; }
   .nc-dot {
     width: 5px; height: 5px;
@@ -548,7 +560,6 @@ const globalStyles = `
   .nc-dot:nth-child(3) { animation-delay: .4s; }
   @keyframes nc-blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
 
-  /* Welcome step list */
   .nc-step-item {
     display: flex;
     gap: 10px;
@@ -571,7 +582,6 @@ const globalStyles = `
     flex-shrink: 0;
   }
 
-  /* ── MOBILE: stack pages vertically ── */
   @media (max-width: 640px) {
     .nc-book { flex-direction: column; }
     .nc-spine { width: 100%; height: 12px; }
@@ -583,7 +593,7 @@ const globalStyles = `
       padding: 18px 16px 22px;
     }
     .nc-page-right { padding: 18px 16px 22px; }
-    .nc-page-left { border-bottom: none !important; }
+    .nc-page-left  { border-bottom: none !important; }
     .nc-page-right { border-top: none !important; }
     .nc-mobile-divider { display: flex; }
     .nc-title { font-size: 18px; }
@@ -605,6 +615,47 @@ const globalStyles = `
   }
 `
 
+// ─── Stable textarea component (fixes the one-letter bug) ────────────────────
+// Uses a ref + defaultValue so React never re-renders the DOM element itself,
+// only the surrounding component. The onBlur syncs the value back to state.
+
+function StableTextarea({
+  id,
+  className,
+  placeholder,
+  rows,
+  initialValue,
+  onBlur,
+}: {
+  id: string
+  className: string
+  placeholder: string
+  rows: number
+  initialValue: string
+  onBlur: (v: string) => void
+}) {
+  const ref = useRef<HTMLTextAreaElement>(null)
+
+  // Sync if initialValue changes from outside (e.g. reset)
+  useEffect(() => {
+    if (ref.current && ref.current.value !== initialValue) {
+      ref.current.value = initialValue
+    }
+  }, [initialValue])
+
+  return (
+    <textarea
+      ref={ref}
+      id={id}
+      className={className}
+      placeholder={placeholder}
+      rows={rows}
+      defaultValue={initialValue}
+      onBlur={e => onBlur(e.target.value)}
+    />
+  )
+}
+
 // ─── Mock plan ────────────────────────────────────────────────────────────────
 
 function buildMockPlan(s: AppState): Plan {
@@ -625,7 +676,7 @@ function buildMockPlan(s: AppState): Plan {
       { title: 'Start a small coaching or consulting practice', description: `Your strength in ${str} makes you a natural guide for others. ${hasCon ? 'This can be structured to fit around your current commitments.' : 'Many women have built meaningful income streams from exactly this kind of knowledge-sharing.'}` },
       { title: `Pursue a creative project around ${i0}`, description: `${hasCon ? 'Even with practical constraints, this can begin small.' : 'This is the time to treat your creative life seriously.'} A blog, community class, or online course could connect you with others who share your passion.` },
       { title: 'Build or join a community of like-minded women', description: `Your values around ${v} suggest you thrive in connection. Seek out or create a group of women asking the same questions — in person or online.` },
-      { title: 'Travel or volunteer with intention', description: `Purposeful travel or local volunteering aligns with your desire for meaning and new experience. ${hasCon ? 'Even short or local involvement can be deeply transformative.' : 'The world is waiting for what you bring to it.'}` },
+      { title: 'Travel or volunteer with intention', description: `Purposeful travel or local volunteering aligns with your desire for meaning. ${hasCon ? 'Even short or local involvement can be deeply transformative.' : 'The world is waiting for what you bring to it.'}` },
     ],
     actions: [
       'Write down your three most energising life moments and what they had in common — this is your compass',
@@ -640,15 +691,35 @@ function buildMockPlan(s: AppState): Plan {
   }
 }
 
+function buildMockDrillPlan(opp: Opportunity, s: AppState): DrillPlan {
+  const str = s.strs.slice(0,2).join(' and ') || 'your strengths'
+  return {
+    opportunity: opp.title,
+    why: `This pathway suits you specifically because of your ${str} and the values you hold around ${s.vals.slice(0,2).join(' and ') || 'what matters to you'}. It is a natural extension of who you already are.`,
+    first_steps: `You do not need to have everything figured out before you start. The first step is simply making this real — telling one person about it, writing down what it would look like, and taking one small action this week.`,
+    actions: [
+      `Week 1: Research three real examples of women who have done something similar — notice what resonates`,
+      `Week 2: Write a one-page description of what this looks like for you specifically — your version of it`,
+      `Week 3: Have one conversation with someone already doing this, or join one community or group related to it`,
+      `Week 4: Identify the single biggest obstacle and write down three ways around it`,
+      `Month end: Take one committed action — enrol, apply, publish, reach out, book — something that makes it real`,
+    ],
+    closing: `You chose this pathway for a reason. Trust that instinct — it knows something your logical mind is still catching up to.`,
+  }
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function NextChapter() {
-  const [stage, setStage] = useState(0)
-  const [s, setS] = useState<AppState>(emptyState())
-  const [plan, setPlan] = useState<Plan | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [stage, setStage]               = useState(0)
+  const [s, setS]                       = useState<AppState>(emptyState())
+  const [plan, setPlan]                 = useState<Plan | null>(null)
+  const [loading, setLoading]           = useState(false)
+  const [selectedOpp, setSelectedOpp]   = useState<number | null>(null)
+  const [drillPlan, setDrillPlan]       = useState<DrillPlan | null>(null)
+  const [drillLoading, setDrillLoading] = useState(false)
+  const [showDrill, setShowDrill]       = useState(false)
 
-  // Inject stylesheet once
   useEffect(() => {
     const id = 'nc-styles'
     if (!document.getElementById(id)) {
@@ -657,10 +728,7 @@ export default function NextChapter() {
       el.textContent = globalStyles
       document.head.appendChild(el)
     }
-    return () => {
-      const el = document.getElementById(id)
-      if (el) el.remove()
-    }
+    return () => { document.getElementById(id)?.remove() }
   }, [])
 
   const update = useCallback((patch: Partial<AppState>) => {
@@ -673,13 +741,9 @@ export default function NextChapter() {
   }, [])
 
   function toggleChip(list: string[], key: keyof AppState, item: string, max?: number) {
-    let next: string[]
-    if (list.includes(item)) {
-      next = list.filter(x => x !== item)
-    } else {
-      if (max && list.length >= max) return
-      next = [...list, item]
-    }
+    const next = list.includes(item)
+      ? list.filter(x => x !== item)
+      : (max && list.length >= max) ? list : [...list, item]
     update({ [key]: next } as Partial<AppState>)
   }
 
@@ -696,6 +760,9 @@ export default function NextChapter() {
     go(5)
     setLoading(true)
     setPlan(null)
+    setSelectedOpp(null)
+    setDrillPlan(null)
+    setShowDrill(false)
 
     const ctxBlock = [
       s.o1 ? `Personal context: "${s.o1}"` : '',
@@ -717,7 +784,7 @@ She shared:
 - Dream life: "${s.it}"
 ${ctxBlock ? '\nAdditional context:\n' + ctxBlock : ''}
 
-If she shared personal context (grief, illness, divorce, financial hardship), acknowledge it warmly and let it shape the opportunities and actions. If she mentioned constraints, keep suggestions realistic.
+If she shared personal context (grief, illness, divorce, financial hardship), acknowledge it warmly. Let it shape the opportunities and actions. If she mentioned constraints, keep suggestions realistic.
 
 Return ONLY valid JSON, no markdown, no preamble:
 {
@@ -730,7 +797,7 @@ Return ONLY valid JSON, no markdown, no preamble:
     { "title": "Opportunity name", "description": "2 sentences" },
     { "title": "Opportunity name", "description": "2 sentences" }
   ],
-  "actions": ["Week 1 action", "Week 2 action", "Week 3 action", "Week 4 action", "Month-end action"],
+  "actions": ["General week 1 action", "General week 2 action", "General week 3 action", "General week 4 action", "Month-end action"],
   "closing": "2 warm personal sentences written just for her"
 }
 
@@ -742,7 +809,7 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] }),
       })
-      if (!res.ok) throw new Error('API error')
+      if (!res.ok) throw new Error()
       const data = await res.json()
       const raw = data.content.map((b: { text?: string }) => b.text || '').join('')
       setPlan(JSON.parse(raw.replace(/```json|```/g, '').trim()))
@@ -753,20 +820,75 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
     }
   }
 
+  async function drillDown(opp: Opportunity, index: number) {
+    setSelectedOpp(index)
+    setShowDrill(true)
+    setDrillLoading(true)
+    setDrillPlan(null)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    const prompt = `You are a warm, practical life coach. A woman aged 50+ has just received her Next Chapter Plan and chosen to focus on one specific opportunity.
+
+Her profile:
+- Values: ${s.vals.join(', ')}
+- Strengths: ${s.strs.join(', ')}
+- Interests: ${s.ints.join(', ')}
+- What matters most: ${s.pri.join(', ')}
+${s.o1 ? `- Personal context: "${s.o1}"` : ''}
+${s.o4 ? `- Constraints: "${s.o4}"` : ''}
+
+She has chosen to focus on: "${opp.title}"
+Why this was suggested: "${opp.description}"
+
+Write her a focused deep-dive plan for this specific opportunity. Return ONLY valid JSON, no markdown:
+{
+  "opportunity": "${opp.title}",
+  "why": "2-3 sentences on exactly why this suits her — reference her specific values and strengths by name",
+  "first_steps": "2-3 sentences on how to approach getting started, practical and encouraging",
+  "actions": [
+    "Week 1: specific action with detail",
+    "Week 2: specific action with detail",
+    "Week 3: specific action with detail",
+    "Week 4: specific action with detail",
+    "Month end: one committed action that makes this real"
+  ],
+  "closing": "2 warm sentences written just for her about this specific path"
+}
+
+Make every action concrete and specific to this opportunity and her situation. Not generic advice — real next steps she can take this week.`
+
+    try {
+      const res = await fetch('/api/next-chapter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] }),
+      })
+      if (!res.ok) throw new Error()
+      const data = await res.json()
+      const raw = data.content.map((b: { text?: string }) => b.text || '').join('')
+      setDrillPlan(JSON.parse(raw.replace(/```json|```/g, '').trim()))
+    } catch {
+      setDrillPlan(buildMockDrillPlan(opp, s))
+    } finally {
+      setDrillLoading(false)
+    }
+  }
+
   function reset() {
     setS(emptyState())
     setPlan(null)
     setLoading(false)
+    setSelectedOpp(null)
+    setDrillPlan(null)
+    setDrillLoading(false)
+    setShowDrill(false)
     go(0)
   }
 
-  // ── Shared layout wrapper ─────────────────────────────────────────────────────
+  // ── Layout wrapper ────────────────────────────────────────────────────────────
 
   function Page({ left, right, pgL, pgR }: {
-    left: React.ReactNode
-    right: React.ReactNode
-    pgL: string
-    pgR: string
+    left: React.ReactNode; right: React.ReactNode; pgL: string; pgR: string
   }) {
     return (
       <div className="nc-shell">
@@ -776,9 +898,7 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
           <span className="nc-corner" style={{ top: -12, right: -12, transform: 'scaleX(-1)' }}>❧</span>
           <span className="nc-corner" style={{ bottom: -12, left: -12, transform: 'scaleY(-1)' }}>❧</span>
           <span className="nc-corner" style={{ bottom: -12, right: -12, transform: 'scale(-1)' }}>❧</span>
-
           <div className="nc-book">
-            {/* Left page */}
             <div className="nc-page nc-page-left">
               <div className="nc-page-content">
                 <div className="nc-progress">
@@ -790,14 +910,9 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
               </div>
               <span className="nc-pgnum nc-pgnum-left">{pgL}</span>
             </div>
-
-            {/* Spine */}
             <div className="nc-spine" />
-
-            {/* Right page */}
             <div className="nc-page nc-page-right">
               <div className="nc-page-content">
-                {/* Mobile divider shown between sections */}
                 <div className="nc-mobile-divider">
                   <div className="nc-mobile-divider-line" />
                   <span className="nc-mobile-divider-text">continued</span>
@@ -808,7 +923,6 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
               <span className="nc-pgnum nc-pgnum-right">{pgR}</span>
             </div>
           </div>
-
           <div className="nc-shelf" />
         </div>
         <p className="nc-footer">Your answers are private and never stored.</p>
@@ -816,21 +930,22 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
     )
   }
 
-  // ── Reusable bits ─────────────────────────────────────────────────────────────
+  // ── Open field using StableTextarea ──────────────────────────────────────────
 
-  function OpenField({ label, hint, placeholder, value, onChange }: {
-    label: string; hint: string; placeholder: string; value: string; onChange: (v: string) => void
+  function OpenField({ fieldId, label, hint, placeholder, stateKey }: {
+    fieldId: string; label: string; hint: string; placeholder: string; stateKey: keyof AppState
   }) {
     return (
       <div className="nc-open-wrap">
         <p className="nc-open-label">{label} <span className="nc-open-opt">— optional</span></p>
         <p className="nc-open-hint">{hint}</p>
-        <textarea
+        <StableTextarea
+          id={fieldId}
           className="nc-textarea nc-textarea-open"
           placeholder={placeholder}
-          value={value}
           rows={3}
-          onChange={e => onChange(e.target.value)}
+          initialValue={s[stateKey] as string}
+          onBlur={v => update({ [stateKey]: v } as Partial<AppState>)}
         />
       </div>
     )
@@ -841,15 +956,15 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
   if (stage === 0) return (
     <Page pgL="i" pgR="ii"
       left={
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '12px 0' }}>
+        <div style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'12px 0' }}>
           <p className="nc-label">Est. in this moment</p>
           <h1 className="nc-title nc-title-large">The Next<br />Chapter</h1>
           <p className="nc-ornament">— ❦ —</p>
-          <p className="nc-note">A guided discovery journey<br />for women ready to write<br />something new.</p>
-          <hr className="nc-rule" style={{ width: '100%' }} />
+          <p className="nc-note">A guided discovery journey for women ready to write something new.</p>
+          <hr className="nc-rule" style={{ width:'100%' }} />
           <p className="nc-sub">In 10–15 minutes you will uncover what energises you, what you value, and what life chapter might truly light you up.</p>
-          <p className="nc-note">No right or wrong answers —<br />just be honest and let yourself dream.</p>
-          <div style={{ marginTop: 20 }}>
+          <p className="nc-note">No right or wrong answers — just be honest and let yourself dream.</p>
+          <div style={{ marginTop:20 }}>
             <button className="nc-btn-primary" onClick={() => go(1)}>Open the book →</button>
           </div>
         </div>
@@ -858,15 +973,15 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
         <div>
           <p className="nc-label">What awaits you</p>
           <hr className="nc-rule" />
-          <p className="nc-note" style={{ margin: '8px 0 10px' }}>This book will guide you through four pages of discovery:</p>
-          {["Your life context and what matters most","Your values and what a life well lived means to you","Your strengths and what you bring to the world","Your interests and what lights you up"].map((t, i) => (
+          <p className="nc-note" style={{ margin:'8px 0 10px' }}>This book will guide you through four pages of discovery:</p>
+          {["Your life context and what matters most","Your values and what a life well lived means to you","Your strengths and what you bring to the world","Your interests and what lights you up"].map((t,i) => (
             <div key={i} className="nc-step-item">
-              <div className="nc-step-num">{i + 1}</div>
-              <p className="nc-note" style={{ margin: 0 }}>{t}</p>
+              <div className="nc-step-num">{i+1}</div>
+              <p className="nc-note" style={{ margin:0 }}>{t}</p>
             </div>
           ))}
-          <hr className="nc-rule" style={{ marginTop: 12 }} />
-          <p className="nc-note" style={{ marginTop: 8, textAlign: 'center' }}>At the end, your personalised<br /><em>Next Chapter Plan</em> awaits.</p>
+          <hr className="nc-rule" style={{ marginTop:12 }} />
+          <p className="nc-note" style={{ marginTop:8, textAlign:'center' }}>At the end, your personalised<br /><em>Next Chapter Plan</em> awaits.</p>
         </div>
       }
     />
@@ -890,13 +1005,10 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
               </button>
             ))}
           </div>
-          <div style={{ marginTop: 'auto' }}>
-            <OpenField
-              label="In your own words"
+          <div style={{ marginTop:'auto' }}>
+            <OpenField fieldId="o1" label="In your own words"
               hint="If something specific brought you here — a loss, illness, financial change, or relationship ending — share it here. It will shape your plan."
-              placeholder="Share as much or as little as you like..."
-              value={s.o1} onChange={v => update({ o1: v })}
-            />
+              placeholder="Share as much or as little as you like..." stateKey="o1" />
           </div>
         </>
       }
@@ -914,7 +1026,7 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
               </button>
             ))}
           </div>
-          <div className="nc-btn-row" style={{ marginTop: 'auto' }}>
+          <div className="nc-btn-row" style={{ marginTop:'auto' }}>
             <button className="nc-btn-primary" disabled={!can1} onClick={() => go(2)}>Turn the page →</button>
           </div>
         </>
@@ -947,17 +1059,14 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
           <p className="nc-label">Continued</p>
           <h2 className="nc-title">In your own words</h2>
           <p className="nc-note">&ldquo;A life well lived, for me, means...&rdquo;</p>
-          <textarea className="nc-textarea nc-textarea-main"
+          <StableTextarea id="vt" className="nc-textarea nc-textarea-main"
             placeholder="Write whatever comes to mind."
-            value={s.vt} rows={4}
-            onChange={e => update({ vt: e.target.value })} />
-          <OpenField
-            label="Anything shaping your values?"
+            rows={4} initialValue={s.vt}
+            onBlur={v => update({ vt: v })} />
+          <OpenField fieldId="o2" label="Anything shaping your values?"
             hint="What we value becomes clearest after loss or hardship. Share anything that has shifted your perspective."
-            placeholder="Only if it feels useful..."
-            value={s.o2} onChange={v => update({ o2: v })}
-          />
-          <div className="nc-btn-row" style={{ marginTop: 'auto' }}>
+            placeholder="Only if it feels useful..." stateKey="o2" />
+          <div className="nc-btn-row" style={{ marginTop:'auto' }}>
             <button className="nc-btn-primary" disabled={!can2} onClick={() => go(3)}>Turn the page →</button>
             <button className="nc-btn-secondary" onClick={() => go(1)}>← Back</button>
           </div>
@@ -991,17 +1100,14 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
           <p className="nc-label">Continued</p>
           <h2 className="nc-title">In your own words</h2>
           <p className="nc-note">&ldquo;Something I have done that I am quietly proud of...&rdquo;</p>
-          <textarea className="nc-textarea nc-textarea-main"
+          <StableTextarea id="st" className="nc-textarea nc-textarea-main"
             placeholder="It does not need to be a big achievement."
-            value={s.st} rows={4}
-            onChange={e => update({ st: e.target.value })} />
-          <OpenField
-            label="Strengths from difficulty"
+            rows={4} initialValue={s.st}
+            onBlur={v => update({ st: v })} />
+          <OpenField fieldId="o3" label="Strengths from difficulty"
             hint="Hard times reveal strengths we did not know we had. What did a recent challenge show you about yourself?"
-            placeholder="You might surprise yourself..."
-            value={s.o3} onChange={v => update({ o3: v })}
-          />
-          <div className="nc-btn-row" style={{ marginTop: 'auto' }}>
+            placeholder="You might surprise yourself..." stateKey="o3" />
+          <div className="nc-btn-row" style={{ marginTop:'auto' }}>
             <button className="nc-btn-primary" disabled={!can3} onClick={() => go(4)}>Turn the page →</button>
             <button className="nc-btn-secondary" onClick={() => go(2)}>← Back</button>
           </div>
@@ -1035,17 +1141,14 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
           <p className="nc-label">Continued</p>
           <h2 className="nc-title">In your own words</h2>
           <p className="nc-note">&ldquo;If money were no concern, I would spend my time...&rdquo;</p>
-          <textarea className="nc-textarea nc-textarea-main"
+          <StableTextarea id="it" className="nc-textarea nc-textarea-main"
             placeholder="Let yourself dream here."
-            value={s.it} rows={4}
-            onChange={e => update({ it: e.target.value })} />
-          <OpenField
-            label="Any constraints worth knowing?"
-            hint="If budget, health, location, or caring responsibilities shape what is realistic, share that here. Your plan will be more useful for it."
-            placeholder="Be honest — this helps us give practical suggestions..."
-            value={s.o4} onChange={v => update({ o4: v })}
-          />
-          <div className="nc-btn-row" style={{ marginTop: 'auto' }}>
+            rows={4} initialValue={s.it}
+            onBlur={v => update({ it: v })} />
+          <OpenField fieldId="o4" label="Any constraints worth knowing?"
+            hint="If budget, health, location, or caring responsibilities shape what is realistic, share that here."
+            placeholder="Be honest — this helps us give practical suggestions..." stateKey="o4" />
+          <div className="nc-btn-row" style={{ marginTop:'auto' }}>
             <button className="nc-btn-primary" disabled={!can4} onClick={makePlan}>Write my Next Chapter Plan ✦</button>
             <button className="nc-btn-secondary" onClick={() => go(3)}>← Back</button>
           </div>
@@ -1056,21 +1159,88 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
 
   // ── Stage 5: Plan ─────────────────────────────────────────────────────────────
 
+  // Drill-down view
+  if (showDrill && plan) {
+    const opp = plan.opportunities[selectedOpp!]
+    return (
+      <Page pgL="11" pgR="12"
+        left={
+          <>
+            <p className="nc-label">Your focused plan</p>
+            <h2 className="nc-title">30 Days Into<br />{opp?.title}</h2>
+            <p className="nc-sub" style={{ marginBottom:10 }}>Here is your focused action plan for this specific pathway.</p>
+
+            {drillLoading && (
+              <div className="nc-ai-box">
+                <p>Building your focused plan
+                  <span className="nc-dots">
+                    <span className="nc-dot" /><span className="nc-dot" /><span className="nc-dot" />
+                  </span>
+                </p>
+              </div>
+            )}
+
+            {drillPlan && (
+              <>
+                <div className="nc-drill-header">
+                  <strong>{drillPlan.opportunity}</strong>
+                  <p>Your focused 30-day plan</p>
+                </div>
+                <div className="nc-plan-card">
+                  <p className="nc-plan-lbl">Why this path suits you</p>
+                  <p>{drillPlan.why}</p>
+                </div>
+                <div className="nc-plan-card">
+                  <p className="nc-plan-lbl">How to approach getting started</p>
+                  <p>{drillPlan.first_steps}</p>
+                </div>
+              </>
+            )}
+          </>
+        }
+        right={
+          <>
+            {drillPlan && (
+              <>
+                <div className="nc-plan-card">
+                  <p className="nc-plan-lbl" style={{ marginBottom:7 }}>Your 30-day action plan</p>
+                  {drillPlan.actions.map((action, i) => (
+                    <div key={i} className="nc-act-row">
+                      <div className="nc-act-num">{i+1}</div>
+                      <span>{action}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="nc-ai-box">
+                  <p>{drillPlan.closing}</p>
+                </div>
+              </>
+            )}
+            <div className="nc-btn-row" style={{ marginTop:'auto' }}>
+              <button className="nc-btn-primary" onClick={() => window.print()}>⎙ Print or save as PDF</button>
+              <button className="nc-btn-secondary" onClick={() => { setShowDrill(false); setSelectedOpp(null); }}>← All opportunities</button>
+              <button className="nc-btn-secondary" onClick={reset}>Start again</button>
+            </div>
+          </>
+        }
+      />
+    )
+  }
+
+  // Main plan view
   return (
     <Page pgL="9" pgR="10"
       left={
         <>
           <p className="nc-label">Your next chapter</p>
           <h2 className="nc-title">Your Next Chapter Plan</h2>
-          <p className="nc-sub" style={{ marginBottom: 10 }}>Based on everything you have shared, here is what we see for your next chapter.</p>
+          <p className="nc-sub" style={{ marginBottom:10 }}>Based on everything you have shared, here is what we see for your next chapter.</p>
 
           {loading && (
             <div className="nc-ai-box">
               <p>Writing your personalised plan
                 <span className="nc-dots">
-                  <span className="nc-dot" />
-                  <span className="nc-dot" />
-                  <span className="nc-dot" />
+                  <span className="nc-dot" /><span className="nc-dot" /><span className="nc-dot" />
                 </span>
               </p>
             </div>
@@ -1098,32 +1268,53 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
           {plan && (
             <>
               <div className="nc-plan-card">
-                <p className="nc-plan-lbl" style={{ marginBottom: 7 }}>Your matched opportunities</p>
+                <p className="nc-plan-lbl" style={{ marginBottom:4 }}>Your matched opportunities</p>
+                <p className="nc-note" style={{ fontSize:11, marginBottom:8 }}>Tap any opportunity to get a focused 30-day plan for it →</p>
                 {plan.opportunities.map((opp, i) => (
-                  <div key={i} className="nc-opp-item">
-                    <p className="nc-opp-title">{opp.title}</p>
+                  <div key={i}
+                    className={`nc-opp-card${selectedOpp === i ? ' selected' : ''}`}
+                    onClick={() => drillDown(opp, i)}>
+                    <div className="nc-opp-title">
+                      {opp.title}
+                      {selectedOpp === i && <span className="nc-opp-badge">Selected</span>}
+                    </div>
                     <p className="nc-opp-desc">{opp.description}</p>
+                    <p className="nc-opp-prompt">Tap again to see your focused 30-day plan →</p>
                   </div>
                 ))}
               </div>
 
-              <div className="nc-plan-card">
-                <p className="nc-plan-lbl" style={{ marginBottom: 7 }}>Your 30-day action plan</p>
-                {plan.actions.map((action, i) => (
-                  <div key={i} className="nc-act-row">
-                    <div className="nc-act-num">{i + 1}</div>
-                    <span>{action}</span>
-                  </div>
-                ))}
-              </div>
+              {selectedOpp === null && (
+                <div className="nc-plan-card">
+                  <p className="nc-plan-lbl" style={{ marginBottom:7 }}>General 30-day action plan</p>
+                  {plan.actions.map((action, i) => (
+                    <div key={i} className="nc-act-row">
+                      <div className="nc-act-num">{i+1}</div>
+                      <span>{action}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
-              <div className="nc-ai-box">
+              {selectedOpp !== null && !showDrill && (
+                <div className="nc-plan-card" style={{ textAlign:'center', padding:'14px' }}>
+                  <p className="nc-note" style={{ marginBottom:10 }}>
+                    Ready to go deeper into <em>{plan.opportunities[selectedOpp]?.title}</em>?
+                  </p>
+                  <button className="nc-btn-primary"
+                    onClick={() => drillDown(plan.opportunities[selectedOpp!], selectedOpp!)}>
+                    Get my focused 30-day plan →
+                  </button>
+                </div>
+              )}
+
+              <div className="nc-ai-box" style={{ marginTop: selectedOpp === null ? 0 : 8 }}>
                 <p>{plan.closing}</p>
               </div>
             </>
           )}
 
-          <div className="nc-btn-row" style={{ marginTop: 'auto' }}>
+          <div className="nc-btn-row" style={{ marginTop:'auto' }}>
             <button className="nc-btn-primary" onClick={() => window.print()}>⎙ Print or save as PDF</button>
             <button className="nc-btn-secondary" onClick={reset}>Start again</button>
           </div>
