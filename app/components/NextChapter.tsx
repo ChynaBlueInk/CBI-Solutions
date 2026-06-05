@@ -560,6 +560,30 @@ const globalStyles = `
   .nc-dot:nth-child(3) { animation-delay: .4s; }
   @keyframes nc-blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
 
+  /* Warning banner */
+  .nc-warn-banner {
+    background: #fffbeb;
+    border: 1px solid #d4a017;
+    border-radius: 3px;
+    padding: 9px 13px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .nc-warn-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .nc-warn-text {
+    font-family: Lato, sans-serif;
+    font-size: 11.5px;
+    color: #7a5c00;
+    line-height: 1.55;
+    margin: 0;
+  }
+
   .nc-step-item {
     display: flex;
     gap: 10px;
@@ -606,12 +630,29 @@ const globalStyles = `
   }
 
   @media print {
-    .nc-shell { background: white; padding: 0; }
-    .nc-frame, .nc-shelf, .nc-corner { display: none; }
-    .nc-book { flex-direction: column; box-shadow: none; filter: none; }
-    .nc-spine { display: none; }
-    .nc-page { border: none; min-height: auto; }
-    .nc-btn-row, .nc-progress, .nc-footer { display: none !important; }
+    /* Hide everything on the page first */
+    body > * { display: none !important; }
+    /* Then show only the app shell */
+    body > #__next,
+    body > #__next > * { display: block !important; }
+    /* Clean up the app itself */
+    .nc-shell {
+      background: white !important;
+      padding: 0 !important;
+      min-height: auto !important;
+      display: block !important;
+    }
+    .nc-outer { display: block !important; max-width: 100% !important; }
+    .nc-frame, .nc-shelf, .nc-corner { display: none !important; }
+    .nc-book { flex-direction: column !important; box-shadow: none !important; filter: none !important; display: block !important; }
+    .nc-spine { display: none !important; }
+    .nc-page { border: none !important; min-height: auto !important; background: white !important; display: block !important; }
+    .nc-page::before { display: none !important; }
+    .nc-btn-row, .nc-progress, .nc-footer,
+    .nc-mobile-divider, .nc-pgnum,
+    .nc-warn-banner { display: none !important; }
+    .nc-page-content { display: block !important; }
+    .nc-plan-card, .nc-ai-box, .nc-drill-header { break-inside: avoid; }
   }
 `
 
@@ -719,6 +760,8 @@ export default function NextChapter() {
   const [drillPlan, setDrillPlan]       = useState<DrillPlan | null>(null)
   const [drillLoading, setDrillLoading] = useState(false)
   const [showDrill, setShowDrill]       = useState(false)
+  // Cache drill plans by opportunity index so switching never regenerates
+  const drillCache = useRef<Map<number, DrillPlan>>(new Map())
 
   useEffect(() => {
     const id = 'nc-styles'
@@ -823,9 +866,17 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
   async function drillDown(opp: Opportunity, index: number) {
     setSelectedOpp(index)
     setShowDrill(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    // Return cached plan immediately — no regeneration needed
+    if (drillCache.current.has(index)) {
+      setDrillPlan(drillCache.current.get(index)!)
+      setDrillLoading(false)
+      return
+    }
+
     setDrillLoading(true)
     setDrillPlan(null)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
 
     const prompt = `You are a warm, practical life coach. A woman aged 50+ has just received her Next Chapter Plan and chosen to focus on one specific opportunity.
 
@@ -866,9 +917,13 @@ Make every action concrete and specific to this opportunity and her situation. N
       if (!res.ok) throw new Error()
       const data = await res.json()
       const raw = data.content.map((b: { text?: string }) => b.text || '').join('')
-      setDrillPlan(JSON.parse(raw.replace(/```json|```/g, '').trim()))
+      const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim())
+      drillCache.current.set(index, parsed)
+      setDrillPlan(parsed)
     } catch {
-      setDrillPlan(buildMockDrillPlan(opp, s))
+      const mock = buildMockDrillPlan(opp, s)
+      drillCache.current.set(index, mock)
+      setDrillPlan(mock)
     } finally {
       setDrillLoading(false)
     }
@@ -882,6 +937,7 @@ Make every action concrete and specific to this opportunity and her situation. N
     setDrillPlan(null)
     setDrillLoading(false)
     setShowDrill(false)
+    drillCache.current.clear()
     go(0)
   }
 
@@ -1169,6 +1225,10 @@ Make every action concrete and specific to this opportunity and her situation. N
             <p className="nc-label">Your focused plan</p>
             <h2 className="nc-title">30 Days Into<br />{opp?.title}</h2>
             <p className="nc-sub" style={{ marginBottom:10 }}>Here is your focused action plan for this specific pathway.</p>
+            <div className="nc-warn-banner">
+              <span className="nc-warn-icon">&#9888;</span>
+              <p className="nc-warn-text"><strong>Keep this page open while you need it.</strong> If you go back to explore another opportunity or navigate away, you will need to regenerate this plan — but you can do that as many times as you like.</p>
+            </div>
 
             {drillLoading && (
               <div className="nc-ai-box">
@@ -1218,7 +1278,7 @@ Make every action concrete and specific to this opportunity and her situation. N
             )}
             <div className="nc-btn-row" style={{ marginTop:'auto' }}>
               <button className="nc-btn-primary" onClick={() => window.print()}>⎙ Print or save as PDF</button>
-              <button className="nc-btn-secondary" onClick={() => { setShowDrill(false); setSelectedOpp(null); }}>← All opportunities</button>
+              <button className="nc-btn-secondary" onClick={() => { setShowDrill(false); setSelectedOpp(null); }}>← Back to opportunities</button>
               <button className="nc-btn-secondary" onClick={reset}>Start again</button>
             </div>
           </>
@@ -1299,11 +1359,14 @@ Make every action concrete and specific to this opportunity and her situation. N
               {selectedOpp !== null && !showDrill && (
                 <div className="nc-plan-card" style={{ textAlign:'center', padding:'14px' }}>
                   <p className="nc-note" style={{ marginBottom:10 }}>
-                    Ready to go deeper into <em>{plan.opportunities[selectedOpp]?.title}</em>?
+                    {drillCache.current.has(selectedOpp)
+                      ? <>Your focused plan for <em>{plan.opportunities[selectedOpp]?.title}</em> is ready.</>
+                      : <>Ready to go deeper into <em>{plan.opportunities[selectedOpp]?.title}</em>?</>
+                    }
                   </p>
                   <button className="nc-btn-primary"
                     onClick={() => drillDown(plan.opportunities[selectedOpp!], selectedOpp!)}>
-                    Get my focused 30-day plan →
+                    {drillCache.current.has(selectedOpp) ? 'View my focused plan →' : 'Get my focused 30-day plan →'}
                   </button>
                 </div>
               )}
