@@ -733,19 +733,80 @@ function buildMockPlan(s: AppState): Plan {
 }
 
 function buildMockDrillPlan(opp: Opportunity, s: AppState): DrillPlan {
-  const str = s.strs.slice(0,2).join(' and ') || 'your strengths'
+  const str   = s.strs.slice(0,2).join(' and ') || 'your strengths'
+  const vals  = s.vals.slice(0,2).join(' and ') || 'your values'
+  const ints  = s.ints.slice(0,2).join(' and ') || 'your interests'
+  const pri   = s.pri[0] || 'what matters most to you'
+  const title = opp.title.toLowerCase()
+
+  // Generate actions tailored to the specific opportunity
+  let actions: string[]
+
+  if (title.includes('coach') || title.includes('consult') || title.includes('mentor')) {
+    actions = [
+      `Week 1: Write down the three types of problems you have solved most often in your life — these are your coaching topics`,
+      `Week 2: Research how other women with your background have packaged their expertise — look at three profiles that resonate`,
+      `Week 3: Have one conversation with someone who might benefit from what you know — treat it as an informal discovery session, not a pitch`,
+      `Week 4: Decide on one simple format to start with — a 60-minute session, a small workshop, or a written guide — and price it`,
+      `Month end: Book or confirm your first paid or practice session, and tell at least five people what you are now offering`,
+    ]
+  } else if (title.includes('creativ') || title.includes('blog') || title.includes('writ') || title.includes('art') || title.includes('photo') || title.includes('music')) {
+    actions = [
+      `Week 1: Set aside 30 minutes and make something — a draft, a sketch, a photo walk, a voice memo — with no intention of sharing it yet`,
+      `Week 2: Research three women who have built something creative around ${ints} — study what they did in their first three months`,
+      `Week 3: Choose one platform or format to focus on first, and create or post one small piece of work`,
+      `Week 4: Share your work with one person whose opinion you respect and ask for one piece of honest feedback`,
+      `Month end: Commit to a regular creative practice — even 20 minutes three times a week — and schedule it in your calendar`,
+    ]
+  } else if (title.includes('communit') || title.includes('volunteer') || title.includes('connect')) {
+    actions = [
+      `Week 1: List five communities, groups, or organisations that connect to your values around ${vals} — local and online`,
+      `Week 2: Attend one meeting, event, or online session — just to observe and meet people, with no pressure to commit`,
+      `Week 3: Identify two or three people from that community you would like to know better and send one message`,
+      `Week 4: Consider whether you want to join an existing community or start a small one of your own — write down what it would look like`,
+      `Month end: Make one commitment — a regular volunteering slot, a community membership, or a first gathering you have organised`,
+    ]
+  } else if (title.includes('travel') || title.includes('volunteer abroad') || title.includes('explor')) {
+    actions = [
+      `Week 1: Write down five places or experiences that have stayed in your mind — what do they have in common`,
+      `Week 2: Research one specific trip, programme, or volunteering opportunity that fits your situation and book a discovery call or request information`,
+      `Week 3: Look honestly at your practical constraints — time, budget, health — and identify one format that is genuinely doable in the next six months`,
+      `Week 4: Tell one person about what you are planning — saying it out loud makes it more real`,
+      `Month end: Make one concrete move — book a date, open a dedicated savings account, or submit an application`,
+    ]
+  } else if (title.includes('business') || title.includes('income') || title.includes('earn')) {
+    actions = [
+      `Week 1: Write down every way you could generate income using skills and knowledge you already have — aim for at least ten ideas without filtering`,
+      `Week 2: Research whether anyone is already doing the two or three ideas that excite you most — this is validation, not competition`,
+      `Week 3: Talk to one potential customer or client — describe what you are thinking of offering and listen carefully to their response`,
+      `Week 4: Choose the simplest version of your idea that you could test within 30 days — write down exactly what it is and what success looks like`,
+      `Month end: Launch or test your minimum version — a listing, a post, a proposal, a first sale — and treat whatever happens as useful information`,
+    ]
+  } else if (title.includes('learn') || title.includes('study') || title.includes('skill') || title.includes('course')) {
+    actions = [
+      `Week 1: Identify exactly what you want to learn and why — be specific about the skill or knowledge, not just the subject area`,
+      `Week 2: Research three different ways to learn it — a course, a book, a mentor, a community — and compare what suits your style`,
+      `Week 3: Start with the smallest possible entry point — one chapter, one free lesson, one introductory session`,
+      `Week 4: Find one other person learning the same thing — a study partner, a group, or a forum — learning alongside others is faster`,
+      `Month end: Complete one milestone that proves you have started — a module finished, a skill practised, a project begun`,
+    ]
+  } else {
+    // Generic but still references the opportunity title and their profile
+    actions = [
+      `Week 1: Write down everything you already know about "${opp.title}" and everything you want to find out — this is your starting map`,
+      `Week 2: Research three people or organisations doing something in this space that genuinely excites you — study what they did to begin`,
+      `Week 3: Have one conversation with someone who has experience in this area — ask them what they wish they had known at the start`,
+      `Week 4: Identify the one thing that, if you did it, would make the biggest difference — and plan exactly when you will do it`,
+      `Month end: Take one action that commits you publicly or practically to this path — book, apply, post, pay, tell someone`,
+    ]
+  }
+
   return {
     opportunity: opp.title,
-    why: `This pathway suits you specifically because of your ${str} and the values you hold around ${s.vals.slice(0,2).join(' and ') || 'what matters to you'}. It is a natural extension of who you already are.`,
-    first_steps: `You do not need to have everything figured out before you start. The first step is simply making this real — telling one person about it, writing down what it would look like, and taking one small action this week.`,
-    actions: [
-      `Week 1: Research three real examples of women who have done something similar — notice what resonates`,
-      `Week 2: Write a one-page description of what this looks like for you specifically — your version of it`,
-      `Week 3: Have one conversation with someone already doing this, or join one community or group related to it`,
-      `Week 4: Identify the single biggest obstacle and write down three ways around it`,
-      `Month end: Take one committed action — enrol, apply, publish, reach out, book — something that makes it real`,
-    ],
-    closing: `You chose this pathway for a reason. Trust that instinct — it knows something your logical mind is still catching up to.`,
+    why: `This pathway connects directly to your strength in ${str} and your values around ${vals}. It is not just something that sounds interesting — it is something you are genuinely equipped for right now.`,
+    first_steps: `The most important thing is to begin before you feel ready. Your focus on ${pri} tells us you are ready for something real, and "${opp.title}" is a concrete way to express that. Start small, stay consistent, and let the first steps show you what comes next.`,
+    actions,
+    closing: `You chose this pathway for a reason — and that reason matters. The actions above are designed to move you forward without overwhelming you. One week at a time is enough.`,
   }
 }
 
@@ -878,35 +939,43 @@ Tone: warm, grounded, practical. Specific to her actual answers — never generi
     setDrillLoading(true)
     setDrillPlan(null)
 
-    const prompt = `You are a warm, practical life coach. A woman aged 50+ has just received her Next Chapter Plan and chosen to focus on one specific opportunity.
+    const prompt = `You are a warm, practical life coach. A woman aged 50+ has chosen to focus on one specific opportunity from her Next Chapter Plan. Write a deeply personalised 30-day action plan FOR THIS OPPORTUNITY ONLY.
 
-Her profile:
+Her full profile:
 - Values: ${s.vals.join(', ')}
-- Strengths: ${s.strs.join(', ')}
+- Key strengths: ${s.strs.join(', ')}
 - Interests: ${s.ints.join(', ')}
 - What matters most: ${s.pri.join(', ')}
-${s.o1 ? `- Personal context: "${s.o1}"` : ''}
-${s.o4 ? `- Constraints: "${s.o4}"` : ''}
+- A life well lived means: "${s.vt}"
+- Proud of: "${s.st}"
+- Dream life: "${s.it}"
+${s.o1 ? '- Personal context: "' + s.o1 + '"' : ''}
+${s.o4 ? '- Practical constraints: "' + s.o4 + '"' : ''}
 
-She has chosen to focus on: "${opp.title}"
-Why this was suggested: "${opp.description}"
+THE OPPORTUNITY SHE HAS CHOSEN: "${opp.title}"
+Why it was suggested: "${opp.description}"
 
-Write her a focused deep-dive plan for this specific opportunity. Return ONLY valid JSON, no markdown:
+CRITICAL RULES — every action must:
+1. Be specific to "${opp.title}" — not generic advice that works for any pathway
+2. Build logically from the previous week — week 2 follows week 1, etc
+3. Reference her actual values (${s.vals.slice(0,3).join(', ')}) and strengths (${s.strs.slice(0,3).join(', ')}) where relevant
+4. Be realistic given her constraints: ${s.o4 || 'none mentioned'}
+5. Be something concrete she can actually do this week — not vague or conceptual
+
+Return ONLY valid JSON, no markdown, no preamble:
 {
   "opportunity": "${opp.title}",
-  "why": "2-3 sentences on exactly why this suits her — reference her specific values and strengths by name",
-  "first_steps": "2-3 sentences on how to approach getting started, practical and encouraging",
+  "why": "2-3 sentences on exactly why THIS opportunity suits HER — name her actual values and strengths by name",
+  "first_steps": "2-3 sentences on how to get started with THIS specific opportunity — practical and specific, not vague",
   "actions": [
-    "Week 1: specific action with detail",
-    "Week 2: specific action with detail",
-    "Week 3: specific action with detail",
-    "Week 4: specific action with detail",
-    "Month end: one committed action that makes this real"
+    "Week 1: concrete first step specific to ${opp.title}",
+    "Week 2: next step that builds on week 1 — still specific to ${opp.title}",
+    "Week 3: next step that builds on week 2 — still specific to ${opp.title}",
+    "Week 4: next step that builds on week 3 — still specific to ${opp.title}",
+    "Month end: one committed visible action that makes ${opp.title} real and irreversible"
   ],
-  "closing": "2 warm sentences written just for her about this specific path"
-}
-
-Make every action concrete and specific to this opportunity and her situation. Not generic advice — real next steps she can take this week.`
+  "closing": "2 warm personal sentences about this specific path — mention ${opp.title} by name"
+}`
 
     try {
       const res = await fetch('/api/next-chapter', {
@@ -914,13 +983,18 @@ Make every action concrete and specific to this opportunity and her situation. N
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] }),
       })
-      if (!res.ok) throw new Error()
+      if (!res.ok) {
+        const errText = await res.text()
+        console.error('Drill API error:', res.status, errText)
+        throw new Error('API ' + res.status)
+      }
       const data = await res.json()
       const raw = data.content.map((b: { text?: string }) => b.text || '').join('')
       const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim())
       drillCache.current.set(index, parsed)
       setDrillPlan(parsed)
-    } catch {
+    } catch (err) {
+      console.warn('Drill API failed, using tailored mock:', err)
       const mock = buildMockDrillPlan(opp, s)
       drillCache.current.set(index, mock)
       setDrillPlan(mock)
