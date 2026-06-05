@@ -1,4 +1,4 @@
-import NextChapter from '@/app/components/NextChapter'
+import NextChapter from '../components/NextChapter'
 
 export const metadata = {
   title: 'The Next Chapter',
