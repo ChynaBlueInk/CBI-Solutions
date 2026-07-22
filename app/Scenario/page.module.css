@@ -1,0 +1,417 @@
+.scenarioRoot {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  background: #07070a;
+  color: #f2f2f5;
+  padding: 72px 20px 96px;
+}
+
+/* ---------- background ---------- */
+.bgGrid {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 210, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 210, 0.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+}
+
+.bgBlob {
+  position: absolute;
+  z-index: 0;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+.bgBlobPink {
+  top: -12%;
+  left: -10%;
+  background: radial-gradient(circle, #ff2bd6 0%, transparent 70%);
+}
+.bgBlobCyan {
+  top: 5%;
+  right: -14%;
+  background: radial-gradient(circle, #00eaff 0%, transparent 70%);
+}
+.bgBlobAcid {
+  bottom: -10%;
+  left: 30%;
+  background: radial-gradient(circle, #c6ff00 0%, transparent 70%);
+  opacity: 0.22;
+}
+
+.bgNoise {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.bgScanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 28px;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #7df9ff;
+  background: rgba(0, 234, 255, 0.06);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7df9ff;
+  box-shadow: 0 0 8px #7df9ff;
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+.title {
+  position: relative;
+  font-size: clamp(3rem, 12vw, 7rem);
+  line-height: 0.95;
+  margin: 0 0 20px;
+  letter-spacing: 0.02em;
+  transform: rotate(-2deg);
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.5),
+    3px 3px 0 #ff2bd6,
+    -3px -3px 0 #00eaff;
+}
+.title::before,
+.title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 0);
+}
+.title::before {
+  color: #ff2bd6;
+  transform: translate(-2px, 0);
+  animation: glitch-a 3.4s infinite linear alternate-reverse;
+  z-index: -1;
+}
+.title::after {
+  color: #00eaff;
+  transform: translate(2px, 0);
+  animation: glitch-b 2.6s infinite linear alternate-reverse;
+  z-index: -1;
+}
+
+.tagline {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c6ff00;
+  margin: 0 0 24px;
+}
+
+.blurb {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #b7b7c2;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+/* ---------- hazard divider ---------- */
+.hazard {
+  position: relative;
+  z-index: 1;
+  margin: 56px auto;
+  max-width: 1040px;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #0a0a0a;
+  font-weight: 700;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffd200 0px,
+    #ffd200 18px,
+    #0a0a0a 18px,
+    #0a0a0a 36px
+  );
+  border-radius: 4px;
+}
+.hazard span {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #0a0a0a;
+  color: #ffd200;
+  border-radius: 3px;
+}
+
+/* ---------- pillars ---------- */
+.pillars {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto 64px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.pillarCard {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(6px);
+}
+
+.pillarIcon {
+  color: #00eaff;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+}
+
+.pillarCard h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.pillarCard p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #a3a3ae;
+}
+
+/* ---------- scenario grid ---------- */
+.gridSection {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.gridHeading {
+  text-align: center;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: #fff;
+  margin: 0 0 32px;
+  transform: rotate(-1deg);
+  text-shadow: 2px 2px 0 #ff2bd6;
+}
+
+.scenarioGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardLive {
+  border: 1px solid rgba(0, 234, 255, 0.35);
+  background: linear-gradient(160deg, rgba(0, 234, 255, 0.08), rgba(255, 43, 214, 0.06));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cardLive:hover {
+  transform: translateY(-4px) rotate(-0.4deg);
+  box-shadow: 0 12px 32px rgba(0, 234, 255, 0.18);
+}
+
+.cardEpisode {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: #7df9ff;
+  margin-bottom: 10px;
+}
+
+.cardLivePill {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #0a0a0a;
+  background: #c6ff00;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.cardLiveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+.cardThumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.cardTeaser {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #b7b7c2;
+  margin: 0 0 18px;
+}
+
+.cardCta {
+  margin-top: auto;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #c6ff00;
+}
+
+/* locked cards */
+.cardLocked {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 260px;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+}
+.cardLocked .cardEpisode {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  color: #6b6b76;
+}
+.cardLockedBody {
+  text-align: center;
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+.lockIcon {
+  width: 30px;
+  height: 30px;
+  color: #8a8a94;
+  margin: 0 auto 12px;
+}
+.cardTitleLocked {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cardTeaserLocked {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.cardStatic {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: flicker 5s infinite;
+  pointer-events: none;
+}
+
+/* ---------- footnote ---------- */
+.footnote {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 72px;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #6b6b76;
+}
+
+/* ---------- animations ---------- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  94% { opacity: 0.7; }
+  96% { opacity: 1; }
+}
+@keyframes glitch-a {
+  0% { clip-path: inset(0 0 90% 0); }
+  20% { clip-path: inset(20% 0 60% 0); }
+  40% { clip-path: inset(70% 0 5% 0); }
+  60% { clip-path: inset(10% 0 80% 0); }
+  80% { clip-path: inset(50% 0 30% 0); }
+  100% { clip-path: inset(0 0 90% 0); }
+}
+@keyframes glitch-b {
+  0% { clip-path: inset(85% 0 0 0); }
+  25% { clip-path: inset(30% 0 50% 0); }
+  50% { clip-path: inset(60% 0 10% 0); }
+  75% { clip-path: inset(15% 0 70% 0); }
+  100% { clip-path: inset(85% 0 0 0); }
+}
