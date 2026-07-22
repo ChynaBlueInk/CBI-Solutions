@@ -8,10 +8,7 @@ import Footer from "./components/Footer"
 
 const inter=Inter({subsets:["latin"]})
 
-// IMPORTANT:
-// 1) Replace siteUrl with your real live domain (https://...)
-// 2) Add /public/og.png (1200x630) for the preview image
-const siteUrl="https://yourdomain.com"
+const siteUrl="https://www.cbils.dev"
 
 export const metadata:Metadata={
   metadataBase:new URL(siteUrl),
