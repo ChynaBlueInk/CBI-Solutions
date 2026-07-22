@@ -79,7 +79,15 @@ const SCENARIOS: ScenarioEntry[] = [
     href: "/Scenario/group_chat",
     thumb: "/scenario/group-chat-thumb.jpg",
   },
-  { episode: "EP. 03", title: "Transmission Locked", status: "soon" },
+  {
+    episode: "EP. 03",
+    title: "Speak Up",
+    status: "live",
+    teaser:
+      "A friend crosses a line with a girl at a party. Say nothing, or step in? Three decisions, six endings.",
+    href: "/Scenario/party",
+    thumb: "/scenario/party-thumb.jpg",
+  },
   { episode: "EP. 04", title: "Transmission Locked", status: "soon" },
 ];
 
