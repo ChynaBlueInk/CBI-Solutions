@@ -70,7 +70,15 @@ const SCENARIOS: ScenarioEntry[] = [
     href: "/Scenario/wallet",
     thumb: "/scenario/wallet-thumb.jpg",
   },
-  { episode: "EP. 02", title: "Transmission Locked", status: "soon" },
+  {
+    episode: "EP. 02",
+    title: "The Group Chat",
+    status: "live",
+    teaser:
+      "A fake AI-generated image of a classmate lands in the group chat. Pile on, stay silent, or speak up? Three decisions, six endings.",
+    href: "/Scenario/group_chat",
+    // Add a thumb once you have one: thumb: "/scenario/group-chat-thumb.jpg",
+  },
   { episode: "EP. 03", title: "Transmission Locked", status: "soon" },
   { episode: "EP. 04", title: "Transmission Locked", status: "soon" },
 ];
