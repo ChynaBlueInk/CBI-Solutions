@@ -140,7 +140,7 @@ export default function BranchingPlayer({ story }: { story: Story }) {
           <video
             ref={videoRef}
             className="player"
-            style={{ visibility: view.kind === "title" ? "hidden" : "visible" }}
+            poster={story.poster}
             playsInline
             controls={view.kind !== "title"}
             onEnded={handleEnded}

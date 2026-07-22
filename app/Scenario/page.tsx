@@ -77,7 +77,7 @@ const SCENARIOS: ScenarioEntry[] = [
     teaser:
       "A fake AI-generated image of a classmate lands in the group chat. Pile on, stay silent, or speak up? Three decisions, six endings.",
     href: "/Scenario/group_chat",
-    // Add a thumb once you have one: thumb: "/scenario/group-chat-thumb.jpg",
+    thumb: "/scenario/group-chat-thumb.jpg",
   },
   { episode: "EP. 03", title: "Transmission Locked", status: "soon" },
   { episode: "EP. 04", title: "Transmission Locked", status: "soon" },
@@ -113,6 +113,10 @@ export default function ScenarioLandingPage() {
         <p className={styles.tagline}>{SERIES.tagline}</p>
 
         <p className={styles.blurb}>{SERIES.blurb}</p>
+
+        <a href="#scenarios" className={styles.jumpLink}>
+          Jump to scenarios <span className={styles.jumpArrow}>↓</span>
+        </a>
       </section>
 
       {/* ---- hazard divider ---- */}
@@ -120,19 +124,8 @@ export default function ScenarioLandingPage() {
         <span>⚠ CONTAINS DIFFICULT CHOICES — DISCUSS AFTER WATCHING ⚠</span>
       </div>
 
-      {/* ---- pillars ---- */}
-      <section className={styles.pillars}>
-        {PILLARS.map((p) => (
-          <div key={p.title} className={styles.pillarCard}>
-            <p.icon className={styles.pillarIcon} strokeWidth={1.5} />
-            <h3>{p.title}</h3>
-            <p>{p.body}</p>
-          </div>
-        ))}
-      </section>
-
       {/* ---- scenario grid ---- */}
-      <section className={styles.gridSection}>
+      <section id="scenarios" className={styles.gridSection}>
         <h2 className={`${styles.gridHeading} ${bungee.className}`}>PICK A SCENARIO</h2>
 
         <div className={styles.scenarioGrid}>
@@ -175,6 +168,17 @@ export default function ScenarioLandingPage() {
             );
           })}
         </div>
+      </section>
+
+      {/* ---- pillars ---- */}
+      <section className={styles.pillars}>
+        {PILLARS.map((p) => (
+          <div key={p.title} className={styles.pillarCard}>
+            <p.icon className={styles.pillarIcon} strokeWidth={1.5} />
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
       </section>
 
       {/* ---- footer note ---- */}

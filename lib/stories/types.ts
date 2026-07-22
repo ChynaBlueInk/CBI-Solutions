@@ -41,4 +41,7 @@ export interface Story {
   subtitle: string;
   startNode: string;
   nodes: Record<string, StoryNode>;
+  /** Shown as the video's poster image on the title screen, before the first
+   * clip has played. Optional — falls back to a plain black frame if unset. */
+  poster?: string;
 }

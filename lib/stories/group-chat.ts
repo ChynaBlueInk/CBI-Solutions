@@ -16,6 +16,7 @@ export const groupChat: Story = {
   title: "The Group Chat",
   subtitle:
     "A fake image of a classmate just landed in the chat. Pile on, stay quiet, or speak up?",
+  poster: "/scenario/group-chat-thumb.jpg",
   startNode: "0",
   nodes: {
     "0": {

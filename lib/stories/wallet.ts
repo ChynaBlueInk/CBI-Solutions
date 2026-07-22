@@ -11,6 +11,7 @@ export const wallet: Story = {
   title: "The Wallet",
   subtitle:
     "A stranger's wallet, stuffed with cash, and no one watching. What would you do?",
+  poster: "/scenario/wallet-thumb.jpg",
   startNode: "0",
   nodes: {
     "0": {
