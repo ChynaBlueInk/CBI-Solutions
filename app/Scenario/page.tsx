@@ -88,7 +88,16 @@ const SCENARIOS: ScenarioEntry[] = [
     href: "/Scenario/party",
     thumb: "/scenario/party-thumb.jpg",
   },
-  { episode: "EP. 04", title: "Transmission Locked", status: "soon" },
+  {
+    episode: "EP. 04",
+    title: "The Contest",
+    status: "live",
+    teaser:
+      "A contest deadline, a shortcut she's not sure about, and no rule that tells her what's fair. Three decisions, six endings — no single right answer.",
+    href: "/Scenario/contest",
+    thumb: "/scenario/contest-thumb.jpg",
+  },
+  { episode: "EP. 05", title: "Transmission Locked", status: "soon" },
 ];
 
 export default function ScenarioLandingPage() {
