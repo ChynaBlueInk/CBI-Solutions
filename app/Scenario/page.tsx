@@ -90,14 +90,23 @@ const SCENARIOS: ScenarioEntry[] = [
   },
   {
     episode: "EP. 04",
-    title: "The Contest",
+    title: "The Glasses",
     status: "live",
     teaser:
-      "A contest deadline, a shortcut she's not sure about, and no rule that tells her what's fair. Three decisions, six endings — no single right answer.",
-    href: "/Scenario/contest",
-    thumb: "/scenario/contest-thumb.jpg",
+      "A friend is secretly filming people with his camera glasses. Say nothing, or say something? Three decisions, six endings.",
+    href: "/Scenario/glasses",
+    thumb: "/scenario/glasses-thumb.jpg",
   },
-  { episode: "EP. 05", title: "Transmission Locked", status: "soon" },
+  {
+    episode: "EP. 05",
+    title: "The Online Stranger",
+    status: "live",
+    teaser:
+      "Someone she's only ever talked to online wants to meet up. Go alone, or bring someone into it? Three decisions, six endings.",
+    href: "/Scenario/online-stranger",
+    thumb: "/scenario/online-stranger-thumb.jpg",
+  },
+  { episode: "EP. 06", title: "Transmission Locked", status: "soon" },
 ];
 
 export default function ScenarioLandingPage() {

@@ -14,6 +14,13 @@ export const party: Story = {
   title: "Speak Up",
   subtitle: "Marcus watches a friend cross a line at a party. Say nothing, or step in?",
   poster: "/scenario/party-thumb.jpg",
+  discussion: [
+    "Nothing Dominic does in this story is clearly illegal — it's a hand on an arm, pressure, discomfort. Does that make it less serious? Why or why not?",
+    "Why is it often harder to speak up in front of a group than one-on-one? What are people actually afraid of in that moment?",
+    "In Ending 5, Marcus gets mocked for doing the right thing. Does the reaction of the room change whether it was still the right call?",
+    "How do you think Sofia perceived Marcus differently depending on what he chose to do, or not do? How might that shape how she trusts him going forward?",
+    "Staying silent isn't against any rule. So what makes it still feel like the wrong choice in this story?",
+  ],
   startNode: "0",
   nodes: {
     "0": {
@@ -50,6 +57,8 @@ export const party: Story = {
       ending: {
         title: "Ending 1: Nothing Changes",
         text: "Staying quiet didn't just fail Sofia once. It told Dominic this was fine to keep doing.",
+        reflection:
+          "Marcus didn't do anything wrong himself. Why does staying silent still make him part of what happens next?",
       },
     },
     A2: {
@@ -73,6 +82,8 @@ export const party: Story = {
       ending: {
         title: "Ending 2: Too Little, Too Late",
         text: "Checking in after the fact is kind. But Sofia needed someone in that moment, not after it.",
+        reflection:
+          "Sofia's reply — \"you were standing right there\" — stings. Was that fair of her to say? What was Marcus really offering by texting her?",
       },
     },
     A2b: {
@@ -83,6 +94,8 @@ export const party: Story = {
       ending: {
         title: "Ending 3: A Late Start",
         text: "He didn't get it right the first time. But going back and actually saying something to Dominic mattered — growth is still growth.",
+        reflection:
+          "Marcus got a second chance to speak up, a week later. Does acting late still count as speaking up — or is timing part of what makes it matter?",
       },
     },
     B: {
@@ -106,6 +119,8 @@ export const party: Story = {
       ending: {
         title: "Ending 4: Man to Man",
         text: "A private word worked, just slower and quieter. Dominic apologized to Sofia later that night — accountability doesn't always need an audience.",
+        reflection:
+          "Marcus chose to handle it quietly instead of publicly. Does calling a friend out in private still count as \"speaking up,\" even if no one else sees it?",
       },
     },
     B2: {
@@ -129,6 +144,8 @@ export const party: Story = {
       ending: {
         title: "Ending 5: The Uncomfortable Silence",
         text: "Doing the right thing wasn't popular in that room. It was still right — and Sofia knew exactly what he'd done for her.",
+        reflection:
+          "Marcus got mocked for stepping in, but Sofia was grateful. Whose reaction matters more when you're deciding whether it was worth it?",
       },
     },
     B2b: {
@@ -139,6 +156,8 @@ export const party: Story = {
       ending: {
         title: "Ending 6: The Turning Point",
         text: "One voice became two, and the room's whole standard shifted with it. That's how a culture actually changes.",
+        reflection:
+          "It only took one other person backing Marcus up for the whole room's mood to shift. What does that tell you about how much power a single bystander actually has?",
       },
     },
   },

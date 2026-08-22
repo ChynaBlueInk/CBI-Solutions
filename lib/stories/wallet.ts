@@ -12,6 +12,12 @@ export const wallet: Story = {
   subtitle:
     "A stranger's wallet, stuffed with cash, and no one watching. What would you do?",
   poster: "/scenario/wallet-thumb.jpg",
+  discussion: [
+    "Nobody would have known if Maya kept the wallet. Does it matter that she didn't get caught? Why or why not?",
+    "None of Maya's choices in this story were illegal. Does that change how you judge them?",
+    "How do you think Maya would feel about herself a week later in each ending? Does that feeling match what she got away with?",
+    "If you found out a friend had kept a wallet like this, would it change how you saw them — even if they never got caught?",
+  ],
   startNode: "0",
   nodes: {
     "0": {
@@ -48,6 +54,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 1: The Weight of a Lie",
         text: "A secret you have to keep is a debt that keeps compounding.",
+        reflection:
+          "Nothing about spending the cash was illegal — the wallet was just lying there. So why did that moment at the corner store feel like getting caught?",
       },
     },
     A2: {
@@ -71,6 +79,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 2: Drop & Run",
         text: "Doing the right thing quietly still counts. But some connections are worth staying for.",
+        reflection:
+          "Maya did the right thing but avoided the woman's reaction. What do you think she was protecting herself from by not staying?",
       },
     },
     A2b: {
@@ -81,6 +91,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 3: Face to Face",
         text: "Owning a mistake and making it right, in person, turns guilt into growth.",
+        reflection:
+          "Maya could have dropped the wallet off and said nothing about almost keeping it. Why might telling the truth about that be harder — and more valuable — than just returning the wallet?",
       },
     },
     B: {
@@ -104,6 +116,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 4: Quiet Integrity",
         text: "Nobody has to know you did the right thing for it to matter.",
+        reflection:
+          "Maya chose to do the right thing with zero chance of anyone knowing it was her. Does an anonymous good deed count for as much as a public one?",
       },
     },
     B2: {
@@ -127,6 +141,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 5: Take the Cash",
         text: "Honesty was rewarded here, but notice: she would have knocked on that door either way.",
+        reflection:
+          "Is it okay to accept a reward for doing the right thing? Would it change your answer if Maya had hesitated at the door hoping for one?",
       },
     },
     B2b: {
@@ -137,6 +153,8 @@ export const wallet: Story = {
       ending: {
         title: "Ending 6: Beyond the Reward",
         text: "Some choices open doors money never could. Integrity is its own reward — and sometimes it's the start of something new.",
+        reflection:
+          "Turning down the reward cost Maya nothing but a little cash. What do you think she gained instead?",
       },
     },
   },

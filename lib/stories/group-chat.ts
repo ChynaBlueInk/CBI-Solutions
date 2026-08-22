@@ -17,6 +17,13 @@ export const groupChat: Story = {
   subtitle:
     "A fake image of a classmate just landed in the chat. Pile on, stay quiet, or speak up?",
   poster: "/scenario/group-chat-thumb.jpg",
+  discussion: [
+    "This story is different from some of the others — nearly every path except full reporting involves breaking an actual law. Why do you think a fake image can carry the same legal weight as a real one?",
+    "Ava never made the image. Does that make forwarding it, or just keeping quiet about it, less serious? Why or why not?",
+    "\"It was just a joke\" comes up a lot in situations like this. Who decides whether something is a joke — the person who made it, or the person it's about?",
+    "How do you think each version of Ava would feel about herself a month later? Does that feeling line up with how much trouble she actually got in?",
+    "What makes it hard to speak up in a group chat in the moment, even when you know the right thing to say?",
+  ],
   startNode: "0",
   nodes: {
     "0": {
@@ -53,6 +60,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 1: The Ripple You Can't Take Back",
         text: "AI-generated or not, a sexual image of someone underage is illegal to make, share, or even keep on your phone. Forwarding it isn't a joke — it's evidence, and now it has your name on it too.",
+        reflection:
+          "Ava didn't make the image, she just added a caption and hit forward. Why do you think the law treats that as seriously as it does?",
       },
     },
     A2: {
@@ -76,6 +85,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 2: Silence Isn't Innocence",
         text: "Not adding a caption doesn't make it not a crime. Once you forward something like that, having it and passing it along is part of the offense — deleting it and speaking up the moment you realise what it is isn't optional, it's the only way out.",
+        reflection:
+          "Ava told herself forwarding it silently was less bad than adding a caption. Was it? What's the difference between staying quiet and doing nothing?",
       },
     },
     A2b: {
@@ -86,6 +97,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 3: Owning It — Late, But Real",
         text: "A real apology matters. But notice: the right moment to delete it was the second she realised what it was, not after she'd already sent it on.",
+        reflection:
+          "Ava apologised privately instead of also flagging it to an adult. Does an apology to Priya undo the fact that the image is still out there on other phones?",
       },
     },
     B: {
@@ -109,6 +122,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 4: A Voice in the Chat",
         text: "Speaking up in the moment matters, and it's real courage. But a fake sexual image doesn't fully disappear just because one group chat calms down — this needed to go further.",
+        reflection:
+          "Ava spoke up in public, which took guts. Why might that still not be enough on its own? What's missing?",
       },
     },
     B2: {
@@ -132,6 +147,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 5: Support in the Shadows",
         text: "Comfort helps, but it doesn't make an illegal image stop existing. Something like this needs to be reported — to the school, and often to police — not just kept quietly between friends. It's possible it could appear again in her future",
+        reflection:
+          "Priya and Ava chose to keep this between themselves. What do you think held them back from reporting it — and was that fear reasonable?",
       },
     },
     B2b: {
@@ -142,6 +159,8 @@ export const groupChat: Story = {
       ending: {
         title: "Ending 6: Turning the Tide",
         text: "This was never about getting someone in trouble for a joke. Making or sharing a sexual image of someone underage — real or AI-generated — is a real crime under laws in many countries. Reporting it is what makes it stop, and it's what real accountability looks like.",
+        reflection:
+          "Reporting it was the hardest option and the only one that actually stopped the image from spreading further. Why do you think the hardest choice and the right choice so often end up being the same one?",
       },
     },
   },

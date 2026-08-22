@@ -30,6 +30,7 @@ export default function BranchingPlayer({ story }: { story: Story }) {
   const [path, setPath] = useState<string[]>([]);
   const [choicesRevealed, setChoicesRevealed] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
+  const [discussOpen, setDiscussOpen] = useState(false);
 
   const currentNode = view.kind === "title" ? undefined : story.nodes[view.nodeId];
 
@@ -45,6 +46,7 @@ export default function BranchingPlayer({ story }: { story: Story }) {
 
     setView({ kind: "playing", nodeId });
     setChoicesRevealed(false);
+    setDiscussOpen(false);
     video.src = node.video;
     video.currentTime = 0;
     video.load();
@@ -185,6 +187,11 @@ export default function BranchingPlayer({ story }: { story: Story }) {
                   <button className="btn" onClick={() => setMapOpen((v) => !v)}>
                     See all endings
                   </button>
+                  {(currentNode.ending.reflection || story.discussion?.length) && (
+                    <button className="btn" onClick={() => setDiscussOpen((v) => !v)}>
+                      {discussOpen ? "Hide discussion questions" : "Discussion questions"}
+                    </button>
+                  )}
                 </div>
               </>
             ) : currentNode.choice ? (
@@ -240,6 +247,22 @@ export default function BranchingPlayer({ story }: { story: Story }) {
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {discussOpen && view.kind === "ending" && currentNode?.ending && (
+        <div className="discussPanel">
+          <h3>Talk about it</h3>
+          {currentNode.ending.reflection && (
+            <p className="reflection">{currentNode.ending.reflection}</p>
+          )}
+          {story.discussion && story.discussion.length > 0 && (
+            <ul className="discussList">
+              {story.discussion.map((q, i) => (
+                <li key={i}>{q}</li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
 
@@ -532,6 +555,48 @@ export default function BranchingPlayer({ story }: { story: Story }) {
 
         .mapList button:hover {
           border-color: var(--accent);
+        }
+
+        .discussPanel {
+          margin-top: 18px;
+          padding: 16px 20px;
+          background: var(--panel);
+          border: 1px solid var(--panel-border);
+          border-radius: var(--radius);
+        }
+
+        .discussPanel h3 {
+          margin: 0 0 10px;
+          font-size: 1rem;
+          color: var(--text-dim);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .reflection {
+          font-style: italic;
+          color: var(--text);
+          background: #262a37;
+          border-left: 3px solid var(--accent);
+          padding: 10px 14px;
+          border-radius: 6px;
+          margin: 0 0 14px;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+
+        .discussList {
+          margin: 0;
+          padding-left: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .discussList li {
+          font-size: 0.92rem;
+          line-height: 1.55;
+          color: var(--text);
         }
 
         .footNote {

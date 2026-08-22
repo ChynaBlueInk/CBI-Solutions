@@ -34,7 +34,7 @@ const groupConfigs: GroupConfig[] = [
     description:
       "Learning platforms, AI-assisted tools, education websites, and supporting digital learning work.",
     match: (slug) =>
-      ["ai-wiki-toolbox", "memoir-wizard", "lafaek-tl"].includes(slug),
+  ["consequence", "memoir-wizard", "lafaek-tl", "safeimage-nz", "nzsl-live"].includes(slug),
   },
   {
     key: "apps-data",

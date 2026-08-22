@@ -25,6 +25,9 @@ export interface Choice {
 export interface Ending {
   title: string;
   text: string;
+  /** A short, ending-specific follow-up question — reacts to the exact path
+   * the viewer took, shown above the story-level discussion questions. */
+  reflection?: string;
 }
 
 export interface StoryNode {
@@ -44,4 +47,10 @@ export interface Story {
   /** Shown as the video's poster image on the title screen, before the first
    * clip has played. Optional — falls back to a plain black frame if unset. */
   poster?: string;
+  /** Story-level discussion questions, shown (collapsed by default) on every
+   * ending screen alongside that ending's specific reflection question. Aim
+   * for questions that don't have a single correct answer — comparing
+   * choices, naming repercussions, and separating "illegal" from "wrong"
+   * tend to work best for classroom or youth-group use. */
+  discussion?: string[];
 }
