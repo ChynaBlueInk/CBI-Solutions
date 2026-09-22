@@ -6,44 +6,44 @@
 @layer base {
   :root {
     /* --- Neutrals (soft sand + deep charcoal) --- */
-    --background: 42, 45%, 96%;
-    --foreground: 222, 47%, 11%;
+    --background: 42 45% 96%;
+    --foreground: 222 47% 11%;
 
-    --card: 42, 52%, 98%;
-    --card-foreground: 222, 47%, 11%;
+    --card: 42 52% 98%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 42, 52%, 98%;
-    --popover-foreground: 222, 47%, 11%;
+    --popover: 42 52% 98%;
+    --popover-foreground: 222 47% 11%;
 
     /* --- Brand core --- */
-    --primary: 185, 60%, 34%;         /* Transformative Teal */
-    --primary-foreground: 210, 40%, 98%;
+    --primary: 185 60% 34%;         /* Transformative Teal */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 154, 28%, 35%;       /* muted fern */
-    --secondary-foreground: 210, 40%, 98%;
+    --secondary: 154 28% 35%;       /* muted fern */
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 189, 52%, 48%;          /* turquoise highlight */
-    --accent-foreground: 210, 40%, 98%;
+    --accent: 189 52% 48%;          /* turquoise highlight */
+    --accent-foreground: 210 40% 98%;
 
     /* --- Support --- */
-    --muted: 190, 24%, 94%;
-    --muted-foreground: 215, 16%, 47%;
+    --muted: 190 24% 94%;
+    --muted-foreground: 215 16% 47%;
 
-    --destructive: 0, 72%, 45%;
-    --destructive-foreground: 210, 40%, 98%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 210 40% 98%;
 
     /* --- UI lines/inputs --- */
-    --border: 185, 24%, 78%;
-    --input: 185, 30%, 92%;
-    --ring: 185, 60%, 34%;
+    --border: 185 24% 78%;
+    --input: 185 30% 92%;
+    --ring: 185 60% 34%;
     --radius: 0.5rem;
 
     /* --- Charts --- */
-    --chart-1: 189, 52%, 48%;
-    --chart-2: 185, 60%, 34%;
-    --chart-3: 154, 28%, 35%;
-    --chart-4: 43, 74%, 60%;
-    --chart-5: 205, 36%, 35%;
+    --chart-1: 189 52% 48%;
+    --chart-2: 185 60% 34%;
+    --chart-3: 154 28% 35%;
+    --chart-4: 43 74% 60%;
+    --chart-5: 205 36% 35%;
 
     /* Optional sidebar tokens (kept for future use) */
     --sidebar-background: 42 45% 96%;
