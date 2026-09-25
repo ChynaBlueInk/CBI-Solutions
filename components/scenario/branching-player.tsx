@@ -31,6 +31,7 @@ export default function BranchingPlayer({ story }: { story: Story }) {
   const [choicesRevealed, setChoicesRevealed] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
   const [discussOpen, setDiscussOpen] = useState(false);
+  const [isEmbed, setIsEmbed] = useState(false);
 
   const currentNode = view.kind === "title" ? undefined : story.nodes[view.nodeId];
 
@@ -116,6 +117,48 @@ export default function BranchingPlayer({ story }: { story: Story }) {
     }
   }, [view.kind]);
 
+  // Embed mode (?embed=1): used when a course (e.g. Youth Ethics Lab on
+  // CBILS Learning) shows this scenario in an iframe. Hides the site nav and
+  // footer, and tells the parent page which ending the viewer reached and
+  // how tall the content is, so the course can track endings and size the
+  // iframe. Nothing changes for normal visitors.
+  useEffect(() => {
+    const embed = new URLSearchParams(window.location.search).get("embed") === "1";
+    if (!embed || window.parent === window) return;
+    setIsEmbed(true);
+    document.body.classList.add("scenario-embed");
+    const post = () =>
+      window.parent.postMessage(
+        { type: "ethicslab:height", story: story.id, height: Math.ceil(document.body.getBoundingClientRect().height) },
+        "*"
+      );
+    const ro = new ResizeObserver(post);
+    ro.observe(document.body);
+    post();
+    return () => {
+      ro.disconnect();
+      document.body.classList.remove("scenario-embed");
+    };
+  }, [story.id]);
+
+  useEffect(() => {
+    if (!isEmbed) return;
+    if (view.kind !== "ending" && view.kind !== "error") return;
+    const node = story.nodes[view.nodeId];
+    if (!node?.ending) return;
+    window.parent.postMessage(
+      {
+        type: "ethicslab:ending",
+        story: story.id,
+        nodeId: view.nodeId,
+        title: node.ending.title,
+        path: path,
+        jumped: path.length === 1,
+      },
+      "*"
+    );
+  }, [isEmbed, view, story, path]);
+
   const showPanel =
     view.kind === "choice" || view.kind === "ending" || view.kind === "error";
 
@@ -124,9 +167,13 @@ export default function BranchingPlayer({ story }: { story: Story }) {
   return (
     <div className="scenarioWrap">
       <div className="topBar">
-        <Link href="/Scenario" className="backLink">
-          &larr; Back to Scenarios
-        </Link>
+        {isEmbed ? (
+          <span />
+        ) : (
+          <Link href="/Scenario" className="backLink">
+            &larr; Back to Scenarios
+          </Link>
+        )}
         {view.kind !== "title" && <span className="topBarTitle">{story.title}</span>}
       </div>
 

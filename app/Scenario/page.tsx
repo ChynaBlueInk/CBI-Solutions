@@ -143,6 +143,9 @@ export default function ScenarioLandingPage() {
         <a href="#scenarios" className={styles.jumpLink}>
           Jump to scenarios <span className={styles.jumpArrow}>↓</span>
         </a>
+        <a href="/youth-ethics-lab" className={styles.jumpLink}>
+          Take the full course <span className={styles.jumpArrow}>&rarr;</span>
+        </a>
       </section>
 
       {/* ---- hazard divider ---- */}

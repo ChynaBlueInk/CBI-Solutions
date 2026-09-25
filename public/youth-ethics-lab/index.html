@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Youth Ethics Lab: a self-paced course for teens on making choices that matter, built around five interactive scenario videos.">
+<title>Youth Ethics Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+  --bg:#F6F4EF; --surface:#FFFFFF; --ink:#1B2130; --muted:#5A6172; --line:#DEDAD0; --soft:#EFECE4;
+  --accent:#B06D12; --accent-ink:#FFFFFF; --accent-soft:#F7EBD6;
+  --m1:#4A5BA8; --m2:#B06D12; --m3:#2E7D6B; --m4:#B0425F; --m5:#6A4FB0; --m6:#2F6F9A;
+  --good:#2C7A4B; --good-soft:#E1F1E6; --warn:#946010; --warn-soft:#F7ECD8; --bad:#A63A3A; --bad-soft:#F6E1E1;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121520; --surface:#1B1F2C; --ink:#ECEAE4; --muted:#A3A8B6; --line:#2E3344;
+    --soft:#232838; --accent:#E8B04B; --accent-ink:#1B1F2C; --accent-soft:#3A2F1A;
+    --m1:#9AA8EC; --m2:#E8B04B; --m3:#6CC7B0; --m4:#EC8FA8; --m5:#B7A2F0; --m6:#86C0E6;
+    --good:#6CC28F; --good-soft:#15291E; --warn:#E0AE5E; --warn-soft:#2D2415; --bad:#E58A8A; --bad-soft:#321B1B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121520; --surface:#1B1F2C; --ink:#ECEAE4; --muted:#A3A8B6; --line:#2E3344;
+  --soft:#232838; --accent:#E8B04B; --accent-ink:#1B1F2C; --accent-soft:#3A2F1A;
+  --m1:#9AA8EC; --m2:#E8B04B; --m3:#6CC7B0; --m4:#EC8FA8; --m5:#B7A2F0; --m6:#86C0E6;
+  --good:#6CC28F; --good-soft:#15291E; --warn:#E0AE5E; --warn-soft:#2D2415; --bad:#E58A8A; --bad-soft:#321B1B;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding:0 16px 56px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5.5vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,2.1rem);font-weight:800;letter-spacing:-.015em}
+h3{font-size:1.18rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.wrap{max-width:880px;margin:0 auto}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px;border-bottom:1px solid var(--line)}
+.topin{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:8px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.05rem;margin-right:auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand span{color:var(--accent)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:6px 12px;font-size:.85rem;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+.helpbtn{border:2px solid var(--bad);background:var(--surface);color:var(--bad);border-radius:999px;padding:5px 14px;font-weight:700;font-size:.88rem;min-height:36px}
+.bar{max-width:880px;margin:8px auto 0;height:6px;border-radius:99px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.tabs{max-width:880px;margin:8px auto 0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.84rem;white-space:nowrap;min-height:34px;display:inline-flex;align-items:center;gap:6px}
+.tab .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--muted))}
+.tab[aria-current="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c);font-weight:700}
+.tab.done::after{content:"\2713";color:var(--good);font-weight:800}
+
+/* layout blocks */
+main{padding-top:28px}
+.hero{padding:10px 0 24px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.kicker{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c,var(--accent));margin-bottom:6px}
+.hero p.lead{font-size:1.12rem;margin-top:12px;max-width:62ch}
+section.blk{margin:0 0 30px}
+section.blk>h2{margin-bottom:12px}
+section.blk>p+p{margin-top:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 20px;margin:14px 0}
+.card>h3{margin-bottom:8px}
+.card p+p{margin-top:8px}
+.card.tint{background:var(--accent-soft);border-color:transparent}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.pill{display:inline-block;font-size:.76rem;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--soft);color:var(--muted)}
+ul.clean{margin:8px 0 0;padding-left:20px}
+ul.clean li{margin:4px 0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 18px;font-weight:700;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;min-height:44px;line-height:1.4}
+.opt:hover{border-color:var(--c,var(--accent))}
+.opt.sel{border-color:var(--c,var(--accent));box-shadow:inset 0 0 0 1px var(--c,var(--accent));background:var(--soft)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.ok{border-color:var(--warn);background:var(--warn-soft)}
+.fb{margin-top:10px;padding:10px 14px;border-radius:10px;font-size:.95rem;border-left:4px solid var(--muted);background:var(--soft)}
+.fb.good{border-color:var(--good);background:var(--good-soft)}
+.fb.bad{border-color:var(--bad);background:var(--bad-soft)}
+.fb.warn{border-color:var(--warn);background:var(--warn-soft)}
+textarea{width:100%;min-height:96px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;resize:vertical;line-height:1.5}
+input[type=text]{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;min-height:44px}
+label.lbl{display:block;font-weight:700;margin:12px 0 6px}
+.private{font-size:.82rem;color:var(--muted);margin-top:6px}
+.private::before{content:"\1F512  "}
+
+/* episode */
+.player{position:relative;border-radius:16px;overflow:hidden;background:#14161c;border:1px solid var(--line)}
+.player iframe{display:block;width:100%;height:720px;border:0;background:#14161c}
+.epmeta{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.epmeta .pill{background:var(--c);color:var(--bg)}
+.cnote{border:2px solid var(--warn);background:var(--warn-soft);border-radius:16px;padding:18px}
+.cnote h3{margin-bottom:6px}
+.linkbtn{border:0;background:none;padding:0;color:var(--accent);text-decoration:underline;font-weight:700}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:10px}
+.chip{border:1px dashed var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;text-align:left;min-height:52px;line-height:1.3;font-size:.92rem}
+.chip b{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chip.got{border-style:solid;border-color:var(--c);background:var(--soft)}
+.chip.got b{color:var(--c)}
+.count{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+tr.lock td{color:var(--muted);font-style:italic}
+tr.got td:first-child{box-shadow:inset 3px 0 0 var(--c)}
+.tscroll{overflow-x:auto}
+
+/* values */
+.vals{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.val{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;min-height:40px}
+.val[aria-pressed="true"]{background:var(--c,var(--accent));color:var(--bg);border-color:transparent;font-weight:700}
+
+/* four questions */
+.fq{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:12px}
+.fq .q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.fq .n{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--accent);line-height:1}
+.fq h3{font-size:1.02rem;margin:6px 0 4px}
+
+/* chat */
+.chat{display:grid;gap:8px;margin-top:12px;max-width:520px}
+.msg{justify-self:start;max-width:90%;text-align:left;border:1px solid var(--line);background:var(--soft);border-radius:16px 16px 16px 4px;padding:9px 13px;line-height:1.4}
+.msg[aria-pressed="true"]{border-color:var(--m5);box-shadow:inset 0 0 0 1px var(--m5)}
+.msg.flag{background:var(--bad-soft);border-color:var(--bad)}
+.msg.fine{background:var(--good-soft);border-color:var(--good)}
+.msg small{display:block;margin-top:4px;font-size:.82rem;color:var(--ink)}
+
+/* dialog */
+dialog{border:0;border-radius:18px;padding:0;max-width:640px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,12,20,.55)}
+.dlg{padding:22px}
+.dlg h2{font-size:1.5rem;margin-bottom:6px}
+.sup td:first-child{font-weight:700;width:36%}
+.sup a{word-break:break-word}
+.navbot{display:flex;justify-content:space-between;gap:10px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:.92rem;z-index:50}
+@media (max-width:560px){
+  body{font-size:16px}
+  .player iframe{height:600px}
+  .brand{font-size:.95rem}
+}
+@media (max-width:560px){table.stack thead{display:none}table.stack tr{display:block;border-bottom:1px solid var(--line);padding:8px 0}table.stack td{display:block;border:0;padding:2px 6px}table.stack td:first-child{font-weight:700}tr.got td:first-child{box-shadow:none}tr.got{box-shadow:inset 3px 0 0 var(--c)}.helpbtn{padding:5px 10px}}
+@media print{.top,.navbot,.helpbtn{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <div class="brand">Youth Ethics <span>Lab</span></div>
+    <div class="seg" role="group" aria-label="Where do you live?">
+      <button data-act="country" data-v="nz">NZ</button>
+      <button data-act="country" data-v="au">AU</button>
+    </div>
+    <button class="helpbtn" data-act="help">Get help</button>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <nav class="tabs" id="tabs" aria-label="Modules"></nav>
+</header>
+<main class="wrap" id="main"></main>
+
+<dialog id="helpdlg" aria-labelledby="helptitle">
+  <div class="dlg">
+    <h2 id="helptitle">Get help</h2>
+    <p class="muted">Free and confidential. You won't get in trouble for asking for help.</p>
+    <div id="helpbody"></div>
+    <div class="row" style="margin-top:16px"><button class="btn" data-act="closehelp">Close</button></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+'use strict';
+const e=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* On cbils.dev the episodes load from the same site; anywhere else (e.g. CBILS Learning) they load from www.cbils.dev. */
+const ON_SITE=/(^|\.)cbils\.dev$/.test(location.hostname)&&!/^learn\./.test(location.hostname);
+const SITE=ON_SITE?'/Scenario/':'https://www.cbils.dev/Scenario/';
+const ORIGINS=['https://www.cbils.dev','https://cbils.dev',location.origin];
+const NODES=['A1','A2a','A2b','B1','B2a','B2b'];
+
+/* ---------- episodes ---------- */
+const EP={
+ wallet:{slug:'wallet',story:'the-wallet',n:'01',title:'The Wallet',who:'Maya',line:'Maya finds a stranger’s wallet stuffed with cash. Keep it, or try to return it?',
+  summary:'Maya finds a wallet full of cash. If she keeps it, she can spend it, or later decide to give it back, either by dropping it off anonymously or returning it in person. If she tries to return it straight away, she can post it back anonymously or deliver it in person, where the owner offers her a reward she can accept or decline.',
+  ends:[
+   ['The Weight of a Lie','Keep → Spend','A secret you have to keep keeps costing you.'],
+   ['Drop & Run','Keep → Give back → Anonymous drop-off','Fixing it quietly still counts.'],
+   ['Face to Face','Keep → Give back → In person','Owning a mistake in person turns guilt into growth.'],
+   ['Quiet Integrity','Return → Post it back anonymously','Doing the right thing doesn’t need an audience.'],
+   ['Take the Cash','Return → In person → Accept reward','Taking the reward is fine. The real choice was already made.'],
+   ['Beyond the Reward','Return → In person → Decline reward','Integrity can open doors money can’t.']]},
+ group:{slug:'group_chat',story:'the-group-chat',n:'02',title:'The Group Chat',who:'Ava and Priya',line:'A fake AI-generated image of a classmate lands in the group chat. Pile on, stay silent, or speak up?',sensitive:true,
+  note:'This episode is about a fake, AI-generated sexual image of a student being shared in a group chat. Nothing explicit is shown.',
+  summary:'A fake, AI-generated sexual image of a classmate, Priya, is posted in the class group chat. Ava can forward it as a joke, adding a mean caption or sending it on silently. Or she can speak up in the chat and say it needs to be deleted because it’s illegal. If she speaks up, she can leave it there or message Priya privately, and then either handle it quietly or report it together with a trusted adult.',
+  ends:[
+   ['The Ripple You Can’t Take Back','Forward → Mean caption','Forwarding it is evidence, with your name on it.'],
+   ['Silence Isn’t Innocence','Forward → Silently → Say nothing','No caption doesn’t make it not a crime.'],
+   ['Owning It: Late, But Real','Forward → Silently → Delete and apologise','A real apology matters. The right time to delete was before sending.'],
+   ['A Voice in the Chat','Speak up → Public message only','Speaking up took courage, but this needed to go further.'],
+   ['Support in the Shadows','Speak up → Message Priya → Handle it privately','Comfort helps, but an illegal image needs reporting.'],
+   ['Turning the Tide','Speak up → Message Priya → Report it together','Reporting is what makes it stop.']]},
+ party:{slug:'party',story:'speak-up',n:'03',title:'Speak Up',who:'Marcus, Dominic and Sofia',line:'Marcus watches a friend cross a line with a girl at a party. Say nothing, or step in?',sensitive:true,
+  note:'This episode shows a young man pressuring a girl at a party and ignoring her discomfort. It touches on consent.',
+  summary:'At a party, Marcus sees his friend Dominic cross a line with Sofia. He can say nothing, then either move on or text Sofia later, where he can offer sympathy or apologise and actually talk to Dominic. Or he can step in: pull Dominic aside privately, or call him out in front of the group, where the group either mocks Marcus or a friend backs him up.',
+  ends:[
+   ['Nothing Changes','Say nothing → Move on','Silence told Dominic this was fine.'],
+   ['Too Little, Too Late','Say nothing → Check in → Sympathy','Sofia needed someone in the moment, not after.'],
+   ['A Late Start','Say nothing → Check in → Apologise and act','Going back and saying something to Dominic still counted.'],
+   ['Man to Man','Step in → Private word','A quiet word worked. Dominic apologised later.'],
+   ['The Uncomfortable Silence','Step in → Public → Group mocks him','Unpopular, and still right.'],
+   ['The Turning Point','Step in → Public → A friend backs him up','One voice became two, and the standard shifted.']]},
+ glasses:{slug:'glasses',story:'the-glasses',n:'04',title:'The Glasses',who:'Eli and Ryan',line:'Ryan is secretly filming people with his camera glasses. Say nothing, or say something?',
+  summary:'Eli realises his friend Ryan is secretly filming people at the food court with camera glasses. Eli can say nothing and move on, or bring it up later, either just saying it’s weird or pushing Ryan to delete the clips and stop. Or he can say something at the time: a private word, or saying it in front of the group, where the group either sides with Ryan or a friend backs Eli up.',
+  ends:[
+   ['Nothing Changes','Say nothing → Move on','Laughing along told Ryan it was funny enough to keep doing, and to share.'],
+   ['Too Little, Too Late','Say nothing → Later → “It’s weird”','Ryan heard “weird”, not “don’t”.'],
+   ['A Late Start','Say nothing → Later → Delete and stop','Asking him to undo it is what made it real.'],
+   ['Man to Man','Say something → Private word','A quiet word worked. Ryan deleted the clips.'],
+   ['The Uncomfortable Silence','Say something → Public → Group sides with Ryan','Eli said it once, and meant it.'],
+   ['The Turning Point','Say something → Public → A friend backs Eli up','The tech was never the problem. What he did with it was.']]},
+ stranger:{slug:'online-stranger',story:'the-online-stranger',n:'05',title:'The Online Stranger',who:'Leah',line:'Someone she’s only ever talked to online wants to meet up. Go alone, or bring someone into it?',sensitive:true,
+  note:'This episode is about meeting someone you only know online, and the risk of being manipulated or put in danger.',
+  summary:'Leah has been talking to someone online who wants to meet. She can agree to meet alone, telling no one, or telling a friend, who either just gets the location or comes along. Or she can tell a trusted adult first. After that, she can sneak out anyway, or listen and not go, and then either just block the account or report it with screenshots.',
+  ends:[
+   ['A Close Call','Meet alone → Tell no one','“This time” isn’t a safety plan.'],
+   ['A Half-Measure','Meet alone → Tell a friend → Location only','Location pins don’t step in.'],
+   ['Strength in Numbers','Meet alone → Tell a friend → Bring her','Bringing someone changed how safe it was.'],
+   ['Broken Trust','Tell an adult → Sneak out anyway','Ignoring a clear warning breaks trust that takes time to rebuild.'],
+   ['Blocked, Not Solved','Tell an adult → Don’t go → Block','Blocking protects you, not the next person.'],
+   ['Stopping It for Someone Else','Tell an adult → Don’t go → Report with screenshots','Reporting prevents the next close call.']]}
+};
+const STORY2EP={};Object.entries(EP).forEach(([k,v])=>STORY2EP[v.story]=k);
+
+/* ---------- support services ---------- */
+const SUP={
+ nz:[
+  ['Emergency','If you or someone else is in danger right now','Call 111'],
+  ['Youthline','Anything, for young people','0800 376 633, free text 234, or <a href="https://www.youthline.co.nz" target="_blank" rel="noopener">youthline.co.nz</a>'],
+  ['What’s Up','Free counselling for 5 to 19 year olds','0800 942 8787'],
+  ['1737, Need to talk?','Talk or text with a counsellor, any time','Call or text 1737'],
+  ['Netsafe','Online bullying, image abuse, sextortion, harmful content','0508 638 723, text 4282, or <a href="https://netsafe.org.nz" target="_blank" rel="noopener">netsafe.org.nz</a>'],
+  ['Safe to Talk','Sexual harm, any time','0800 044 334 or text 4334'],
+  ['Police (non-emergency)','Reporting something that has already happened','Call 105'],
+  ['Youth Law','Free legal help for under 25s','0800 884 529']],
+ au:[
+  ['Emergency','If you or someone else is in danger right now','Call 000'],
+  ['Kids Helpline','Anything, for 5 to 25 year olds, any time','1800 55 1800 or <a href="https://kidshelpline.com.au" target="_blank" rel="noopener">kidshelpline.com.au</a>'],
+  ['eSafety Commissioner','Report cyberbullying, image-based abuse and illegal content','<a href="https://www.esafety.gov.au/report" target="_blank" rel="noopener">esafety.gov.au/report</a>'],
+  ['ACCCE','Report online child sexual exploitation, grooming and sextortion','<a href="https://www.accce.gov.au/report" target="_blank" rel="noopener">accce.gov.au/report</a>'],
+  ['1800RESPECT','Sexual assault, family and domestic violence','1800 737 732'],
+  ['Lifeline','Crisis support, any time','13 11 14'],
+  ['Police Assistance Line','Reporting something that has already happened','Call 131 444']]
+};
+const CN={nz:'New Zealand',au:'Australia'};
+
+/* ---------- modules ---------- */
+const MODS=[
+ {id:'start',lbl:'Start here',c:'--m1'},
+ {id:'honesty',lbl:'Honesty',c:'--m2'},
+ {id:'friend',lbl:'When a friend crosses a line',c:'--m3'},
+ {id:'images',lbl:'Fake images, real harm',c:'--m4'},
+ {id:'online',lbl:'Trust and safety online',c:'--m5'},
+ {id:'together',lbl:'Bringing it together',c:'--m6'}
+];
+
+/* ---------- state ---------- */
+const KEY='youth-ethics-lab-v1', PKEY='youth-ethics-lab-private-v1';
+const blank=()=>({mod:0,done:{},country:'nz',found:{},hook:{},act:{},quiz:{},values:[],values2:[],gate:{},summ:{},showall:{},reveal:{}});
+const pblank=()=>({j:{},plan:{},guess:''});
+let S=blank(), P=pblank();
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(blank(),JSON.parse(r));}catch(x){}
+try{const r=localStorage.getItem(PKEY);if(r)P=Object.assign(pblank(),JSON.parse(r));}catch(x){}
+let saveT;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(x){}lmsSync();},250);chrome();}
+function savePriv(){try{localStorage.setItem(PKEY,JSON.stringify(P));}catch(x){}}
+
+/* ---------- LMS sync (CBILS Learning). Journal and plan stay on this device only. ---------- */
+let lmsDone=false;
+function foundCount(k){return Object.keys(S.found[k]||{}).length;}
+function totalFound(){return Object.keys(EP).reduce((a,k)=>a+foundCount(k),0);}
+function isComplete(){return MODS.every(m=>S.done[m.id]);}
+function lmsSync(){if(!window.LMS)return;
+ const pct=Math.round(MODS.filter(m=>S.done[m.id]).length/MODS.length*100);
+ const res={'Endings found':totalFound()+'/30'};
+ Object.entries(QUIZ).forEach(([k,qs])=>{const a=S.quiz[k]||{};const n=Object.keys(a).length;if(n===qs.length){res['Quick check: '+MODS.find(m=>m.id===k).lbl]=qs.filter((q,i)=>a[i]===q.a).length+'/'+qs.length;}});
+ LMS.setState(S);LMS.setResults(res);LMS.setProgress(isComplete()?100:pct);
+ if(isComplete()&&!lmsDone){lmsDone=true;LMS.complete();}}
+
+/* ---------- block system (so embedded videos never reload) ---------- */
+let BL={};
+function B(id,fn){BL[id]=fn;return `<div data-block="${id}">${fn()}</div>`;}
+function refresh(id){const el=document.querySelector(`[data-block="${id}"]`);if(el&&BL[id])el.innerHTML=BL[id]();}
+function refreshWhere(pred){Object.keys(BL).filter(pred).forEach(refresh);}
+
+/* ---------- shared components ---------- */
+function hook(id,q,opts){return B('hook-'+id,()=>{const v=S.hook[id];
+ return `<div class="card"><div class="kicker">Before you watch</div><h3>${q}</h3><div class="opts">${opts.map((o,i)=>`<button class="opt ${v===i?'sel':''}" aria-pressed="${v===i}" data-act="hook" data-id="${id}" data-i="${i}">${o}</button>`).join('')}</div>${v!=null?`<p class="fb">No wrong answer here. Keep your pick in mind while you watch, and see if you still feel the same at the end.</p>`:''}</div>`;});}
+
+function episode(k){const ep=EP[k];
+ return `<div class="epmeta"><span class="pill">EP. ${ep.n}</span><h3>${ep.title}</h3><span class="muted small">${e(ep.who)}</span></div><p style="margin-bottom:12px">${ep.line}</p>`+
+ B('ep-'+k,()=>{
+  if(ep.sensitive&&!S.gate[k])return `<div class="cnote"><h3>Content note</h3><p>${ep.note}</p><p style="margin-top:8px">It’s OK to skip this one or come back later. If it brings anything up for you, talk to someone you trust or use the <button class="linkbtn" data-act="help">Get help</button> list.</p><div class="row" style="margin-top:14px"><button class="btn" data-act="gate" data-k="${k}">I’m ready to watch</button><button class="btn ghost" data-act="summ" data-k="${k}">${S.summ[k]?'Hide the summary':'Read a summary instead'}</button></div>${S.summ[k]?`<div class="card" style="margin-bottom:0"><h3>What happens in ${ep.title}</h3><p>${e(ep.summary)}</p><p class="muted small" style="margin-top:8px">You can still explore the endings below and tick them off as you read the endings map.</p></div>`:''}</div>`;
+  return `<div class="player"><iframe id="if-${k}" src="${SITE+ep.slug}?embed=1" title="${e(ep.title)} interactive episode" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="muted small" style="margin-top:8px">Video not showing? <a href="${SITE+ep.slug}" target="_blank" rel="noopener">Open ${ep.title} in a new tab</a>, then come back and tick off the endings you reach.</p>`;
+ })+B('end-'+k,()=>endings(k));}
+
+function endings(k){const ep=EP[k],f=S.found[k]||{},n=foundCount(k);
+ return `<div class="card"><div class="row" style="justify-content:space-between"><h3>Endings you’ve found</h3><span class="count">${n}/6</span></div><p class="muted small">Try different choices to find all six. Endings tick off by themselves when you reach them in the video, or tap one to tick it off yourself.</p><div class="chips">${ep.ends.map((x,i)=>{const got=!!f[NODES[i]];return `<button class="chip ${got?'got':''}" aria-pressed="${got}" data-act="mark" data-k="${k}" data-n="${NODES[i]}"><b>Ending ${i+1}${got?' ✓':''}</b>${got?e(x[0]):'Not found yet'}</button>`;}).join('')}</div>${n===6?`<p class="fb good">All six found. Nice work exploring.</p>`:''}</div>`;}
+
+function endMap(k,extra){return B('map-'+k,()=>{const ep=EP[k],f=S.found[k]||{},all=S.showall[k];
+ return `<div class="card"><div class="row" style="justify-content:space-between"><h3>Endings map: ${ep.title}</h3><button class="btn ghost" data-act="showall" data-k="${k}">${all?'Show only mine':'Show all six'}</button></div><div class="tscroll"><table class="stack"><thead><tr><th>#</th><th>Choices</th><th>Ending</th><th>The point</th></tr></thead><tbody>${ep.ends.map((x,i)=>{const got=!!f[NODES[i]];const show=got||all;return `<tr class="${got?'got':''} ${show?'':'lock'}"><td>Ending ${i+1}</td><td>${show?e(x[1]):'?'}</td><td>${show?'<b>'+e(x[0])+'</b>':'Not found yet'}</td><td>${show?e(x[2]):''}</td></tr>`;}).join('')}</tbody></table></div>${extra||''}</div>`;});}
+
+function reflect(id,q){return `<div class="card tint"><div class="kicker">Reflect</div><h3>${q}</h3><textarea data-j="${id}" aria-label="${e(q)}" placeholder="Write as much or as little as you like.">${e(P.j[id]||'')}</textarea><p class="private">Only you can see this. It stays on this device and isn’t sent to anyone.</p></div>`;}
+
+function supportBox(topic){return B('sup-'+topic+'-'+Math.random().toString(36).slice(2,6),()=>{const L=SUP[S.country];const pick={images:[0,4,1],online:[0,4,1],party:[0,5,1],general:[0,1,2]}[topic]||[0,1,2];
+ const rows=S.country==='au'?{images:[0,2,3,1],online:[0,3,2,1],party:[0,4,1],general:[0,1,5]}[topic]||[0,1,5]:pick;
+ return `<div class="card" style="border-left:4px solid var(--bad)"><div class="kicker" style="color:var(--bad)">Need to talk? ${CN[S.country]}</div><ul class="clean">${rows.map(i=>L[i]).filter(Boolean).map(r=>`<li><b>${r[0]}:</b> ${r[2]} <span class="muted small">(${r[1]})</span></li>`).join('')}</ul><p class="small" style="margin-top:8px"><button class="linkbtn" data-act="help">See all services</button></p></div>`;});}
+
+/* quick checks */
+const QUIZ={
+ honesty:[
+  {q:'Maya returns the wallet in person and accepts the reward. Did that undo the good thing she did?',o:['Yes. Taking money for doing the right thing cancels it out.','No. The choice that mattered was knocking on the door. The reward came after.','Only if she spends it on herself.'],a:1,f:'The reward didn’t change what she chose to do. The ending points out she would have knocked on that door either way.'},
+  {q:'What’s the safest way to get lost property back to its owner?',o:['Post a photo of their ID online and ask them to message you.','Hand it in to the police, a shop or the venue’s lost property.','Keep it until someone asks around.'],a:1,f:'Handing it in keeps the owner’s details private and keeps you safe. Posting someone’s ID online shares their personal information with everyone.'},
+  {q:'Your mate says: “Just keep it, nobody will ever know.” Which question cuts through that best?',o:['Who could be affected?','How much is in there?','Would anyone find out?'],a:0,f:'“Nobody will know” is about getting caught. “Who could be affected?” brings the owner back into the picture, plus how you’ll feel about yourself.'}],
+ friend:[
+  {q:'In both Speak Up and The Glasses, the character says nothing and moves on. What does the ending show?',o:['Nothing bad happens, so it was fine.','The friend takes silence as a sign it’s OK to keep going.','Someone else always sorts it out.'],a:1,f:'Both endings are called Nothing Changes. Silence didn’t stay neutral. It told the friend the behaviour was acceptable.'},
+  {q:'Which statement about consent is true?',o:['If someone said yes earlier, it counts for the rest of the night.','If they don’t say no, that means yes.','Someone who is very drunk or pressured can’t give consent.'],a:2,f:'Consent has to be freely given, can be taken back at any time, and can’t be given by someone who is very drunk, asleep or being pressured.'},
+  {q:'Later, Eli tells Ryan the filming was “kind of weird” but doesn’t ask him to stop. Why does that count as Too Little, Too Late?',o:['Because Ryan heard “weird”, not “don’t”.','Because Eli should have posted about it.','Because it was already too late to do anything.'],a:0,f:'Naming it is a start, but Ryan needed a clear ask: delete the clips and stop. That’s what made A Late Start work.'},
+  {q:'A private word or calling it out in front of the group: which is better?',o:['Always call it out in public.','Always keep it private.','Either can work. Pick the one that’s safe for you and most likely to stop it.'],a:2,f:'Both Man to Man and The Turning Point stopped the behaviour. What matters is that it stops and you stay safe doing it.'}],
+ images:[
+  {q:'The image in the group chat was made with AI. It isn’t really Priya. Is it still illegal?',o:['No, because it’s fake.','Yes. A sexual image of someone under 18 is illegal even if it’s fake or AI-generated.','Only if it gets posted publicly.'],a:1,f:'In New Zealand and Australia, making, sharing or keeping a sexual image of someone under 18 is illegal, including fake, edited and AI-generated images.'},
+  {q:'You already forwarded it before you realised what it was. What now?',o:['Tell a trusted adult straight away and follow their advice, then delete it.','Stay quiet and hope nobody notices.','Send “sorry” in the group chat and move on.'],a:0,f:'Owning it quickly matters. A trusted adult can help you report it and work out next steps. Staying quiet lets it keep spreading.'},
+  {q:'Ava messaged Priya to check on her, but they kept it between themselves. Why wasn’t that enough?',o:['Priya didn’t want support.','Comfort helps, but the image keeps existing and spreading until it’s reported.','Ava should have posted about it instead.'],a:1,f:'Support in the Shadows shows kindness isn’t enough on its own here. Reporting to the school, the platform and often police is what makes it stop.'}],
+ online:[
+  {q:'Leah tells a friend where she’s going but meets the person alone. What does the ending call that?',o:['Strength in Numbers','A Half-Measure','A Close Call'],a:1,f:'Someone knowing where you are isn’t the same as someone being there. Location pins don’t step in.'},
+  {q:'Which of these is a warning sign from someone you’ve met online?',o:['They like the same music as you.','They ask you to keep your chats secret from your parents.','They reply at night.'],a:1,f:'Pushing for secrecy is one of the biggest warning signs. People with good intentions don’t need you to hide them.'},
+  {q:'Why report the account, not just block it?',o:['Blocking only protects you. Reporting can stop them targeting someone else.','Reporting gets you a reward.','There’s no real difference.'],a:0,f:'That’s the point of Stopping It for Someone Else. Blocking closes your door. The account can knock on someone else’s.'},
+  {q:'A trusted adult tells Leah not to go. She sneaks out anyway. What’s the main problem?',o:['She might miss the bus home.','It breaks trust, and she’s on her own if something goes wrong.','Nothing, if it turns out fine.'],a:1,f:'Broken Trust shows that even if nothing happens that night, ignoring a clear warning damages trust that takes a long time to rebuild.'}]
+};
+function quiz(mod){const qs=QUIZ[mod];
+ return `<section class="blk"><h2>Quick check</h2><p class="muted">${qs.length} questions. You get feedback straight away.</p>${qs.map((q,i)=>B(`q-${mod}-${i}`,()=>{const a=(S.quiz[mod]||{})[i];const done=a!=null;
+  return `<div class="card"><h3>${i+1}. ${e(q.q)}</h3><div class="opts">${q.o.map((o,j)=>{let c='';if(done){if(j===q.a)c='right';else if(j===a)c='wrong';}return `<button class="opt ${c}" data-act="quiz" data-m="${mod}" data-i="${i}" data-j="${j}" ${done?'disabled':''}>${e(o)}</button>`;}).join('')}</div>${done?`<p class="fb ${a===q.a?'good':'bad'}"><b>${a===q.a?'Correct.':'Not quite.'}</b> ${e(q.f)}</p>`:''}</div>`;})).join('')}${B('qs-'+mod,()=>{const a=S.quiz[mod]||{};if(Object.keys(a).length<qs.length)return '';const sc=qs.filter((q,i)=>a[i]===q.a).length;return `<p class="fb good">You got ${sc} out of ${qs.length}. <button class="linkbtn" data-act="retry" data-m="${mod}">Try again</button></p>`;})}</section>`;}
+
+function finish(i){const last=i===MODS.length-1;
+ return `<div class="navbot">${i>0?`<button class="btn ghost" data-act="go" data-i="${i-1}">← ${MODS[i-1].lbl}</button>`:'<span></span>'}${last?`<button class="btn" data-act="finish" data-i="${i}">${S.done[MODS[i].id]?'Course finished ✓':'Finish the course'}</button>`:`<button class="btn" data-act="finish" data-i="${i}">Finish this module →</button>`}</div>`;}
+
+/* ---------- activity helpers ---------- */
+function choiceAct(id,items,opts,judge){ // items: [{t, good:[idx], fb}]
+ return items.map((it,i)=>B(`${id}-${i}`,()=>{const v=(S.act[id]||{})[i];const done=v!=null;
+  return `<div class="card"><p><b>${e(it.t)}</b></p><div class="opts" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">${opts.map((o,j)=>{let c='';if(done){if(it.good.includes(j))c=j===v?'right':'ok';else if(j===v)c='wrong';}return `<button class="opt ${c}" data-act="act" data-id="${id}" data-i="${i}" data-j="${j}">${e(o)}</button>`;}).join('')}</div>${done?`<p class="fb ${it.good.includes(v)?'good':'warn'}">${it.good.includes(v)?'<b>Good choice.</b> ':'<b>Think again.</b> '}${e(it.fb)}</p>`:''}</div>`;})).join('');}
+
+/* ---------- module 1: start ---------- */
+const VALUES=['Honesty','Loyalty','Fairness','Kindness','Courage','Respect','Belonging','Freedom','Family','Independence','Standing up for others','Being trusted'];
+function valueSort(key,title){return B('vals-'+key,()=>{const v=S[key];
+ return `<div class="card"><h3>${title}</h3><p class="muted small">Pick up to five. ${v.length}/5 chosen.</p><div class="vals">${VALUES.map(x=>`<button class="val" aria-pressed="${v.includes(x)}" data-act="val" data-key="${key}" data-v="${e(x)}">${e(x)}</button>`).join('')}</div></div>`;});}
+
+function modStart(){return `
+<div class="hero" style="--c:var(--m1)"><div class="kicker">Module 1</div><h1>Choices that matter</h1><p class="lead">Five interactive stories. You make the calls and see where they lead. Along the way you’ll pick up practical ways to handle tricky situations, online and off.</p></div>
+<section class="blk"><h2>How this works</h2>
+<div class="grid2">
+ <div class="card"><h3>Watch and choose</h3><p>Each episode stops at decision points. You pick what happens next. Every story has six endings.</p></div>
+ <div class="card"><h3>Go back and try again</h3><p>There’s no score for the choices you make in the videos. Explore different paths and collect the endings.</p></div>
+ <div class="card"><h3>Take something with you</h3><p>Each module gives you one practical skill, a private reflection, and a quick check.</p></div>
+</div>
+<p class="muted" style="margin-top:6px">Six modules, about 20 to 30 minutes each. Your progress saves as you go.</p></section>
+<section class="blk"><h2>A few ground rules</h2>
+<div class="card"><ul class="clean">
+<li><b>It’s OK to disagree.</b> Some of these situations don’t have one right answer.</li>
+<li><b>It’s OK to step away.</b> Some episodes cover heavy topics. You’ll get a heads-up first, and you can read a summary instead.</li>
+<li><b>Your reflections are private.</b> They stay on this device. Nobody else sees them.</li>
+<li><b>Help is always one tap away.</b> Use the <button class="linkbtn" data-act="help">Get help</button> button at the top any time.</li></ul>
+<p style="margin-top:10px">Where do you live? This sets the help services and law info you’ll see.</p>
+${B('cty-pick',()=>`<div class="row" style="margin-top:8px"><button class="btn ${S.country==='nz'?'':'ghost'}" data-act="country" data-v="nz">New Zealand</button><button class="btn ${S.country==='au'?'':'ghost'}" data-act="country" data-v="au">Australia</button></div>`)}
+</div></section>
+<section class="blk"><h2>What is an ethical choice?</h2>
+<p>An ethical choice is any time what you do affects someone else and there’s a better or worse way to handle it. Most of them are small and happen fast: a message you forward, a joke you laugh at, money that isn’t yours.</p>
+<p>Two lines come up a lot. <b>“No one will know.”</b> That’s about getting caught, not about whether it’s OK. <b>“Everyone does it.”</b> That’s about fitting in, not about who gets hurt.</p>
+${valueSort('values','What matters most to you?')}
+</section>
+<section class="blk"><h2>The four questions</h2>
+<p>When something feels off, you won’t have time for a long think. These four questions are quick enough to use in the moment. You’ll use them in every module.</p>
+<div class="fq">
+ <div class="q"><div class="n">1</div><h3>What’s really going on here?</h3><p class="small muted">Notice the situation, and how you feel about it.</p></div>
+ <div class="q"><div class="n">2</div><h3>Who could be affected?</h3><p class="small muted">Including people who aren’t in the room.</p></div>
+ <div class="q"><div class="n">3</div><h3>What are my options?</h3><p class="small muted">There’s usually more than “do nothing” or “make a scene”.</p></div>
+ <div class="q"><div class="n">4</div><h3>Who can help?</h3><p class="small muted">A friend, a trusted adult, a service, a report button.</p></div>
+</div>
+${B('warm',()=>{const r=S.reveal.warm;return `<div class="card tint" style="margin-top:16px"><div class="kicker">Try it</div><h3>Your friend is at sports practice. They message: “Can you log in as me and do my online maths quiz? Everyone does it.”</h3><p class="muted small">Think through the four questions, then compare.</p><div class="row" style="margin-top:10px"><button class="btn ghost" data-act="reveal" data-id="warm">${r?'Hide':'Show'} one way to think it through</button></div>${r?`<ol class="clean" style="margin-top:10px"><li><b>What’s going on?</b> They want you to do their work and hand it in as theirs. “Everyone does it” is pressure, not a reason.</li><li><b>Who’s affected?</b> Your friend (they don’t learn it, and could get in trouble), you (you could too), and the teacher who’s trusting the results.</li><li><b>Options?</b> Say no. Say no and offer to go through it together later. Suggest they ask the teacher for more time.</li><li><b>Who can help?</b> The teacher, if they’re stuck on the work itself.</li></ol>`:''}</div>`;})}
+</section>
+${reflect('m1','Think of a time you had to choose between two things that both mattered to you. What did you choose?')}
+${finish(0)}`;}
+
+/* ---------- module 2: honesty ---------- */
+const AIHONEST=[
+ {t:'Using AI to explain a maths concept you’re stuck on.',good:[0],fb:'Using AI like a tutor to help you understand is usually fine. Check your school’s rules.'},
+ {t:'Asking AI to write your essay, then handing it in as your own.',good:[2],fb:'That’s taking credit for work that isn’t yours. Same question as the wallet.'},
+ {t:'Using AI to check your spelling and grammar.',good:[0,1],fb:'Usually fine, but some tasks don’t allow it. If in doubt, check or say you used it.'},
+ {t:'Getting AI to write it, then changing a few words so it doesn’t look like AI.',good:[2],fb:'Changing some words doesn’t make it your work. Hiding it makes it worse.'},
+ {t:'Using AI to brainstorm ideas, then writing it all yourself.',good:[0,1],fb:'Often fine, and many teachers are OK with it if you’re open about it. Check the task rules.'}];
+function modHonesty(){return `
+<div class="hero" style="--c:var(--m2)"><div class="kicker">Module 2</div><h1>Honesty when no one is watching</h1><p class="lead">What do you do when doing the wrong thing would be easy, and nobody would find out?</p></div>
+<section class="blk" style="--c:var(--m2)">
+${hook('wallet','You find a wallet with $300 cash in it. No one saw you pick it up. What’s your first thought?',['Hand it in. Not mine.','Try to find the owner myself.','Keep the cash, hand in the rest.','Honestly? I’d be tempted to keep it.'])}
+${episode('wallet')}
+</section>
+<section class="blk" style="--c:var(--m2)"><h2>Unpack it</h2>
+${endMap('wallet')}
+<div class="grid2">
+ <div class="card"><h3>Who loses?</h3><p>If Maya keeps it, the owner loses the cash, their cards and probably ID. That’s hours of cancelling cards and a lot of stress. Does it change anything if the owner is rich? Or if Maya really needs the money?</p></div>
+ <div class="card"><h3>Is there a wrong way to do the right thing?</h3><p>Four of the six endings get the wallet back. Posting it anonymously, dropping it off, knocking on the door. They all count. Some also build something: trust, a connection, a better feeling about yourself.</p></div>
+ <div class="card"><h3>What about the reward?</h3><p>Taking a reward isn’t wrong. The test was whether she’d knock on the door anyway. She would have.</p></div>
+ <div class="card"><h3>Late still counts</h3><p>In Face to Face, Maya kept it at first, then went back and owned it. Fixing a mistake in person is hard, and it’s how guilt turns into growth.</p></div>
+</div></section>
+<section class="blk" style="--c:var(--m2)"><h2>Skill builder: talking yourself through temptation</h2>
+<p>In the moment, run the four questions. Then make the right thing easy: hand lost property to a police station, the shop, school office or venue. Don’t post someone’s ID or address online to find them.</p>
+${B('selfcheck',()=>{const v=S.act.selfcheck;return `<div class="card"><h3>At the self-checkout, one item doesn’t scan. Nobody noticed. What do you do?</h3><div class="opts">${['Walk out. Their machine, their problem.','Scan it again or tell the staff member.','Leave it, but feel a bit bad about it.'].map((o,j)=>`<button class="opt ${v===j?(j===1?'right':'wrong'):''}" data-act="one" data-id="selfcheck" data-j="${j}">${o}</button>`).join('')}</div>${v!=null?`<p class="fb ${v===1?'good':'warn'}">${v===1?'That’s it. Takes ten seconds, and there’s nothing to carry around afterwards.':'Same as the wallet. “Their mistake” doesn’t make it yours to keep. It takes ten seconds to scan it again or tell someone.'}</p>`:''}</div>`;})}
+</section>
+<section class="blk" style="--c:var(--m2)"><h2>Honesty and AI</h2>
+<p>Handing in AI-written work as your own is the same question as the wallet: taking credit for something that isn’t yours. Using AI openly, within your school’s rules, is different. Sort these.</p>
+${choiceAct('aihonest',AIHONEST,['Fine','Check the rules or say you used it','Not honest'])}
+</section>
+${reflect('m2','Would you act differently if you knew no one would ever find out? Why or why not?')}
+${quiz('honesty')}
+${finish(1)}`;}
+
+/* ---------- module 3: friend ---------- */
+const FOURD=[
+ {t:'At a party, someone keeps handing drinks to a girl who looks really out of it. She’s trying to leave.',good:[1,2],fb:'Distract (“Hey, your mate’s looking for you”) gets her out of the situation. Delegate: get the host, her friends or an adult. Going direct could work, but check it’s safe first.'},
+ {t:'A mate makes a gross comment about a girl walking past. It’s just your group of friends.',good:[0],fb:'Direct is often easiest with your own friends: “Not funny, bro.” Short and clear works best.'},
+ {t:'Someone is getting laughed at in a group chat for what they wore.',good:[0,3],fb:'Direct in the chat (“Leave it”) can shift things. Delay: message them privately so they know someone’s on their side.'},
+ {t:'A bigger group is threatening a younger kid outside school.',good:[2],fb:'Delegate. Get a teacher or adult, or call emergency services if someone could get hurt. Your safety matters too.'},
+ {t:'Yesterday a friend filmed someone without asking and you laughed along. It’s bugging you.',good:[3],fb:'Delay. It’s not too late. Go back to your friend and ask them to delete it and stop. That’s A Late Start.'}];
+const BACKUP=[
+ {t:'“Yeah, I’m with him. Not cool.”',good:[0],fb:'Short, clear and it shows he’s not alone. That’s how The Turning Point happens.'},
+ {t:'“Guys, chill, it’s not that deep.”',good:[1],fb:'This shuts down the person who spoke up. It sounds neutral, but it backs the behaviour.'},
+ {t:'“He’s right. Delete them, Ryan.”',good:[0],fb:'Backs up the speaker and repeats the ask. Two voices are hard to laugh off.'},
+ {t:'“Whatever, I’m staying out of it.”',good:[1],fb:'Staying out of it leaves one person on their own. Silence usually helps the person doing the harm.'}];
+function modFriend(){return `
+<div class="hero" style="--c:var(--m3)"><div class="kicker">Module 3</div><h1>When a friend crosses a line</h1><p class="lead">It’s one thing to call out a stranger. It’s a lot harder when it’s your mate. Two episodes, same choices, two very different situations.</p></div>
+<section class="blk" style="--c:var(--m3)">
+${hook('friend','A friend does something you know isn’t OK. What makes it hardest to say something?',['Not wanting to lose the friendship','Being laughed at by the group','Not being sure it’s my business','Thinking someone else will say something'])}
+${episode('party')}
+<div style="height:24px"></div>
+${episode('glasses')}
+</section>
+<section class="blk" style="--c:var(--m3)"><h2>Unpack it: same choices, two situations</h2>
+<p>Speak Up and The Glasses branch in exactly the same way. That makes it easy to compare what each choice leads to.</p>
+${B('compare',()=>{const fa=S.found.party||{},fb=S.found.glasses||{};return `<div class="card tscroll"><table class="stack"><thead><tr><th>Ending</th><th>Speak Up</th><th>The Glasses</th></tr></thead><tbody>${EP.party.ends.map((x,i)=>`<tr><td><b>${i+1}. ${e(x[0])}</b><br><span class="muted small">${e(x[1].replace('Check in','Later'))}</span></td><td>${fa[NODES[i]]||S.showall.cmp?e(x[2]):'<span class="muted">Not found yet</span>'}</td><td>${fb[NODES[i]]||S.showall.cmp?e(EP.glasses.ends[i][2]):'<span class="muted">Not found yet</span>'}</td></tr>`).join('')}</tbody></table><div class="row" style="margin-top:10px"><button class="btn ghost" data-act="showall" data-k="cmp">${S.showall.cmp?'Show only mine':'Show all'}</button></div></div>`;})}
+<div class="grid2">
+ <div class="card"><h3>Why do people stay quiet?</h3><p>Fear of being next. Not wanting drama. Loyalty. Assuming someone else will act. All real. But in both episodes, silence was read as “this is fine”.</p></div>
+ <div class="card"><h3>Private or public?</h3><p>A private word worked in both stories. So did speaking up in front of the group. Pick the one that’s safe for you and most likely to make it stop.</p></div>
+ <div class="card"><h3>What later can and can’t fix</h3><p>Checking in afterwards is kind, but it doesn’t help the person in the moment. Going back and actually asking your friend to stop, or to delete it, is what turns late into real.</p></div>
+ <div class="card"><h3>It’s the behaviour, not the tech</h3><p>Camera glasses aren’t the problem. Filming people without them knowing is. It’s a breach of their privacy even if you never share it. Sharing makes it worse.</p></div>
+</div>
+<div class="card tint"><h3>Consent, in plain words</h3><ul class="clean"><li><b>Freely given.</b> Not pressured, guilted or pushed.</li><li><b>Can be taken back</b> at any time, even if they said yes earlier.</li><li><b>Can’t be given</b> by someone who is very drunk, high, asleep or scared.</li><li><b>Not saying no isn’t the same as yes.</b> If you’re not sure, stop and check.</li></ul><p style="margin-top:8px">The same idea applies to photos and videos. People get to decide what happens to their body and their image.</p></div>
+${supportBox('party')}
+</section>
+<section class="blk" style="--c:var(--m3)"><h2>Skill builder: the 4 Ds of stepping in</h2>
+<div class="fq">
+ <div class="q"><div class="n">D</div><h3>Direct</h3><p class="small muted">Say something to the person doing it. “Not cool. Stop.”</p></div>
+ <div class="q"><div class="n">D</div><h3>Distract</h3><p class="small muted">Interrupt it. Change the subject, spill a drink, “Your mum’s outside.”</p></div>
+ <div class="q"><div class="n">D</div><h3>Delegate</h3><p class="small muted">Get help: a friend, the host, a teacher, security, an adult.</p></div>
+ <div class="q"><div class="n">D</div><h3>Delay</h3><p class="small muted">Check in with the person afterwards, and follow up with your friend.</p></div>
+</div>
+<p style="margin-top:14px">Which D would you use? Sometimes more than one works.</p>
+${choiceAct('fourd',FOURD,['Direct','Distract','Delegate','Delay'])}
+<h3 style="margin-top:22px">Be the second voice</h3>
+<p>Both Turning Point endings happen because one friend backs up the person who spoke up. Which of these lines would help?</p>
+${choiceAct('backup',BACKUP,['Helps','Doesn’t help'])}
+</section>
+${reflect('m3','What makes it hard for you to speak up to a friend? Which of the 4 Ds would you feel most able to use?')}
+${quiz('friend')}
+${finish(2)}`;}
+
+/* ---------- module 4: images ---------- */
+const CONSENT=[
+ {t:'A group photo at a birthday. Everyone posed and said “post it”.',good:[0],fb:'They knew, they agreed, and they’re fine with where it’s going. That passes.'},
+ {t:'A pic of someone asleep on the bus, to send to your group chat.',good:[1],fb:'They didn’t know and couldn’t agree. Fails the first question.'},
+ {t:'A funny selfie a friend sent just to you. You want to put it on your story.',good:[1],fb:'They agreed to you seeing it, not everyone. Fails “would they be OK with where it ends up?” Ask first.'},
+ {t:'Using an AI app to put a classmate’s face on a meme.',good:[1],fb:'They didn’t know or agree, and you’ve made something they can’t control. Even “harmless” edits can spread and hurt.'}];
+const IMGDO=[
+ {t:'Forward it to a friend so they know what’s going on',good:[1],fb:'Every forward spreads it further and can be an offence. Tell them in words instead.'},
+ {t:'Screenshot it as proof',good:[1],fb:'Don’t. Keeping a copy of a sexual image of someone under 18 can itself be illegal. A trusted adult or the police can deal with evidence.'},
+ {t:'Tell a trusted adult',good:[0],fb:'Yes. A parent, teacher, school counsellor or other adult you trust can help you report it properly.'},
+ {t:'Post “this is fake, delete it” in the chat',good:[0],fb:'Good, like Ava in A Voice in the Chat. But don’t stop there. It still needs reporting.'},
+ {t:'Report it on the app or platform',good:[0],fb:'Yes. Platforms have to act on this, and reporting helps get it taken down.'},
+ {t:'Message the person privately to check they’re OK',good:[0],fb:'Yes. Let them know you’ve got their back and that you’re getting help.'},
+ {t:'Keep it in case you need it later',good:[1],fb:'No. Tell an adult, follow their advice, then delete it.'}];
+const LAW={
+ nz:'In New Zealand, sexual images of anyone under 18 are illegal to make, share or keep. That includes fake, edited and AI-generated images. Sharing images or messages to seriously upset someone can also be an offence.',
+ au:'In Australia, sexual images of anyone under 18 are illegal to make, share or keep. That includes fake, edited and AI-generated images. Creating or sharing sexual deepfakes of anyone without their consent is also a crime.'};
+const REPORT={
+ nz:['A trusted adult: parent, teacher, school counsellor','The app or platform’s report button','Netsafe: 0508 638 723, text 4282, or netsafe.org.nz','Police: 105, or 111 if someone is in danger','Take It Down (takeitdown.ncmec.org): a free tool that helps remove sexual images of under-18s from many platforms'],
+ au:['A trusted adult: parent, teacher, school counsellor','The app or platform’s report button','eSafety Commissioner: esafety.gov.au/report','ACCCE: accce.gov.au/report','Police: 131 444, or 000 if someone is in danger']};
+function modImages(){return `
+<div class="hero" style="--c:var(--m4)"><div class="kicker">Module 4</div><h1>Fake images, real harm</h1><p class="lead">AI tools can put anyone’s face on anything in seconds. This module is about what happens when that’s used to hurt someone, and what you can do.</p></div>
+<section class="blk" style="--c:var(--m4)">
+${hook('group','Someone posts an image in the group chat that’s clearly meant to humiliate a classmate. Most people react with laughing emojis. What would you most likely do?',['Nothing. Scroll past.','React so I don’t look weird.','Say something in the chat.','Message the person privately.'])}
+${episode('group')}
+</section>
+<section class="blk" style="--c:var(--m4)"><h2>Unpack it</h2>
+${endMap('group')}
+<div class="grid2">
+ <div class="card"><h3>Fake doesn’t mean harmless</h3><p>Deepfakes and AI “nudify” apps make images that look real. Even when people know it’s fake, the person in it feels exposed, humiliated and unsafe. It follows them around school and online.</p></div>
+ <div class="card"><h3>“It was a joke” doesn’t change it</h3><p>Adding a caption, sending it on silently, or just keeping it on your phone. All three make you part of it.</p></div>
+ <div class="card"><h3>Why private isn’t enough here</h3><p>Most of the time, a quiet word is a good option. Not this time. An illegal image keeps existing and spreading until it’s reported.</p></div>
+ <div class="card"><h3>What Priya needs</h3><p>To know people aren’t sharing it. To know someone’s on her side. And for adults who can actually get it taken down to know about it.</p></div>
+</div>
+${B('law',()=>`<div class="card" style="border-left:4px solid var(--m4)"><div class="kicker">The law in ${CN[S.country]}</div><p>${LAW[S.country]}</p><p style="margin-top:8px">This applies to young people too. If you’ve already shared something, the best thing you can do is stop, and tell a trusted adult now. Acting quickly counts.</p></div>`)}
+</section>
+<section class="blk" style="--c:var(--m4)"><h2>Skill builder: if you see a sexual or fake image of someone</h2>
+<p>Do or don’t?</p>
+${choiceAct('imgdo',IMGDO,['Do','Don’t'])}
+${B('report',()=>`<div class="card tint"><h3>Where to report in ${CN[S.country]}</h3><ul class="clean">${REPORT[S.country].map(x=>`<li>${e(x)}</li>`).join('')}</ul></div>`)}
+<h3 style="margin-top:22px">The image consent check</h3>
+<p>For any photo or video of someone, ask three things: <b>Did they know? Did they agree? Would they be OK with where it ends up?</b> Pass or fail?</p>
+${choiceAct('consent',CONSENT,['Passes','Fails'])}
+${supportBox('images')}
+</section>
+${reflect('m4','What would you want your friends to do if a fake image of you was being shared?')}
+${quiz('images')}
+${finish(3)}`;}
+
+/* ---------- module 5: online ---------- */
+const CHAT=[
+ ['hey saw your post about the gig, same taste in music haha',0,'Normal opener. On its own, nothing wrong here.'],
+ ['you’re honestly so much more mature than people our age',1,'Making you feel special and grown-up is a common way to build trust fast.'],
+ ['what are you listening to at the moment?',0,'Normal chat.'],
+ ['don’t tell your mum about me, parents never get it',1,'Pushing for secrecy is one of the biggest warning signs.'],
+ ['what school do you go to? just curious',1,'Asking for personal details that show where to find you.'],
+ ['my camera’s broken so can’t video call sorry',1,'Avoiding video can mean they don’t want you to see who they really are.'],
+ ['send me a pic so I know you’re real',1,'Asking for photos, especially early, is a red flag.'],
+ ['want to meet saturday? just us, don’t bring anyone',1,'Wanting you alone and away from friends is a serious warning sign.']];
+const PLANITEMS=['Tell a trusted adult who you’re meeting, where and when','Meet in a busy public place, in daylight','Bring a friend or have an adult nearby','Have your own way home and money or a charged phone','Check in during and after','Leave straight away if anything feels off, even if it seems rude'];
+function modOnline(){return `
+<div class="hero" style="--c:var(--m5)"><div class="kicker">Module 5</div><h1>Trust and safety online</h1><p class="lead">Online friendships can be real and good. They can also be built by someone who isn’t who they say they are. Here’s how to tell the difference, and how to stay safe either way.</p></div>
+<section class="blk" style="--c:var(--m5)">
+${hook('online','Someone you’ve been chatting with online for a month wants to meet. What’s your gut reaction?',['Exciting. I’d probably go.','I’d go, but bring someone.','I’d tell an adult first.','No way.'])}
+${episode('stranger')}
+</section>
+<section class="blk" style="--c:var(--m5)"><h2>Unpack it</h2>
+${endMap('stranger')}
+<div class="grid2">
+ <div class="card"><h3>Why it feels real so fast</h3><p>Chatting every day, sharing secrets, feeling understood. Online relationships can feel close quickly. That’s exactly what someone with bad intentions relies on.</p></div>
+ <div class="card"><h3>People aren’t always who they say</h3><p>Photos can be stolen or AI-generated. Voices can be faked. Ages and names are easy to make up. Anyone who won’t video call deserves extra caution.</p></div>
+ <div class="card"><h3>Telling an adult isn’t the end</h3><p>In Broken Trust, Leah asked for advice, then ignored it. Nothing might happen that night, but next time she needs help, it’s harder to ask.</p></div>
+ <div class="card"><h3>Block and report</h3><p>Blocking protects you. Reporting protects the next person. Screenshot the chat, profile and username first, then report and block.</p></div>
+</div></section>
+<section class="blk" style="--c:var(--m5)"><h2>Skill builder: spot the warning signs</h2>
+<p>Here’s a chat from someone Leah met online. Tap every message you think is a warning sign, then check.</p>
+${B('chat',()=>{const sel=S.act.chat||{},chk=S.reveal.chat;let right=0;CHAT.forEach((c,i)=>{if(!!sel[i]===!!c[1])right++;});
+ return `<div class="card"><div class="chat">${CHAT.map((c,i)=>{const on=!!sel[i];let cls='';if(chk)cls=c[1]?'flag':'fine';return `<button class="msg ${cls}" aria-pressed="${on}" data-act="chat" data-i="${i}" ${chk?'disabled':''}>${e(c[0])}${chk?`<small>${c[1]?(on?'✓ Warning sign. ':'Missed: warning sign. '):(on?'Not really a warning sign. ':'')}${e(c[2])}</small>`:''}</button>`;}).join('')}</div><div class="row" style="margin-top:12px">${chk?`<p class="fb ${right>=7?'good':'warn'}" style="margin:0">${right} of 8 right. Six of these messages are warning signs. On their own, some might seem small. Together, they’re a pattern.</p><button class="btn ghost" data-act="chatreset">Try again</button>`:`<button class="btn" data-act="chatcheck">Check my answers</button>`}</div></div>`;})}
+<h3 style="margin-top:22px">Your safe meeting plan</h3>
+<p>If you ever do meet someone from online, tick what you’d do. It goes into your plan at the end.</p>
+${B('meet',()=>{const m=S.act.meet||{};return `<div class="card">${PLANITEMS.map((x,i)=>`<label style="display:flex;gap:10px;align-items:flex-start;padding:6px 0"><input type="checkbox" data-act="meet" data-i="${i}" ${m[i]?'checked':''} style="width:20px;height:20px;margin-top:3px"> <span>${e(x)}</span></label>`).join('')}${Object.keys(m).filter(k=>m[k]).length===PLANITEMS.length?'<p class="fb good">That’s a solid plan.</p>':''}</div>`;})}
+<div class="card tint"><h3>If something has already gone wrong</h3><p>If someone is threatening you, asking for more photos, or asking for money after you sent something: <b>stop replying, don’t pay, screenshot everything, and tell a trusted adult or a service below.</b> It is not your fault, and you won’t get in trouble for asking for help.</p></div>
+${supportBox('online')}
+</section>
+<section class="blk" style="--c:var(--m5)"><h2>AI chatbots and companion apps</h2>
+<div class="card"><p>AI chatbots and “AI friend” apps can be fun and even useful. A few things to keep in mind:</p><ul class="clean"><li><b>What you type isn’t private.</b> Many apps store and use your chats. Don’t share your full name, school, address, photos or anything you wouldn’t want others to read.</li><li><b>They’re built to keep you talking.</b> An app that says it understands you better than your friends do is working to keep you on the app.</li><li><b>They can get things wrong</b>, including advice about serious stuff.</li><li><b>They can’t replace real people</b> who know you and can actually show up for you.</li></ul></div>
+</section>
+${reflect('m5','Who are two people you could go to if something online made you uncomfortable?')}
+${quiz('online')}
+${finish(4)}`;}
+
+/* ---------- module 6: together ---------- */
+const PATTERNS=[
+ ['Acting in the moment beats acting later',[['party','A2a'],['glasses','A2a'],['group','A2b']]],
+ ['Late is still better than never',[['party','A2b'],['glasses','A2b'],['wallet','A2b'],['group','A2b']]],
+ ['Quiet and private can still count',[['wallet','B1'],['wallet','A2a'],['party','B1'],['glasses','B1']]],
+ ['The strongest endings go one step further',[['group','B2b'],['stranger','B2b'],['stranger','A2b'],['party','B2b'],['glasses','B2b']]],
+ ['Doing the right thing isn’t always popular',[['party','B2a'],['glasses','B2a']]],
+ ['Silence sends a message',[['party','A1'],['glasses','A1'],['group','A2a']]]];
+const MIXED=[
+ {t:'Your friend is behind on an assignment and asks you to get AI to write it, then send it to them.',o:['Do it. It’s their risk, not yours.','Say no, but offer to help them plan it or talk to the teacher.','Write it yourself instead of using AI.'],a:1,f:'Helping them hand in work that isn’t theirs is the same problem whether AI or you wrote it. Helping them get unstuck is the kind option.'},
+ {t:'Someone in your class made a fake voicemail from a teacher using an AI voice clone. It’s pretty funny, and they want you to share it.',o:['Share it. Everyone knows it’s fake.','Don’t share it, and tell them it could really hurt the teacher.','Share it only with close friends.'],a:1,f:'Fake voices spread like fake images. Once it’s out, the teacher can’t control who hears it or who believes it. Same consent check: did they know, did they agree?'},
+ {t:'A new app asks for access to all your photos and contacts so it can “find your friends”.',o:['Allow it. Everyone else has.','Say no, or only allow what it actually needs.','Allow it, then delete the app later.'],a:1,f:'Your contacts are other people’s information. Only give apps what they need. You can usually still use the app without full access.'},
+ {t:'An AI companion app you chat with says: “You don’t need other friends. I understand you better than anyone.”',o:['Take it as a compliment.','Notice that’s a red flag, and make time for real people.','Tell it your secrets so it understands you even better.'],a:1,f:'That line would be a warning sign from a person online, and it’s the same from an app. Real friends don’t try to cut you off from others.'}];
+function modTogether(){const cert=certPanel();return `
+<div class="hero" style="--c:var(--m6)"><div class="kicker">Module 6</div><h1>Bringing it together</h1><p class="lead">Five stories, thirty endings. Time to look at the big picture and make a plan you can actually use.</p></div>
+<section class="blk" style="--c:var(--m6)"><h2>Spot the pattern</h2>
+${B('found',()=>`<p>You’ve found <b>${totalFound()} of 30</b> endings.${totalFound()<30?' You can go back to any module to find more.':' That’s every single one.'}</p>`)}
+<div class="card tint"><h3>What do the best endings have in common?</h3><textarea data-guess="1" placeholder="Write your theory first, then reveal.">${e(P.guess||'')}</textarea><p class="private">Only you can see this.</p><div class="row" style="margin-top:10px"><button class="btn" data-act="reveal" data-id="pattern">${S.reveal.pattern?'Hide the patterns':'Reveal the patterns'}</button></div></div>
+${B('patterns',()=>S.reveal.pattern?`<div class="grid2">${PATTERNS.map(p=>`<div class="card"><h3>${e(p[0])}</h3><div class="row" style="gap:6px;margin-top:8px">${p[1].map(([k,n])=>{const i=NODES.indexOf(n),got=(S.found[k]||{})[n];return `<span class="pill" style="${got?'background:var(--m6);color:var(--bg)':''}">${e(EP[k].ends[i][0])}</span>`;}).join('')}</div></div>`).join('')}</div><p class="muted small">Highlighted endings are ones you found.</p>`:'')}
+</section>
+<section class="blk" style="--c:var(--m6)"><h2>Mixed scenario challenge</h2>
+<p>New situations, no video. Use the four questions: What’s going on? Who could be affected? What are my options? Who can help?</p>
+${MIXED.map((m,i)=>B('mx-'+i,()=>{const v=(S.act.mixed||{})[i];const done=v!=null;return `<div class="card"><h3>${i+1}. ${e(m.t)}</h3><div class="opts">${m.o.map((o,j)=>{let c='';if(done){if(j===m.a)c='right';else if(j===v)c='wrong';}return `<button class="opt ${c}" data-act="mixed" data-i="${i}" data-j="${j}" ${done?'disabled':''}>${e(o)}</button>`;}).join('')}</div>${done?`<p class="fb ${v===m.a?'good':'warn'}">${e(m.f)}</p>`:''}</div>`;})).join('')}
+</section>
+<section class="blk" style="--c:var(--m6)"><h2>Your values, revisited</h2>
+${B('valcmp',()=>S.values.length?`<p>At the start, you picked: <b>${S.values.map(e).join(', ')}</b>.</p>`:'<p class="muted">You didn’t pick values in Module 1. You can do it now.</p>')}
+${valueSort('values2','Pick again. Has anything changed?')}
+</section>
+<section class="blk" style="--c:var(--m6)"><h2>My Choices plan</h2>
+<p>One page to keep. It stays on this device, and you can print or save it.</p>
+<div class="card">
+<label class="lbl" for="p-d">When I see something that isn’t OK, my go-to move is...</label>
+<select id="p-d" data-plan="d" style="width:100%;min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:8px">${['','Direct: say something','Distract: interrupt it','Delegate: get help','Delay: check in afterwards and follow up'].map(o=>`<option ${P.plan.d===o?'selected':''}>${e(o)}</option>`).join('')}</select>
+<label class="lbl" for="p-p">My two trusted people (first names are fine)</label>
+<input type="text" id="p-p" data-plan="people" value="${e(P.plan.people||'')}">
+<label class="lbl" for="p-a">If I see a fake or harmful image of someone, I will...</label>
+<textarea id="p-a" data-plan="action">${e(P.plan.action||'')}</textarea>
+<label class="lbl" for="p-w">One thing I want to do differently from now on</label>
+<textarea id="p-w" data-plan="why">${e(P.plan.why||'')}</textarea>
+<p class="private">Only you can see this.</p>
+<div class="row" style="margin-top:12px"><button class="btn" data-act="print">Print or save as PDF</button><button class="btn ghost" data-act="download">Download my plan</button></div>
+</div></section>
+${cert}
+${finish(5)}`;}
+
+function certPanel(){if(!(window.__LMS&&window.__LMS.slug))return '';
+ return B('cert',()=>{const left=MODS.filter(m=>!S.done[m.id]);
+  if(!left.length)return `<div class="card" style="border:2px solid var(--good)"><h3>Your certificate is ready</h3><p class="muted">You’ve finished every module of Youth Ethics Lab.</p><div class="row" style="margin-top:10px"><a class="btn" href="/certificate/${encodeURIComponent(window.__LMS.slug)}" target="_top">Get my certificate</a></div></div>`;
+  return `<div class="card"><h3>Certificate</h3><p class="muted">Finish every module to unlock your certificate. Still to do: ${left.map(m=>`<button class="linkbtn" data-act="go" data-i="${MODS.indexOf(m)}">${m.lbl}</button>`).join(', ')}.</p><p class="muted small">A module counts as finished when you press its Finish button.</p></div>`;});}
+
+/* ---------- plan export ---------- */
+function planHtml(){const m=S.act.meet||{};const vals=(S.values2.length?S.values2:S.values);
+ const sup=SUP[S.country].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[2].replace(/<[^>]+>/g,'')}</td></tr>`).join('');
+ return `<!doctype html><html lang="en-NZ"><head><meta charset="utf-8"><title>My Choices plan</title><style>body{font-family:"Atkinson Hyperlegible","Segoe UI",Arial,sans-serif;max-width:720px;margin:24px auto;padding:0 20px;color:#1B2130;line-height:1.5}h1{font-family:"Bricolage Grotesque","Segoe UI",sans-serif;margin:0 0 4px}h2{font-size:1.1rem;margin:22px 0 6px;color:#B06D12}.box{border:1px solid #DEDAD0;border-radius:10px;padding:10px 14px;min-height:40px}table{width:100%;border-collapse:collapse;font-size:.92rem}td{padding:5px 6px;border-bottom:1px solid #eee;vertical-align:top}@media (max-width:560px){table.stack thead{display:none}table.stack tr{display:block;border-bottom:1px solid var(--line);padding:8px 0}table.stack td{display:block;border:0;padding:2px 6px}table.stack td:first-child{font-weight:700}tr.got td:first-child{box-shadow:none}tr.got{box-shadow:inset 3px 0 0 var(--c)}.helpbtn{padding:5px 10px}}
+@media print{body{margin:0}}</style></head><body>
+<h1>My Choices plan</h1><p style="color:#5A6172">Youth Ethics Lab</p>
+<h2>My top values</h2><div class="box">${vals.length?vals.map(e).join(', '):'&nbsp;'}</div>
+<h2>My go-to move when something isn’t OK</h2><div class="box">${e(P.plan.d||'')||'&nbsp;'}</div>
+<h2>My two trusted people</h2><div class="box">${e(P.plan.people||'')||'&nbsp;'}</div>
+<h2>If I see a fake or harmful image of someone, I will</h2><div class="box">${e(P.plan.action||'')||'&nbsp;'}</div>
+<h2>One thing I’ll do differently</h2><div class="box">${e(P.plan.why||'')||'&nbsp;'}</div>
+<h2>My safe meeting plan</h2><ul>${PLANITEMS.map((x,i)=>`<li>${m[i]?'☑':'☐'} ${e(x)}</li>`).join('')}</ul>
+<h2>The four questions</h2><ol><li>What’s really going on here?</li><li>Who could be affected?</li><li>What are my options?</li><li>Who can help?</li></ol>
+<h2>The 4 Ds</h2><p><b>Direct</b> (say something) · <b>Distract</b> (interrupt it) · <b>Delegate</b> (get help) · <b>Delay</b> (check in and follow up)</p>
+<h2>Image consent check</h2><p>Did they know? Did they agree? Would they be OK with where it ends up?</p>
+<h2>Get help: ${CN[S.country]}</h2><table>${sup}</table>
+</body></html>`;}
+function doPrint(){const w=window.open('','_blank');if(!w){toast('Pop-up blocked. Use Download instead.');return;}w.document.write(planHtml());w.document.close();setTimeout(()=>{try{w.focus();w.print();}catch(x){}},400);}
+function doDownload(){try{const b=new Blob([planHtml()],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='My-Choices-plan.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);toast('Plan downloaded');}catch(x){toast('Download didn’t work here. Try Print instead.');}}
+
+/* ---------- chrome + render ---------- */
+const RENDER=[modStart,modHonesty,modFriend,modImages,modOnline,modTogether];
+function chrome(){
+ document.getElementById('bar').style.width=Math.round(MODS.filter(m=>S.done[m.id]).length/MODS.length*100)+'%';
+ document.getElementById('tabs').innerHTML=MODS.map((m,i)=>`<button class="tab ${S.done[m.id]?'done':''}" style="--c:var(${m.c})" aria-current="${S.mod===i}" data-act="go" data-i="${i}"><span class="dot"></span>${i+1}. ${m.lbl}</button>`).join('');
+ document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.country));
+}
+function render(){BL={};const m=MODS[S.mod];const main=document.getElementById('main');main.style.setProperty('--c',`var(${m.c})`);main.innerHTML=RENDER[S.mod]();chrome();
+ const t=document.querySelector('.tab[aria-current="true"]');if(t)t.scrollIntoView({block:'nearest',inline:'center'});}
+function helpBody(){document.getElementById('helpbody').innerHTML=`<p style="margin:10px 0 6px"><b>${CN[S.country]}</b> <button class="linkbtn" data-act="country" data-v="${S.country==='nz'?'au':'nz'}">Switch to ${CN[S.country==='nz'?'au':'nz']}</button></p><div class="tscroll"><table class="sup stack"><tbody>${SUP[S.country].map(r=>`<tr><td>${r[0]}</td><td>${r[2]}<br><span class="muted small">${r[1]}</span></td></tr>`).join('')}</tbody></table></div>`;}
+let toastT;function toast(t){let el=document.querySelector('.toast');if(!el){el=document.createElement('div');el.className='toast';el.setAttribute('role','status');document.body.appendChild(el);}el.textContent=t;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,2400);}
+
+function markFound(k,n,auto){if(!EP[k]||!NODES.includes(n))return;S.found[k]=S.found[k]||{};const had=!!S.found[k][n];S.found[k][n]=true;save();
+ ['end-'+k,'map-'+k,'compare','found','patterns'].forEach(refresh);
+ if(auto&&!had){const i=NODES.indexOf(n);toast('Ending found: '+EP[k].ends[i][0]);}}
+
+/* ---------- events ---------- */
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-act]');if(!b)return;const d=b.dataset,a=d.act;
+ if(a==='go'){S.mod=+d.i;save();render();window.scrollTo({top:0});return;}
+ if(a==='finish'){const i=+d.i;S.done[MODS[i].id]=true;if(i<MODS.length-1){S.mod=i+1;save();render();window.scrollTo({top:0});}else{save();refresh('cert');toast(isComplete()?'Course finished. Well done.':'Finish the other modules to complete the course.');b.textContent='Course finished ✓';}return;}
+ if(a==='country'){S.country=d.v;save();refreshWhere(id=>/^(sup|law|report|cty)/.test(id));helpBody();return;}
+ if(a==='help'){helpBody();const dl=document.getElementById('helpdlg');if(dl.showModal)dl.showModal();else dl.setAttribute('open','');return;}
+ if(a==='closehelp'){document.getElementById('helpdlg').close();return;}
+ if(a==='hook'){S.hook[d.id]=+d.i;save();refresh('hook-'+d.id);return;}
+ if(a==='gate'){S.gate[d.k]=true;save();refresh('ep-'+d.k);return;}
+ if(a==='summ'){S.summ[d.k]=!S.summ[d.k];save();refresh('ep-'+d.k);return;}
+ if(a==='mark'){const f=S.found[d.k]=S.found[d.k]||{};if(f[d.n]){delete f[d.n];save();['end-'+d.k,'map-'+d.k,'compare','found','patterns'].forEach(refresh);}else markFound(d.k,d.n,false);return;}
+ if(a==='showall'){S.showall[d.k]=!S.showall[d.k];save();refresh(d.k==='cmp'?'compare':'map-'+d.k);return;}
+ if(a==='reveal'){S.reveal[d.id]=!S.reveal[d.id];save();refresh(d.id==='pattern'?'patterns':d.id);if(d.id==='pattern')b.textContent=S.reveal.pattern?'Hide the patterns':'Reveal the patterns';return;}
+ if(a==='quiz'){const q=S.quiz[d.m]=S.quiz[d.m]||{};if(q[d.i]!=null)return;q[d.i]=+d.j;save();refresh(`q-${d.m}-${d.i}`);refresh('qs-'+d.m);return;}
+ if(a==='retry'){S.quiz[d.m]={};save();QUIZ[d.m].forEach((_,i)=>refresh(`q-${d.m}-${i}`));refresh('qs-'+d.m);return;}
+ if(a==='act'){const o=S.act[d.id]=S.act[d.id]||{};o[d.i]=+d.j;save();refresh(`${d.id}-${d.i}`);return;}
+ if(a==='one'){S.act[d.id]=+d.j;save();refresh(d.id);return;}
+ if(a==='mixed'){const o=S.act.mixed=S.act.mixed||{};if(o[d.i]!=null)return;o[d.i]=+d.j;save();refresh('mx-'+d.i);return;}
+ if(a==='val'){const key=d.key,arr=S[key],v=d.v,i=arr.indexOf(v);if(i>=0)arr.splice(i,1);else if(arr.length<5)arr.push(v);else{toast('You can pick five. Unpick one first.');return;}save();refresh('vals-'+key);refresh('valcmp');return;}
+ if(a==='chat'){const o=S.act.chat=S.act.chat||{};o[d.i]=!o[d.i];save();refresh('chat');return;}
+ if(a==='chatcheck'){S.reveal.chat=true;save();refresh('chat');return;}
+ if(a==='chatreset'){S.reveal.chat=false;S.act.chat={};save();refresh('chat');return;}
+ if(a==='print'){doPrint();return;}
+ if(a==='download'){doDownload();return;}
+});
+document.addEventListener('change',ev=>{const t=ev.target;
+ if(t.dataset.act==='meet'){const m=S.act.meet=S.act.meet||{};m[t.dataset.i]=t.checked;save();refresh('meet');return;}
+ if(t.dataset.plan){P.plan[t.dataset.plan]=t.value;savePriv();}});
+document.addEventListener('input',ev=>{const t=ev.target;
+ if(t.dataset.j){P.j[t.dataset.j]=t.value;savePriv();}
+ else if(t.dataset.plan){P.plan[t.dataset.plan]=t.value;savePriv();}
+ else if(t.dataset.guess){P.guess=t.value;savePriv();}});
+
+/* messages from the embedded episodes (cbils.dev scenario player, ?embed=1) */
+window.addEventListener('message',ev=>{if(!ORIGINS.includes(ev.origin))return;const m=ev.data;if(!m||typeof m!=='object')return;const k=STORY2EP[m.story];if(!k)return;
+ if(m.type==='ethicslab:ending'&&m.nodeId)markFound(k,m.nodeId,true);
+ if(m.type==='ethicslab:height'&&m.height){const f=document.getElementById('if-'+k);if(f)f.style.height=Math.max(420,Math.min(1400,Math.ceil(m.height)))+'px';}});
+
+render();
+if(window.LMS){LMS.getState().then(st=>{
+ if(st&&typeof st==='object'){S=Object.assign(blank(),st);try{localStorage.setItem(KEY,JSON.stringify(S));}catch(x){}render();}
+ else if(Object.keys(S.done).length||totalFound()){lmsSync();}
+});}
+})();
+</script>
+</body>
+</html>
