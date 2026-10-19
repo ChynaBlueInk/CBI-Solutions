@@ -14,6 +14,7 @@ export default function Navigation() {
     {name:"Home",href:"/"},
     {name:"About",href:"/about"},
     {name:"Services",href:"/services"},
+    {name:"Courses",href:"https://learn.cbils.dev"},
     {name:"Portfolio",href:"/portfolio"},
     {name:"CV",href:"/cv"},
     {name:"Events",href:"/events"},

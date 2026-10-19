@@ -28,10 +28,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-[hsl(var(--muted))]">
-              <li><Link href="/services/course-development" className="hover:text-[hsl(var(--primary-foreground))]">Course Development</Link></li>
-              <li><Link href="/services/ai-tools" className="hover:text-[hsl(var(--primary-foreground))]">AI Tools</Link></li>
-              <li><Link href="/services/digital-publishing" className="hover:text-[hsl(var(--primary-foreground))]">Digital Publishing</Link></li>
-              <li><Link href="/services/consulting" className="hover:text-[hsl(var(--primary-foreground))]">Consulting</Link></li>
+              <li><Link href="https://learn.cbils.dev" className="hover:text-[hsl(var(--primary-foreground))]">Online Courses</Link></li>
+              <li><Link href="/services/ai-training" className="hover:text-[hsl(var(--primary-foreground))]">AI Training</Link></li>
+              <li><Link href="/services/learning-design" className="hover:text-[hsl(var(--primary-foreground))]">Learning Design</Link></li>
+              <li><Link href="/services/team-enablement" className="hover:text-[hsl(var(--primary-foreground))]">Team Enablement</Link></li>
               <li><Link href="/events" className="hover:text-[hsl(var(--primary-foreground))]">Live Events</Link></li>
               <li><Link href="/recordings" className="hover:text-[hsl(var(--primary-foreground))]">Recordings</Link></li>
             </ul>
