@@ -2,13 +2,33 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, Calendar, Tag, ExternalLink, Github, FileText, Download } from "lucide-react"
+import { ArrowLeft, Calendar, Tag, ExternalLink, Github, FileText, Download, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { projects } from "../projects-data"
+
+// Turns a normal YouTube or Vimeo link into an embeddable one.
+// Returns null for anything else (for example an .mp4 file path).
+function getEmbedUrl(url: string): string | null {
+  const youtube = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/
+  )
+  if (youtube) return `https://www.youtube.com/embed/${youtube[1]}`
+
+  const vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`
+
+  return null
+}
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug)
   if (!project) notFound()
+
+  const embedUrl = project.videoUrl ? getEmbedUrl(project.videoUrl) : null
+  const isVertical = project.videoOrientation === "vertical"
+  const hasFeatures = project.features.length > 0
+  const hasTechnologies = project.technologies.length > 0
+  const hasCsr = Boolean(project.challenges || project.solution || project.results)
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
@@ -75,27 +95,85 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Video, with the game link underneath */}
+      {(project.videoUrl || project.gameUrl) && (
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-4xl mx-auto">
+            {project.videoUrl && (
+              <>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-6">Watch the video</h2>
+                <div
+                  className={
+                    isVertical
+                      ? "mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden rounded-2xl bg-black shadow-lg"
+                      : "aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-lg"
+                  }
+                >
+                  {embedUrl ? (
+                    <iframe
+                      src={embedUrl}
+                      title={`${project.title} video`}
+                      className="h-full w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <video
+                      src={project.videoUrl}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="h-full w-full"
+                    />
+                  )}
+                </div>
+              </>
+            )}
+
+            {project.gameUrl && (
+              <div className={project.videoUrl ? "mt-8 text-center" : "text-center"}>
+                <a
+                  href={project.gameUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full bg-[hsl(var(--primary))] px-8 py-3 text-lg font-semibold text-[hsl(var(--primary-foreground))] shadow-md transition hover:bg-[hsl(var(--accent))]"
+                >
+                  <Play className="w-5 h-5 mr-2" />
+                  Play the game
+                </a>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Details */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-4">Key Features</h2>
-            <ul className="list-disc list-inside space-y-2 text-[hsl(var(--muted-foreground))]">
-              {project.features.map((f) => <li key={f}>{f}</li>)}
-            </ul>
+      {(hasFeatures || hasTechnologies) && (
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+            {hasFeatures && (
+              <div>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-4">Key Features</h2>
+                <ul className="list-disc list-inside space-y-2 text-[hsl(var(--muted-foreground))]">
+                  {project.features.map((f) => <li key={f}>{f}</li>)}
+                </ul>
+              </div>
+            )}
+            {hasTechnologies && (
+              <div>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-4">Technologies</h2>
+                <ul className="flex flex-wrap gap-2">
+                  {project.technologies.map((t) => (
+                    <li key={t} className="bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] px-3 py-1 rounded-full text-sm">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-4">Technologies</h2>
-            <ul className="flex flex-wrap gap-2">
-              {project.technologies.map((t) => (
-                <span key={t} className="bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] px-3 py-1 rounded-full text-sm">
-                  {t}
-                </span>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Resources */}
       {project.documents && project.documents.length > 0 && (
@@ -135,22 +213,30 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       )}
 
       {/* CSR blocks */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
-        <div className="max-w-5xl mx-auto space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Challenges</h2>
-            <p className="text-[hsl(var(--muted-foreground))]">{project.challenges}</p>
+      {hasCsr && (
+        <section className="py-16 px-4 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))/10]">
+          <div className="max-w-5xl mx-auto space-y-8">
+            {project.challenges && (
+              <div>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Challenges</h2>
+                <p className="text-[hsl(var(--muted-foreground))]">{project.challenges}</p>
+              </div>
+            )}
+            {project.solution && (
+              <div>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Solution</h2>
+                <p className="text-[hsl(var(--muted-foreground))]">{project.solution}</p>
+              </div>
+            )}
+            {project.results && (
+              <div>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Results</h2>
+                <p className="text-[hsl(var(--muted-foreground))]">{project.results}</p>
+              </div>
+            )}
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Solution</h2>
-            <p className="text-[hsl(var(--muted-foreground))]">{project.solution}</p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-[hsl(var(--foreground))] mb-2">Results</h2>
-            <p className="text-[hsl(var(--muted-foreground))]">{project.results}</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Gallery */}
       {project.images.length > 0 && (

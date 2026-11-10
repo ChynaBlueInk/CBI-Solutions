@@ -22,10 +22,65 @@ export type Project={
   results:string
   liveUrl?:string
   githubUrl?:string
+  videoUrl?:string
+  videoOrientation?:"vertical"|"horizontal"
+  gameUrl?:string
   documents?:ProjectDocument[]
 }
 
 export const projects:Project[]=[
+ {
+  title:"The Kiwi Corner Dairy",
+  description:"An idle tycoon game where you run a Kiwi corner dairy, from hot pies to lolly jars.",
+  longDescription:
+    "An idle tycoon game set in a classic New Zealand corner dairy. Serve the counter, stock the shelves, take on staff, and build up the shop. Watch the video, then play it yourself.",
+  category:"Games",
+  slug:"kiwi-corner-dairy",
+  year:"2026",
+  tags:["Game","Idle Tycoon","NZ"],
+  heroImage:"/portfolio/kiwi-corner-dairy.png",
+  images:["/portfolio/kiwi-corner-dairy.png","/portfolio/kiwi-corner-dairy-shopkeeper.png"],
+  features:[],
+  technologies:[],
+  challenges:"",
+  solution:"",
+  results:"",
+  videoUrl:"/portfolio/videos/kiwi-corner-dairy.mp4",
+  videoOrientation:"vertical",
+  gameUrl:"/games/kiwi-corner-dairy/index.html"
+ },
+ {
+  title:"The Great Kiwi Road Trip",
+  description:"A road trip learning game from Cape Reinga to Bluff, built for visitors to Aotearoa New Zealand.",
+  longDescription:
+    "Drive Aotearoa from Cape Reinga to Bluff in four legs. Pick a hatchback, campervan or scooter, plan each day, and manage money, fuel and fatigue while you learn the road rules, the stories behind each place, and how to look after the land. Built for tourism, as a game a rental car or tourism company could offer visitors before and during their trip. Watch the video, then play it yourself.",
+  category:"Games",
+  slug:"great-kiwi-road-trip",
+  year:"2026",
+  tags:["Game","Road Trip","NZ","Tourism"],
+  heroImage:"/portfolio/great-kiwi-road-trip.png",
+  images:[
+    "/portfolio/great-kiwi-road-trip-vehicles.jpg",
+    "/portfolio/great-kiwi-road-trip-map.jpg",
+    "/portfolio/great-kiwi-road-trip-road-event.jpg"
+  ],
+  features:[
+    "Four legs from Cape Reinga to Bluff, with Rakiura Stewart Island as the prize for arriving on time",
+    "Bonus trips to Waiheke, the Wairarapa, Akaroa, the West Coast glaciers and the Cook Strait ferry",
+    "Road events with a timer: one-lane bridges, possums, tractors, gravel and driver fatigue",
+    "Māori heritage sites and place names, plus marae tikanga",
+    "Tiaki Promise, the DOC Land Safety Code, Great Walks bookings and Check Clean Dry",
+    "Optional airport arrival covering biosecurity and jet lag before you drive",
+    "A scrapbook of place cards collected along the way"
+  ],
+  technologies:["HTML","CSS","JavaScript","SVG","Claude"],
+  challenges:"Visitors arrive with little idea of how far apart places are, how narrow the roads get, or what is expected of them on the land and on a marae.",
+  solution:"A road trip game where every choice costs time, money or energy, so planning and safe driving matter. Each stop teaches the place, its story and the local way of doing things.",
+  results:"A complete four-leg game with more than 250 illustrated place and activity cards, ready to offer through a tourism or rental car company.",
+  videoUrl:"/portfolio/videos/great-kiwi-road-trip.mp4",
+  videoOrientation:"vertical",
+  gameUrl:"/games/great-kiwi-road-trip/index.html"
+ },
  {
   title:"Consequence",
   description:"Branching video scenarios where every choice plays out — an interactive ethics lab for teens.",

@@ -9,6 +9,7 @@ import { projects } from "./projects-data"
 type FilterValue =
   | "all"
   | "resources"
+  | "games"
   | "learning-ai"
   | "apps-data"
   | "travel-tourism"
@@ -27,6 +28,13 @@ const groupConfigs: GroupConfig[] = [
     description:
       "Downloadable learning design, AI, Moodle, gamification, and EdTech resource collections.",
     match: (_slug, hasDocuments) => hasDocuments,
+  },
+  {
+    key: "games",
+    title: "Games",
+    description:
+      "Playable games with a short video of each one in action.",
+    match: (slug) => ["kiwi-corner-dairy", "great-kiwi-road-trip"].includes(slug),
   },
   {
     key: "learning-ai",
@@ -238,6 +246,7 @@ export default function PortfolioClient() {
               >
                 <option value="all">All work</option>
                 <option value="resources">eLearning Resources</option>
+                <option value="games">Games</option>
                 <option value="learning-ai">Learning & AI Tools</option>
                 <option value="apps-data">Apps, Data & Platforms</option>
                 <option value="travel-tourism">Travel & Tourism</option>
